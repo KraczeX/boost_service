@@ -146,7 +146,7 @@ export default function Home() {
                   }
                 ].map((item, index) => (
                   <AnimatedSection key={index} delay={index * 150} direction="up" className="relative">
-                    <div className={`bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 sm:p-6 hover:bg-white/10 hover:${colors.borderLight} transition-all duration-300 h-full`}>
+                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 sm:p-6 hover:bg-white/10 hover:border-white/30 transition-all duration-300 h-full">
                       <div className="flex items-center justify-between mb-3 sm:mb-4">
                         <div className={`w-10 h-10 sm:w-12 sm:h-12 ${colors.bgLight} border ${colors.borderLight} rounded-lg flex items-center justify-center ${colors.text}`}>
                           {item.icon}
@@ -335,7 +335,7 @@ export default function Home() {
                     { text: 'Indywidualne podejście do każdego projektu' },
                     { text: 'Pełna dokumentacja i gwarancja na wszystkie usługi' }
                   ].map((item, index) => (
-                    <div key={index} className={`flex items-start gap-3 sm:gap-4 border-l-2 ${colors.borderLight} pl-4 sm:pl-6 hover:${colors.border} transition-colors`}>
+                    <div key={index} className={`flex items-start gap-3 sm:gap-4 border-l-2 ${colors.borderLight} pl-4 sm:pl-6 hover:border-opacity-60 transition-colors`}>
                       <div className={`flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 ${colors.bgLight} border-2 ${colors.frameBorder} flex items-center justify-center mt-0.5`}>
                         <svg className={`w-5 h-5 sm:w-6 sm:h-6 ${colors.text}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
@@ -396,7 +396,7 @@ export default function Home() {
                           )
                         }
                       ].map((stat, index) => (
-                        <div key={index} className={`${colors.bgHover} border-2 ${colors.frameBorderLight} p-4 sm:p-6 md:p-8 flex flex-col items-center justify-center text-center hover:${colors.bgLight} hover:${colors.frameBorder} transition-all duration-300 group`}>
+                        <div key={index} className={`${colors.bgHover} border-2 ${colors.frameBorderLight} p-4 sm:p-6 md:p-8 flex flex-col items-center justify-center text-center hover:opacity-80 hover:border-opacity-60 transition-all duration-300 group`}>
                           <div className={`${colors.text} mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300`}>
                             {stat.icon}
                           </div>
@@ -426,7 +426,7 @@ export default function Home() {
               </div>
               <Link
                 href="/realizacje"
-                className={`hidden md:flex items-center gap-2 ${colors.text} hover:${colors.textStats} transition-colors font-semibold mt-4 sm:mt-0`}
+                className={`hidden md:flex items-center gap-2 ${colors.text} hover:opacity-80 transition-opacity font-semibold mt-4 sm:mt-0`}
               >
                 Zobacz wszystkie
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -465,7 +465,7 @@ export default function Home() {
                     className="group block"
                     prefetch={false}
                   >
-                  <div className={`relative h-48 sm:h-56 md:h-64 overflow-hidden mb-3 sm:mb-4 border-2 ${colors.frameBorderLight} hover:${colors.border} transition-all duration-300`}>
+                  <div className={`relative h-48 sm:h-56 md:h-64 overflow-hidden mb-3 sm:mb-4 border-2 ${colors.frameBorderLight} hover:border-opacity-60 transition-all duration-300`}>
                     <ImageWithFallback
                       src={realizacja.image}
                       alt={realizacja.title}
@@ -483,7 +483,7 @@ export default function Home() {
                   <p className="text-gray-400 text-xs sm:text-sm leading-relaxed group-hover:text-gray-300 transition-colors">
                     {realizacja.shortDescription}
                   </p>
-                  <div className={`mt-3 sm:mt-4 flex items-center ${colors.text} group-hover:${colors.textStats} transition-colors`}>
+                  <div className={`mt-3 sm:mt-4 flex items-center ${colors.text} group-hover:opacity-80 transition-opacity`}>
                     <span className="text-xs sm:text-sm font-semibold mr-2">Zobacz szczegóły</span>
                     <svg className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -497,7 +497,7 @@ export default function Home() {
             <div className="mt-8 text-center md:hidden">
               <Link
                 href="/realizacje"
-                className={`inline-flex items-center gap-2 ${colors.text} hover:${colors.textStats} transition-colors font-semibold`}
+                className={`inline-flex items-center gap-2 ${colors.text} hover:opacity-80 transition-opacity font-semibold`}
                 prefetch={true}
               >
                 Zobacz wszystkie realizacje
