@@ -188,9 +188,6 @@ export default function Home() {
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                  {/* Decorative frame */}
-                  <div className={`absolute -top-4 -right-4 w-24 h-24 ${colors.bgLight} border-2 ${colors.borderLight} transform rotate-45 opacity-50`}></div>
-                  <div className={`absolute -bottom-4 -left-4 w-16 h-16 ${colors.bg} border-2 ${colors.border} transform rotate-45 opacity-50`}></div>
                 </div>
               </AnimatedSection>
 
@@ -410,10 +407,6 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-
-                {/* Decorative elements */}
-                <div className={`absolute -top-6 -right-6 w-24 h-24 ${colors.decorative} border-2 ${colors.decorativeBorder} transform rotate-45 hidden lg:block`}></div>
-                <div className={`absolute -bottom-6 -left-6 w-16 h-16 ${colors.decorative} border-2 ${colors.decorativeBorder} transform rotate-45 hidden lg:block`}></div>
               </AnimatedSection>
             </div>
           </div>

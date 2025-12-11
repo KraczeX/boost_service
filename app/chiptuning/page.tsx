@@ -142,7 +142,6 @@ export default function ChiptuningPage() {
                       <div className={`absolute top-4 right-4 w-12 h-12 ${colors.bgLight} border ${colors.borderLight} rounded-lg flex items-center justify-center ${colors.text} group-hover:scale-110 transition-transform`}>
                         {benefit.icon}
                       </div>
-                      <div className={`absolute -top-2 -right-2 w-16 h-16 ${colors.bgLight} border-2 ${colors.borderLight} transform rotate-45 opacity-50`}></div>
                     </div>
                     <div className="p-6">
                       <h3 className="text-xl font-bold text-white mb-3">{benefit.title}</h3>
@@ -261,8 +260,6 @@ export default function ChiptuningPage() {
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                  <div className={`absolute -top-4 -right-4 w-24 h-24 ${colors.bgLight} border-2 ${colors.borderLight} transform rotate-45 opacity-50`}></div>
-                  <div className={`absolute -bottom-4 -left-4 w-16 h-16 ${colors.bg} border-2 ${colors.border} transform rotate-45 opacity-50`}></div>
                 </div>
               </AnimatedSection>
 

@@ -167,11 +167,7 @@ export default function Hero() {
                   </div>
                 ))}
               </div>
-
-              {/* Decorative elements */}
-              <div className={`absolute -top-4 -right-4 w-24 h-24 ${colors.decorative} border-2 ${colors.decorativeBorder} transform rotate-45`}></div>
-              <div className={`absolute -bottom-4 -left-4 w-16 h-16 ${colors.decorative} border-2 ${colors.decorativeBorder} transform rotate-45`}></div>
-            </div>
+          </div>
           </div>
         </div>
 
