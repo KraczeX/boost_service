@@ -11,6 +11,7 @@ export default function Header() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
   const [dropdownTimeout, setDropdownTimeout] = useState<NodeJS.Timeout | null>(null);
   const { themeColor } = useTheme();
   const colors = getThemeColors(themeColor);
@@ -271,24 +272,46 @@ export default function Header() {
                 );
               })}
               
-              {/* Pozostałe usługi - Mobile */}
+              {/* Pozostałe usługi - Mobile Dropdown */}
               <div className="space-y-2">
-                <div className="px-4 py-2 text-sm font-semibold text-gray-400 uppercase tracking-wide">
-                  Pozostałe usługi
-                </div>
-                {additionalServices.map((service, index) => (
-                  <Link
-                    key={service.label}
-                    href={service.href}
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`block px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 text-gray-300 ${colors.textHover} ${colors.bgHover}`}
-                    style={{
-                      animation: isMenuOpen ? `fadeInUp 0.4s ease-out ${(navItems.length + index) * 0.1}s both` : 'none'
-                    }}
+                <button
+                  onClick={() => setIsMobileDropdownOpen(!isMobileDropdownOpen)}
+                  className={`w-full flex items-center justify-between px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 text-gray-300 ${colors.textHover} ${colors.bgHover}`}
+                  style={{
+                    animation: isMenuOpen ? `fadeInUp 0.4s ease-out ${navItems.length * 0.1}s both` : 'none'
+                  }}
+                >
+                  <span>Pozostałe usługi</span>
+                  <svg 
+                    className={`w-5 h-5 transition-transform duration-200 ${isMobileDropdownOpen ? 'rotate-180' : ''}`} 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
                   >
-                    {service.label}
-                  </Link>
-                ))}
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                
+                {/* Dropdown Content */}
+                <div className={`overflow-hidden transition-all duration-300 ${
+                  isMobileDropdownOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                }`}>
+                  <div className="pl-4 space-y-2">
+                    {additionalServices.map((service, index) => (
+                      <Link
+                        key={service.label}
+                        href={service.href}
+                        onClick={() => {
+                          setIsMenuOpen(false);
+                          setIsMobileDropdownOpen(false);
+                        }}
+                        className={`block px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 text-gray-400 ${colors.textHover} ${colors.bgHover} hover:text-gray-300`}
+                      >
+                        {service.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
               </div>
               
               <Link
@@ -300,7 +323,7 @@ export default function Header() {
                     : `text-gray-300 ${colors.textHover} ${colors.bgHover}`
                 }`}
                 style={{
-                  animation: isMenuOpen ? `fadeInUp 0.4s ease-out ${(navItems.length + additionalServices.length) * 0.1}s both` : 'none'
+                  animation: isMenuOpen ? `fadeInUp 0.4s ease-out ${(navItems.length + 1) * 0.1}s both` : 'none'
                 }}
               >
                 Kontakt
