@@ -31,7 +31,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   };
 
   // Always provide context, even during SSR
-  return (
+  return (  
     <ThemeContext.Provider value={{ themeColor, setThemeColor }}>
       {children}
     </ThemeContext.Provider>

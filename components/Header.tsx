@@ -10,13 +10,25 @@ import { getThemeColors } from '@/utils/themeColors';
 export default function Header() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [dropdownTimeout, setDropdownTimeout] = useState<NodeJS.Timeout | null>(null);
   const { themeColor } = useTheme();
   const colors = getThemeColors(themeColor);
 
   // Close menu on route change
   useEffect(() => {
     setIsMenuOpen(false);
+    setIsDropdownOpen(false);
   }, [pathname]);
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (dropdownTimeout) {
+        clearTimeout(dropdownTimeout);
+      }
+    };
+  }, [dropdownTimeout]);
 
   // Prevent body scroll when menu is open
   useEffect(() => {
@@ -47,6 +59,13 @@ export default function Header() {
     { href: '/adblue', label: 'Usuwanie ADBLUE' },
     { href: '/usa-conversion', label: 'Konwersja USA' },
     { href: '/realizacje', label: 'Realizacje' },
+  ];
+
+  const additionalServices = [
+    { href: '/usuwanie-dpf-egr', label: 'Usuwanie DPF EGR' },
+    { href: '/kalibracje-radarow', label: 'Kalibracje radarów' },
+    { href: '/naprawa-elektroniki', label: 'Naprawa elektroniki' },
+    { href: '/multimedia-samochodowe', label: 'Multimedia samochodowe' },
   ];
 
   return (
@@ -86,6 +105,66 @@ export default function Header() {
                 </Link>
               );
             })}
+            
+            {/* Pozostałe usługi - Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => {
+                // Anuluj timeout jeśli istnieje
+                if (dropdownTimeout) {
+                  clearTimeout(dropdownTimeout);
+                  setDropdownTimeout(null);
+                }
+                setIsDropdownOpen(true);
+              }}
+              onMouseLeave={() => {
+                // Dodaj opóźnienie przed zamknięciem
+                const timeout = setTimeout(() => {
+                  setIsDropdownOpen(false);
+                }, 200); // 200ms opóźnienia
+                setDropdownTimeout(timeout);
+              }}
+            >
+              <button
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-1 ${
+                  isDropdownOpen
+                    ? `${colors.bgActive} ${colors.text} border ${colors.borderLight}`
+                    : `text-gray-300 ${colors.textHover} ${colors.bgHover}`
+                }`}
+              >
+                Pozostałe usługi
+                <svg 
+                  className={`w-4 h-4 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              
+              {/* Dropdown Menu */}
+              {isDropdownOpen && (
+                <div className="absolute top-full left-0 mt-1 w-64 bg-black/95 backdrop-blur-sm border-2 border-white/10 rounded-lg shadow-xl overflow-hidden z-50">
+                  <div className="py-2">
+                    {additionalServices.map((service, index) => (
+                      <Link
+                        key={service.label}
+                        href={service.href}
+                        className={`block px-4 py-3 text-sm font-medium transition-all duration-200 ${
+                          index !== additionalServices.length - 1 ? 'border-b border-white/5' : ''
+                        } text-gray-300 hover:${colors.text} hover:${colors.bgHover} ${colors.textHover}`}
+                        style={{
+                          animation: `fadeInUp 0.3s ease-out ${index * 0.05}s both`
+                        }}
+                      >
+                        {service.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           </nav>
 
           {/* Right Side - Contact & Social */}
@@ -191,6 +270,27 @@ export default function Header() {
                   </Link>
                 );
               })}
+              
+              {/* Pozostałe usługi - Mobile */}
+              <div className="space-y-2">
+                <div className="px-4 py-2 text-sm font-semibold text-gray-400 uppercase tracking-wide">
+                  Pozostałe usługi
+                </div>
+                {additionalServices.map((service, index) => (
+                  <Link
+                    key={service.label}
+                    href={service.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`block px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 text-gray-300 ${colors.textHover} ${colors.bgHover}`}
+                    style={{
+                      animation: isMenuOpen ? `fadeInUp 0.4s ease-out ${(navItems.length + index) * 0.1}s both` : 'none'
+                    }}
+                  >
+                    {service.label}
+                  </Link>
+                ))}
+              </div>
+              
               <Link
                 href="/kontakt"
                 onClick={() => setIsMenuOpen(false)}
@@ -200,7 +300,7 @@ export default function Header() {
                     : `text-gray-300 ${colors.textHover} ${colors.bgHover}`
                 }`}
                 style={{
-                  animation: isMenuOpen ? `fadeInUp 0.4s ease-out ${navItems.length * 0.1}s both` : 'none'
+                  animation: isMenuOpen ? `fadeInUp 0.4s ease-out ${(navItems.length + additionalServices.length) * 0.1}s both` : 'none'
                 }}
               >
                 Kontakt
