@@ -27,6 +27,9 @@ export default function KalibracjeRadarowPage() {
               alt="Radar calibration"
               className="w-full h-full object-cover"
               loading="eager"
+              priority
+              fill
+              sizes="100vw"
             />
           </div>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

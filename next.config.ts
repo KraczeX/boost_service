@@ -29,12 +29,16 @@ const nextConfig: NextConfig = {
     dangerouslyAllowSVG: false,
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    unoptimized: false,
+    loader: 'default',
   },
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
+  swcMinify: true,
   experimental: {
     optimizeCss: true,
+    optimizePackageImports: ['@/components', '@/utils'],
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',

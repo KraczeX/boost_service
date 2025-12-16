@@ -19,114 +19,71 @@ const realizacjeData: Record<string, {
   images: string[];
   date: string;
 }> = {
-  'audi-rs6-chiptuning': {
-    title: 'Audi RS6 - Chiptuning Stage 2',
+  'audi-q7-chiptuning': {
+    title: 'Audi Q7 4M FL 45TDI DPXB - Chiptuning',
     category: 'Chiptuning',
-    description: 'Kompleksowy chiptuning Audi RS6 z osiągnięciem mocy 750 KM. Pojazd został poddany profesjonalnej optymalizacji oprogramowania ECU z zachowaniem pełnego bezpieczeństwa i niezawodności.',
+    description: 'Najsłabsza odmiana silnika 3.0TDI otrzymała zastrzyk niezbędnej mocy. Domyślnie w tych silnikach można wykonać bezpieczne strojenie w granicach 340-350km / 700nm. Jednak w tym przypadku właściciel prosił nas o celowanie typowo w okolice 300km i 600Nm i tak też zrobiliśmy. Podnieśliśmy ciśnienie oleju w praktycznie całym zakresie pracy silnika, zabezpieczy to jednostkę przed zatarciem. Auto fabrycznie przy 1800obr i temperaturze oleju 95stopni utrzymywało zaledwie 1.2bar ciśnienia. Po moim programie auto w tych obrotach utrzymuje 2.7bara. Pozbyliśmy się układu Start&Stop. Auto stało się bardzo dynamiczne, lepiej reaguje na dodanie gazu. Pozbyliśmy się denerwującego Laga.',
     details: [
-      'Zwiększenie mocy z 600 KM do 750 KM',
-      'Zwiększenie momentu obrotowego o 150 Nm',
-      'Optymalizacja map paliwowych i zapłonowych',
-      'Pełna weryfikacja na hamowni',
-      'Gwarancja na wykonane modyfikacje'
+      'Zwiększenie mocy z 231 KM (238 KM) do 310 KM',
+      'Zwiększenie momentu obrotowego z 501 Nm do 619 Nm',
+      'Podniesienie ciśnienia oleju z 1.2bar do 2.7bar przy 1800obr i temperaturze 95°C',
+      'Zabezpieczenie jednostki przed zatarciem poprzez optymalizację ciśnienia oleju',
+      'Usunięcie układu Start&Stop',
+      'Eliminacja denerwującego Laga',
+      'Znaczna poprawa dynamiki i reakcji na dodanie gazu',
+      'Bezpieczne strojenie dostosowane do wymagań klienta (300km / 600Nm zamiast maksymalnych 340-350km / 700nm)'
     ],
     images: [
-      'https://images.pexels.com/photos/3802508/pexels-photo-3802508.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
-      'https://images.pexels.com/photos/1149137/pexels-photo-1149137.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
-      'https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
-      'https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop'
+      '/realizacje/audi/597400476_1543945244405512_4053870336900835956_n.jpg',
+      '/realizacje/audi/598147195_1543945264405510_8907733685289703726_n.jpg',
+      '/realizacje/audi/599038796_1543945251072178_5121084792254989465_n.jpg'
     ],
-    date: '2024-01-15'
+    date: '2024-01-20'
   },
-  'bmw-m5-adblue': {
-    title: 'BMW M5 - Usunięcie ADBLUE',
-    category: 'Usuwanie ADBLUE',
-    description: 'Profesjonalne usunięcie systemu AdBlue z BMW M5 z zachowaniem pełnej funkcjonalności pojazdu. Wykonano kompleksową modyfikację oprogramowania ECU z pełną dokumentacją.',
-    details: [
-      'Usunięcie systemu AdBlue',
-      'Eliminacja ograniczeń mocy',
-      'Zachowanie pełnej funkcjonalności',
-      'Pełna dokumentacja modyfikacji',
-      'Możliwość przywrócenia oryginalnego oprogramowania'
-    ],
-    images: [
-      'https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
-      'https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
-      'https://images.pexels.com/photos/3802508/pexels-photo-3802508.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop'
-    ],
-    date: '2024-01-10'
-  },
-  'ford-mustang-usa': {
-    title: 'Ford Mustang - Konwersja USA',
+  'bmw-m2-competition-usa': {
+    title: 'BMW M2 Competition F87 - Konwersja USA',
     category: 'Konwersja USA',
-    description: 'Pełna konwersja Ford Mustang z rynku amerykańskiego na standardy europejskie. Wykonano modyfikacje oświetlenia, prędkościomierzy oraz pełną homologację pojazdu.',
+    description: 'Kompleksowa konwersja BMW M2 Competition F87 z rynku amerykańskiego na standardy europejskie. Wykonano pełną konwersję oświetlenia, kodowanie systemów, wymianę tarcz wskaźników oraz aktualizację oprogramowania.',
     details: [
-      'Dostosowanie oświetlenia do standardów europejskich',
-      'Konwersja prędkościomierzy z mil na kilometry',
-      'Pełna homologacja pojazdu',
-      'Kompleksowa dokumentacja i certyfikaty',
-      'Gwarancja na wszystkie modyfikacje'
+      'Montaż lamp EU zgodnych ze standardami europejskimi',
+      'Kodowanie lamp i uruchomienie światła przeciwmgielnego',
+      'Zmiana języka jednostki NBT Evo na polski',
+      'Instalacja najnowszych map nawigacji',
+      'Wymiana tarcz wskaźników na KM/h',
+      'Odblokowanie świateł matrycowych Adaptive Led',
+      'Wyłączenie przednich side markerów'
     ],
     images: [
-      'https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
-      'https://images.pexels.com/photos/164634/pexels-photo-164634.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
-      'https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
-      'https://images.pexels.com/photos/1149137/pexels-photo-1149137.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
-      'https://images.pexels.com/photos/909907/pexels-photo-909907.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop'
+      '/realizacje/bmw/592370304_1533717815428255_7148405695979271444_n.jpg',
+      '/realizacje/bmw/591831982_1533717782094925_609722780348058647_n.jpg',
+      '/realizacje/bmw/591887093_1533717845428252_2178732791081934857_n.jpg',
+      '/realizacje/bmw/593113868_1533717895428247_2725825038290188181_n.jpg',
+      '/realizacje/bmw/594064758_1533717825428254_3447027299729079124_n.jpg'
     ],
-    date: '2024-01-05'
+    date: '2024-01-25'
   },
-  'mercedes-amg-chiptuning': {
-    title: 'Mercedes AMG - Chiptuning Stage 1',
+  'bmw-m240i-chiptuning': {
+    title: 'BMW M240i G42 3.0T - Chiptuning Stage 1.5',
     category: 'Chiptuning',
-    description: 'Optymalizacja oprogramowania Mercedes AMG z zwiększeniem mocy o 25%. Profesjonalna modyfikacja z pełną weryfikacją na hamowni.',
+    description: 'Chiptuning Stage 1.5 BMW M240i G42 3.0T z silnikiem B58 z 2024 roku. Sterownik MG1CS201 został odblokowany w Finlandii przez FEMTO - na tę chwilę jedyna opcja dostępu do tych zablokowanych sterowników. Przy pomocy FemTool jesteśmy w stanie zapisywać nasze modyfikacje. Nasz autorski Stage 1.5 na paliwie 98 daje mega przyrost mocy. Zajęło nam trochę czasu wystrojenie tego samochodu, ale było warto.',
     details: [
-      'Zwiększenie mocy o 25%',
-      'Optymalizacja momentu obrotowego',
-      'Weryfikacja na hamowni',
-      'Pełna dokumentacja',
-      'Gwarancja na modyfikacje'
+      'Zwiększenie mocy z 374 KM do 467 KM',
+      'Zwiększenie momentu obrotowego z 500 Nm do 623 Nm',
+      'Odblokowanie sterownika MG1CS201 przez FEMTO (Finlandia)',
+      'Autorski Stage 1.5 na paliwie 98',
+      'Wyłączony filtr GPF',
+      'Wyłączona klapa wydechu',
+      'Wyłączony Start&Stop',
+      'Kalibracja sportowych wskaźników NBT',
+      'Komplet logów parametrów po modyfikacji do weryfikacji'
     ],
     images: [
-      'https://images.pexels.com/photos/1149137/pexels-photo-1149137.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
-      'https://images.pexels.com/photos/3802508/pexels-photo-3802508.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop'
+      '/realizacje/bmw2/547738055_1456975303102507_1850151271145226443_n.jpg',
+      '/realizacje/bmw2/547985299_1456975349769169_6610657390075273648_n.jpg',
+      '/realizacje/bmw2/548362259_1456975363102501_2039597816879874137_n.jpg',
+      '/realizacje/bmw2/549469263_1456975296435841_2139845267331345954_n.jpg'
     ],
-    date: '2023-12-20'
-  },
-  'porsche-911-adblue': {
-    title: 'Porsche 911 - Usunięcie ADBLUE',
-    category: 'Usuwanie ADBLUE',
-    description: 'Usunięcie systemu AdBlue z Porsche 911 z pełną gwarancją. Profesjonalna modyfikacja oprogramowania z zachowaniem pełnego bezpieczeństwa.',
-    details: [
-      'Usunięcie systemu AdBlue',
-      'Eliminacja ograniczeń',
-      'Pełna gwarancja',
-      'Dokumentacja modyfikacji',
-      'Wsparcie techniczne'
-    ],
-    images: [
-      'https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
-      'https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
-      'https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop'
-    ],
-    date: '2023-12-15'
-  },
-  'dodge-charger-usa': {
-    title: 'Dodge Charger - Konwersja USA',
-    category: 'Konwersja USA',
-    description: 'Kompleksowa konwersja Dodge Charger z pełną homologacją. Wykonano wszystkie wymagane modyfikacje zgodnie z standardami europejskimi.',
-    details: [
-      'Konwersja oświetlenia',
-      'Modyfikacja prędkościomierzy',
-      'Pełna homologacja',
-      'Certyfikaty i dokumentacja',
-      'Gwarancja na modyfikacje'
-    ],
-    images: [
-      'https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
-      'https://images.pexels.com/photos/164634/pexels-photo-164634.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop'
-    ],
-    date: '2023-12-10'
+    date: '2024-01-30'
   }
 };
 

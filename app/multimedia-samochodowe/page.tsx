@@ -27,6 +27,9 @@ export default function MultimediaSamochodowePage() {
               alt="Car multimedia"
               className="w-full h-full object-cover"
               loading="eager"
+              priority
+              fill
+              sizes="100vw"
             />
           </div>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -62,6 +65,8 @@ export default function MultimediaSamochodowePage() {
                     alt="Car multimedia system"
                     className="w-full h-full object-cover"
                     loading="lazy"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 </div>
@@ -194,6 +199,8 @@ export default function MultimediaSamochodowePage() {
                         alt={product.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                         loading="lazy"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                       <div className={`absolute top-4 right-4 w-12 h-12 ${colors.bgLight} border ${colors.borderLight} rounded-lg flex items-center justify-center ${colors.text} group-hover:scale-110 transition-transform`}>

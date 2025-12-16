@@ -13,7 +13,7 @@ function ContactButton() {
     setIsOpen(prev => !prev);
   }, []);
 
-  const phoneNumber = '+48 XXX XXX XXX';
+  const phoneNumber = '+48 725 490 466';
   const email = 'kontakt@boost-service.pl';
 
   return (

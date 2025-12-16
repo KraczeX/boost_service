@@ -80,6 +80,9 @@ export default function ImageGallery({ images, title }: ImageGalleryProps) {
               alt={`${title} - zdjęcie główne`}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               loading="eager"
+              priority
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
             />
             {/* Gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -118,6 +121,8 @@ export default function ImageGallery({ images, title }: ImageGalleryProps) {
                   alt={`${title} - zdjęcie ${index + 2}`}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
                   loading="lazy"
+                  fill
+                  sizes="(max-width: 768px) 50vw, 25vw"
                 />
                 
                 {/* Gradient overlay on hover */}

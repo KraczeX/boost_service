@@ -27,6 +27,9 @@ export default function NaprawaElektronikiPage() {
               alt="Electronics repair"
               className="w-full h-full object-cover"
               loading="eager"
+              priority
+              fill
+              sizes="100vw"
             />
           </div>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -62,6 +65,8 @@ export default function NaprawaElektronikiPage() {
                     alt="Electronics repair system"
                     className="w-full h-full object-cover"
                     loading="lazy"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 </div>

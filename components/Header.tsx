@@ -181,7 +181,7 @@ export default function Header() {
               Kontakt
             </Link>
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/boostservicehanulin"
               target="_blank"
               rel="noopener noreferrer"
               className={`w-10 h-10 flex items-center justify-center rounded-lg text-gray-300 ${colors.textHover} ${colors.bgHover} transition-all duration-200`}
@@ -334,7 +334,7 @@ export default function Header() {
             <div className="mt-auto pt-8 border-t border-white/10">
               <div className="flex items-center justify-center gap-4">
                 <a
-                  href="https://facebook.com"
+                  href="https://www.facebook.com/boostservicehanulin"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`w-12 h-12 flex items-center justify-center rounded-lg ${colors.bgHover} ${colors.textHover} transition-all duration-200`}

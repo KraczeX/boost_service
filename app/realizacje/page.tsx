@@ -10,52 +10,28 @@ import { getThemeColors } from '@/utils/themeColors';
 
 const realizacje = [
   {
-    id: 'audi-rs6-chiptuning',
-    title: 'Audi RS6 - Chiptuning Stage 2',
-    shortDescription: 'Kompleksowy chiptuning Audi RS6 z osiągnięciem mocy 750 KM',
-    image: 'https://images.pexels.com/photos/3802508/pexels-photo-3802508.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+    id: 'bmw-m240i-chiptuning',
+    title: 'BMW M240i G42 3.0T - Chiptuning Stage 1.5',
+    shortDescription: 'Zwiększenie mocy z 374 KM do 467 KM i momentu obrotowego z 500 Nm do 623 Nm',
+    image: '/realizacje/bmw2/547738055_1456975303102507_1850151271145226443_n.jpg',
     category: 'Chiptuning',
-    date: '2024-01-15'
+    date: '2024-01-30'
   },
   {
-    id: 'bmw-m5-adblue',
-    title: 'BMW M5 - Usunięcie ADBLUE',
-    shortDescription: 'Profesjonalne usunięcie systemu AdBlue z zachowaniem pełnej funkcjonalności',
-    image: 'https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
-    category: 'Usuwanie ADBLUE',
-    date: '2024-01-10'
-  },
-  {
-    id: 'ford-mustang-usa',
-    title: 'Ford Mustang - Konwersja USA',
-    shortDescription: 'Pełna konwersja Mustanga z rynku amerykańskiego na standardy europejskie',
-    image: 'https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+    id: 'bmw-m2-competition-usa',
+    title: 'BMW M2 Competition F87 - Konwersja USA',
+    shortDescription: 'Kompleksowa konwersja z rynku amerykańskiego na standardy europejskie - lampy EU, kodowanie, polski język',
+    image: '/realizacje/bmw/592370304_1533717815428255_7148405695979271444_n.jpg',
     category: 'Konwersja USA',
-    date: '2024-01-05'
+    date: '2024-01-25'
   },
   {
-    id: 'mercedes-amg-chiptuning',
-    title: 'Mercedes AMG - Chiptuning Stage 1',
-    shortDescription: 'Optymalizacja oprogramowania Mercedes AMG z zwiększeniem mocy o 25%',
-    image: 'https://images.pexels.com/photos/1149137/pexels-photo-1149137.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+    id: 'audi-q7-chiptuning',
+    title: 'Audi Q7 4M FL 45TDI DPXB - Chiptuning',
+    shortDescription: 'Zwiększenie mocy z 231 KM do 310 KM i momentu obrotowego z 501 Nm do 619 Nm',
+    image: '/realizacje/audi/597400476_1543945244405512_4053870336900835956_n.jpg',
     category: 'Chiptuning',
-    date: '2023-12-20'
-  },
-  {
-    id: 'porsche-911-adblue',
-    title: 'Porsche 911 - Usunięcie ADBLUE',
-    shortDescription: 'Usunięcie systemu AdBlue z Porsche 911 z pełną gwarancją',
-    image: 'https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
-    category: 'Usuwanie ADBLUE',
-    date: '2023-12-15'
-  },
-  {
-    id: 'dodge-charger-usa',
-    title: 'Dodge Charger - Konwersja USA',
-    shortDescription: 'Kompleksowa konwersja Dodge Charger z pełną homologacją',
-    image: 'https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
-    category: 'Konwersja USA',
-    date: '2023-12-10'
+    date: '2024-01-20'
   }
 ];
 
@@ -102,6 +78,8 @@ export default function RealizacjePage() {
                         alt={realizacja.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         loading="lazy"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                       <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4">

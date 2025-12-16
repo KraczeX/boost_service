@@ -27,6 +27,9 @@ export default function UsaConversionPage() {
               alt="USA car conversion"
               className="w-full h-full object-cover"
               loading="eager"
+              priority
+              fill
+              sizes="100vw"
             />
           </div>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -64,6 +67,8 @@ export default function UsaConversionPage() {
                     alt="USA conversion"
                     className="w-full h-full object-cover"
                     loading="lazy"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 </div>
@@ -192,6 +197,8 @@ export default function UsaConversionPage() {
                         alt={service.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                         loading="lazy"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
                       <div className={`absolute top-4 right-4 w-12 h-12 ${colors.bgLight} border ${colors.borderLight} rounded-lg flex items-center justify-center ${colors.text} group-hover:scale-110 transition-transform`}>
@@ -276,23 +283,18 @@ export default function UsaConversionPage() {
                 }
               ].map((item, index) => (
                 <AnimatedSection key={index} delay={index * 100} direction="up">
-                  <div className="relative flex items-start gap-4 sm:gap-6">
-                    <div className="flex-shrink-0">
-                      <div className={`w-16 h-16 sm:w-20 sm:h-20 ${colors.bgLight} border-2 ${colors.frameBorder} rounded-xl flex items-center justify-center ${colors.text} group-hover:scale-110 transition-transform`}>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+                    <div className="flex-shrink-0 flex justify-center sm:justify-start">
+                      <div className={`w-16 h-16 sm:w-20 sm:h-20 ${colors.bgLight} border-2 ${colors.frameBorder} rounded-xl flex items-center justify-center ${colors.text}`}>
                         {item.icon}
                       </div>
-                      {index < 4 && (
-                        <div className={`hidden sm:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full ${colors.bgLight} mt-2`}>
-                          <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0 border-t-4 ${colors.borderLight} border-l-2 border-l-transparent border-r-2 border-r-transparent`}></div>
-                        </div>
-                      )}
                     </div>
-                    <div className="flex-1 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 sm:p-8 hover:bg-white/10 hover:border-white/30 transition-all duration-300">
-                      <div className="flex items-center justify-between mb-4">
-                        <span className={`text-2xl sm:text-3xl font-black ${colors.textStats}`}>{item.step}</span>
-                        <h3 className="text-xl sm:text-2xl font-bold text-white">{item.title}</h3>
+                    <div className="flex-1 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-5 sm:p-6 md:p-8 hover:bg-white/10 hover:border-white/30 transition-all duration-300">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 mb-3 sm:mb-4">
+                        <span className={`text-2xl sm:text-3xl font-black ${colors.textStats} text-center sm:text-left`}>{item.step}</span>
+                        <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white text-center sm:text-right">{item.title}</h3>
                       </div>
-                      <p className="text-gray-400 text-sm sm:text-base leading-relaxed">{item.description}</p>
+                      <p className="text-gray-400 text-sm sm:text-base leading-relaxed text-center sm:text-left">{item.description}</p>
                     </div>
                   </div>
                 </AnimatedSection>

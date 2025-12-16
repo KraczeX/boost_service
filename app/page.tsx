@@ -1,5 +1,6 @@
 'use client';
 
+import { useMemo } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import AnimatedSection from '@/components/AnimatedSection';
@@ -17,7 +18,117 @@ const Footer = dynamic(() => import('@/components/Footer'), {
 
 export default function Home() {
   const { themeColor } = useTheme();
-  const colors = getThemeColors(themeColor);
+  const colors = useMemo(() => getThemeColors(themeColor), [themeColor]);
+  
+  // Memoize static data
+  const servicesData = useMemo(() => [
+    {
+      title: "Chiptuning",
+      description: "Zwiększ moc i moment obrotowy silnika poprzez optymalizację oprogramowania ECU. Bezpieczne i profesjonalne rozwiązania dla wszystkich marek.",
+      href: "/chiptuning",
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 21h6" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v18" />
+        </svg>
+      ),
+      gradient: `bg-gradient-to-br ${colors.gradientReverse}`
+    },
+    {
+      title: "Usuwanie ADBLUE",
+      description: "Kompleksowe usuwanie systemu AdBlue z zachowaniem pełnej funkcjonalności pojazdu. Profesjonalna diagnostyka i modyfikacja oprogramowania.",
+      href: "/adblue",
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      ),
+      gradient: `bg-gradient-to-br ${colors.gradient}`
+    },
+    {
+      title: "Konwersja USA",
+      description: "Pełna konwersja pojazdów z rynku amerykańskiego na standardy europejskie. Oświetlenie, prędkościomierze, homologacja i legalizacja.",
+      href: "/usa-conversion",
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 2v2M12 20v2M2 12h2M20 12h2" />
+        </svg>
+      ),
+      gradient: `bg-gradient-to-br ${colors.gradientAlt}`
+    }
+  ], [colors]);
+
+  const processSteps = useMemo(() => [
+    {
+      step: '01',
+      title: 'Konsultacja',
+      description: 'Omawiamy Twoje potrzeby i możliwości pojazdu',
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        </svg>
+      )
+    },
+    {
+      step: '02',
+      title: 'Diagnostyka',
+      description: 'Kompleksowa analiza pojazdu i jego parametrów',
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+        </svg>
+      )
+    },
+    {
+      step: '03',
+      title: 'Realizacja',
+      description: 'Profesjonalne wykonanie usługi z pełną dokumentacją',
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      )
+    },
+    {
+      step: '04',
+      title: 'Gotowe',
+      description: 'Przekazanie pojazdu z gwarancją i pełnym wsparciem',
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+        </svg>
+      )
+    }
+  ], []);
+
+  const realizacjeData = useMemo(() => [
+    {
+      id: 'bmw-m240i-chiptuning',
+      title: 'BMW M240i G42 3.0T - Chiptuning Stage 1.5',
+      shortDescription: 'Zwiększenie mocy z 374 KM do 467 KM i momentu obrotowego z 500 Nm do 623 Nm',
+      image: '/realizacje/bmw2/547738055_1456975303102507_1850151271145226443_n.jpg',
+      category: 'Chiptuning'
+    },
+    {
+      id: 'bmw-m2-competition-usa',
+      title: 'BMW M2 Competition F87 - Konwersja USA',
+      shortDescription: 'Kompleksowa konwersja z rynku amerykańskiego na standardy europejskie',
+      image: '/realizacje/bmw/592370304_1533717815428255_7148405695979271444_n.jpg',
+      category: 'Konwersja USA'
+    },
+    {
+      id: 'audi-q7-chiptuning',
+      title: 'Audi Q7 4M FL 45TDI DPXB - Chiptuning',
+      shortDescription: 'Zwiększenie mocy z 231 KM do 310 KM i momentu obrotowego z 501 Nm do 619 Nm',
+      image: '/realizacje/audi/597400476_1543945244405512_4053870336900835956_n.jpg',
+      category: 'Chiptuning'
+    }
+  ], []);
   
   return (
     <>
@@ -38,52 +149,17 @@ export default function Home() {
             </AnimatedSection>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-              <AnimatedSection delay={100}>
-                <ServiceCard
-                  title="Chiptuning"
-                  description="Zwiększ moc i moment obrotowy silnika poprzez optymalizację oprogramowania ECU. Bezpieczne i profesjonalne rozwiązania dla wszystkich marek."
-                  href="/chiptuning"
-                  icon={
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 21h6" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v18" />
-                    </svg>
-                  }
-                  gradient={`bg-gradient-to-br ${colors.gradientReverse}`}
-                />
-              </AnimatedSection>
-              
-              <AnimatedSection delay={200}>
-                <ServiceCard
-                  title="Usuwanie ADBLUE"
-                  description="Kompleksowe usuwanie systemu AdBlue z zachowaniem pełnej funkcjonalności pojazdu. Profesjonalna diagnostyka i modyfikacja oprogramowania."
-                  href="/adblue"
-                  icon={
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  }
-                  gradient={`bg-gradient-to-br ${colors.gradient}`}
-                />
-              </AnimatedSection>
-              
-              <AnimatedSection delay={300}>
-                <ServiceCard
-                  title="Konwersja USA"
-                  description="Pełna konwersja pojazdów z rynku amerykańskiego na standardy europejskie. Oświetlenie, prędkościomierze, homologacja i legalizacja."
-                  href="/usa-conversion"
-                  icon={
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 2v2M12 20v2M2 12h2M20 12h2" />
-                    </svg>
-                  }
-                  gradient={`bg-gradient-to-br ${colors.gradientAlt}`}
-                />
-              </AnimatedSection>
+              {servicesData.map((service, index) => (
+                <AnimatedSection key={service.href} delay={(index + 1) * 100}>
+                  <ServiceCard
+                    title={service.title}
+                    description={service.description}
+                    href={service.href}
+                    icon={service.icon}
+                    gradient={service.gradient}
+                  />
+                </AnimatedSection>
+              ))}
             </div>
           </div>
         </section>
@@ -100,67 +176,30 @@ export default function Home() {
               </p>
             </AnimatedSection>
 
-            <div className="max-w-5xl mx-auto">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
-                {[
-                  {
-                    step: '01',
-                    title: 'Konsultacja',
-                    description: 'Omawiamy Twoje potrzeby i możliwości pojazdu',
-                    icon: (
-                      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                      </svg>
-                    )
-                  },
-                  {
-                    step: '02',
-                    title: 'Diagnostyka',
-                    description: 'Kompleksowa analiza pojazdu i jego parametrów',
-                    icon: (
-                      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-                      </svg>
-                    )
-                  },
-                  {
-                    step: '03',
-                    title: 'Realizacja',
-                    description: 'Profesjonalne wykonanie usługi z pełną dokumentacją',
-                    icon: (
-                      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
-                    )
-                  },
-                  {
-                    step: '04',
-                    title: 'Gotowe',
-                    description: 'Przekazanie pojazdu z gwarancją i pełnym wsparciem',
-                    icon: (
-                      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    )
-                  }
-                ].map((item, index) => (
-                  <AnimatedSection key={index} delay={index * 150} direction="up" className="relative">
-                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 sm:p-6 hover:bg-white/10 hover:border-white/30 transition-all duration-300 h-full">
-                      <div className="flex items-center justify-between mb-3 sm:mb-4">
-                        <div className={`w-10 h-10 sm:w-12 sm:h-12 ${colors.bgLight} border ${colors.borderLight} rounded-lg flex items-center justify-center ${colors.text}`}>
-                          {item.icon}
-                        </div>
-                        <span className={`text-2xl sm:text-3xl font-black ${colors.bgLight}`}>{item.step}</span>
+            <div className="max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                {processSteps.map((item, index) => (
+                  <AnimatedSection key={index} delay={index * 150} direction="up">
+                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 sm:p-8 hover:bg-white/10 hover:border-white/30 hover:shadow-xl hover:scale-105 transition-all duration-300 h-full flex flex-col items-center text-center group relative overflow-hidden">
+                      {/* Background gradient on hover */}
+                      <div className={`absolute inset-0 ${colors.bgLight} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
+                      
+                      {/* Icon */}
+                      <div className={`relative z-10 w-16 h-16 sm:w-20 sm:h-20 ${colors.bgLight} border-2 ${colors.borderLight} rounded-xl flex items-center justify-center ${colors.text} mb-4 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300`}>
+                        {item.icon}
                       </div>
-                      <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{item.title}</h3>
-                      <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">{item.description}</p>
+                      
+                      {/* Step number */}
+                      <div className="relative z-10 mb-3">
+                        <span className={`text-3xl sm:text-4xl font-black ${colors.bgLight} opacity-80`}>{item.step}</span>
+                      </div>
+                      
+                      {/* Content */}
+                      <div className="relative z-10 flex-1">
+                        <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3 group-hover:text-white transition-colors">{item.title}</h3>
+                        <p className="text-gray-400 text-sm sm:text-base leading-relaxed group-hover:text-gray-300 transition-colors">{item.description}</p>
+                      </div>
                     </div>
-                    {index < 3 && (
-                      <div className={`hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 ${colors.bgLight} transform -translate-y-1/2`}>
-                        <div className={`absolute right-0 top-1/2 transform -translate-y-1/2 w-0 h-0 border-l-4 ${colors.borderLight} border-t-2 border-t-transparent border-b-2 border-b-transparent`}></div>
-                      </div>
-                    )}
                   </AnimatedSection>
                 ))}
               </div>
@@ -186,6 +225,8 @@ export default function Home() {
                     alt="Nasz zespół"
                     className="w-full h-full object-cover"
                     loading="lazy"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 </div>
@@ -436,29 +477,7 @@ export default function Home() {
             </AnimatedSection>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-              {[
-                {
-                  id: 'audi-rs6-chiptuning',
-                  title: 'Audi RS6 - Chiptuning Stage 2',
-                  shortDescription: 'Kompleksowy chiptuning Audi RS6 z osiągnięciem mocy 750 KM',
-                  image: 'https://images.pexels.com/photos/3802508/pexels-photo-3802508.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
-                  category: 'Chiptuning'
-                },
-                {
-                  id: 'bmw-m5-adblue',
-                  title: 'BMW M5 - Usunięcie ADBLUE',
-                  shortDescription: 'Profesjonalne usunięcie systemu AdBlue z zachowaniem pełnej funkcjonalności',
-                  image: 'https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
-                  category: 'Usuwanie ADBLUE'
-                },
-                {
-                  id: 'ford-mustang-usa',
-                  title: 'Ford Mustang - Konwersja USA',
-                  shortDescription: 'Pełna konwersja Mustanga z rynku amerykańskiego na standardy europejskie',
-                  image: 'https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
-                  category: 'Konwersja USA'
-                }
-              ].map((realizacja, index) => (
+              {realizacjeData.map((realizacja, index) => (
                 <AnimatedSection key={realizacja.id} delay={index * 100} direction="up">
                   <Link
                     href={`/realizacje/${realizacja.id}`}
@@ -471,6 +490,8 @@ export default function Home() {
                       alt={realizacja.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       loading="lazy"
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                     <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4">
@@ -506,7 +527,7 @@ export default function Home() {
                 </svg>
               </Link>
             </div>
-          </div>
+        </div>
         </section>
 
         {/* CTA Section */}

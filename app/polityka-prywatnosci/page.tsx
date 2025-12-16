@@ -52,10 +52,10 @@ export default function PolitykaPrywatnosciPage() {
                 </p>
                 <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-4 sm:p-6">
                   <p className="text-gray-300 text-sm sm:text-base">
-                    <strong className="text-white">BOOST Service</strong><br />
-                    Adres: [Wprowadź adres]<br />
+                    <strong className="text-white">Boost Service - Chiptuning Hamownia Elektronika</strong><br />
+                    Adres: Stawowa 7, 63-600 Hanulin<br />
                     Email: kontakt@boost-service.pl<br />
-                    Telefon: +48 XXX XXX XXX
+                    Telefon: +48 725 490 466
                   </p>
                 </div>
               </section>
@@ -231,7 +231,7 @@ export default function PolitykaPrywatnosciPage() {
                 <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-4 sm:p-6">
                   <p className="text-gray-300 text-sm sm:text-base">
                     <strong className="text-white">Email:</strong> kontakt@boost-service.pl<br />
-                    <strong className="text-white">Telefon:</strong> +48 XXX XXX XXX
+                    <strong className="text-white">Telefon:</strong> +48 725 490 466
                   </p>
                 </div>
               </section>
@@ -243,4 +243,5 @@ export default function PolitykaPrywatnosciPage() {
     </>
   );
 }
+
 
