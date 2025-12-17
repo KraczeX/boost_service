@@ -120,9 +120,22 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-gray-400 text-sm text-center sm:text-left">
-            © {new Date().getFullYear()} BOOST Service. Wszelkie prawa zastrzeżone.
-          </p>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+            <p className="text-gray-400 text-sm text-center sm:text-left">
+              © {new Date().getFullYear()} BOOST Service. Wszelkie prawa zastrzeżone.
+            </p>
+            <p className="text-gray-500 text-xs text-center sm:text-left">
+              Wykonano przez{' '}
+              <a 
+                href="https://synthit.pl" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                synthit.pl
+              </a>
+            </p>
+          </div>
           <div className="flex items-center gap-6">
             <Link href="/polityka-prywatnosci" className="text-gray-400 hover:text-white text-sm transition-colors">
               Polityka Prywatności

@@ -263,7 +263,7 @@ export default function Home() {
                     <div className="text-xs sm:text-sm text-gray-400 mt-1">Lat doświadczenia</div>
                   </div>
                   <div className={`border-l-2 ${colors.border} pl-2 sm:pl-4`}>
-                    <div className={`text-2xl sm:text-3xl font-bold ${colors.textStats}`}>500+</div>
+                    <div className={`text-2xl sm:text-3xl font-bold ${colors.textStats}`}>5000+</div>
                     <div className="text-xs sm:text-sm text-gray-400 mt-1">Zrealizowanych projektów</div>
                   </div>
                   <div className={`border-l-2 ${colors.border} pl-2 sm:pl-4`}>
@@ -401,7 +401,7 @@ export default function Home() {
                     <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8">
                       {[
                         { 
-                          number: '500+', 
+                          number: '5000+', 
                           label: 'Projektów', 
                           icon: (
                             <svg className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">

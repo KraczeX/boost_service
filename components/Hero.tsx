@@ -42,7 +42,7 @@ export default function Hero() {
   }, [currentImageIndex, nextImageIndex]);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
+    <section className="relative min-h-[75vh] sm:min-h-screen flex items-center overflow-hidden bg-black">
       {/* Rotating Background Images - Only render visible images */}
       <div className="absolute inset-0">
         {visibleImages.map((index) => (
@@ -76,10 +76,10 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center min-h-[70vh] sm:min-h-[80vh]">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-8 sm:py-12 md:py-16 lg:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-start sm:items-center">
           {/* Left side - Text content */}
-          <div className="space-y-6 sm:space-y-8">
+          <div className="space-y-4 sm:space-y-6 md:space-y-8">
             <div className="inline-block">
               <span className={`${colors.textBadge} text-xs sm:text-sm font-semibold uppercase tracking-wider border-l-4 ${colors.borderBadge} pl-3 sm:pl-4`}>
                 Profesjonalne Usługi
@@ -100,7 +100,7 @@ export default function Hero() {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 pt-2 sm:pt-4">
               <div className={`border-l-2 ${colors.border} pl-2 sm:pl-4`}>
-                <div className={`text-xl sm:text-2xl md:text-3xl font-bold ${colors.textStats}`}>500+</div>
+                <div className={`text-xl sm:text-2xl md:text-3xl font-bold ${colors.textStats}`}>5000+</div>
                 <div className="text-xs sm:text-sm text-gray-400 leading-tight">Zrealizowanych projektów</div>
               </div>
               <div className={`border-l-2 ${colors.border} pl-2 sm:pl-4`}>
