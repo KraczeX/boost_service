@@ -69,78 +69,111 @@ export default function KalibracjeRadarowPage() {
               </p>
             </AnimatedSection>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
-              {[
-                {
-                  title: 'ACC - Adaptacyjny Tempomat',
-                  description: 'Kalibracja radarów adaptacyjnego tempomatu dla bezpiecznej jazdy',
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  )
-                },
-                {
-                  title: 'AEB - Awaryjne Hamowanie',
-                  description: 'Kalibracja systemów automatycznego hamowania awaryjnego',
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                    </svg>
-                  )
-                },
-                {
-                  title: 'LKA - Asystent Pasa',
-                  description: 'Kalibracja kamer i czujników systemu utrzymania pasa ruchu',
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                    </svg>
-                  )
-                },
-                {
-                  title: 'BSM - Monitorowanie Martwego Pola',
-                  description: 'Kalibracja radarów monitorujących martwe pole pojazdu',
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                    </svg>
-                  )
-                },
-                {
-                  title: 'Park Assist',
-                  description: 'Kalibracja systemów wspomagania parkowania',
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
-                    </svg>
-                  )
-                },
-                {
-                  title: 'Kamera CoFusion',
-                  description: 'Kalibracja kamer przednich i tylnych systemów bezpieczeństwa',
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                    </svg>
-                  )
-                }
-              ].map((system, index) => (
-                <AnimatedSection key={index} delay={index * 80} direction="up">
-                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-white/30 transition-all duration-300">
-                    <div className="flex items-start gap-4">
-                      <div className={`flex-shrink-0 w-14 h-14 ${colors.bgLight} border ${colors.borderLight} rounded-lg flex items-center justify-center ${colors.text}`}>
-                        {system.icon}
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-bold text-white mb-2">{system.title}</h3>
-                        <p className="text-gray-400 text-sm leading-relaxed">{system.description}</p>
+            {/* Images Section */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-16">
+              <AnimatedSection direction="right" delay={100}>
+                <div className="relative h-[300px] sm:h-[400px] rounded-2xl overflow-hidden border-2 border-white/10">
+                  <ImageWithFallback
+                    src="/realizacje/bmw/593113868_1533717895428247_2725825038290188181_n.jpg"
+                    alt="ADAS systems"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                </div>
+              </AnimatedSection>
+              <AnimatedSection direction="left" delay={200}>
+                <div className="relative h-[300px] sm:h-[400px] rounded-2xl overflow-hidden border-2 border-white/10">
+                  <ImageWithFallback
+                    src="/realizacje/bmw/594064758_1533717825428254_3447027299729079124_n.jpg"
+                    alt="ADAS systems"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                </div>
+              </AnimatedSection>
+            </div>
+
+            {/* Systems List */}
+            <div className="max-w-5xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                {[
+                  {
+                    title: 'ACC - Adaptacyjny Tempomat',
+                    description: 'Kalibracja radarów adaptacyjnego tempomatu dla bezpiecznej jazdy',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: 'AEB - Awaryjne Hamowanie',
+                    description: 'Kalibracja systemów automatycznego hamowania awaryjnego',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: 'LKA - Asystent Pasa',
+                    description: 'Kalibracja kamer i czujników systemu utrzymania pasa ruchu',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: 'BSM - Monitorowanie Martwego Pola',
+                    description: 'Kalibracja radarów monitorujących martwe pole pojazdu',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: 'Park Assist',
+                    description: 'Kalibracja systemów wspomagania parkowania',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: 'Kamera CoFusion',
+                    description: 'Kalibracja kamer przednich i tylnych systemów bezpieczeństwa',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                      </svg>
+                    )
+                  }
+                ].map((system, index) => (
+                  <AnimatedSection key={index} delay={index * 100} direction="up">
+                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 sm:p-8 hover:bg-white/10 hover:border-white/30 transition-all duration-300 group">
+                      <div className="flex items-start gap-4 sm:gap-5">
+                        <div className={`flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 ${colors.bgLight} border ${colors.borderLight} rounded-xl flex items-center justify-center ${colors.text} group-hover:scale-110 transition-transform`}>
+                          {system.icon}
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">{system.title}</h3>
+                          <p className="text-gray-400 text-sm sm:text-base leading-relaxed">{system.description}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </AnimatedSection>
-              ))}
+                  </AnimatedSection>
+                ))}
+              </div>
             </div>
           </div>
         </section>

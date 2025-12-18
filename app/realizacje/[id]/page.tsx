@@ -14,6 +14,7 @@ type Params = Promise<{ id: string }>;
 const realizacjeData: Record<string, {
   title: string;
   category: string;
+  brand: string;
   description: string;
   details: string[];
   images: string[];
@@ -22,6 +23,7 @@ const realizacjeData: Record<string, {
   'audi-q7-chiptuning': {
     title: 'Audi Q7 4M FL 45TDI DPXB - Chiptuning',
     category: 'Chiptuning',
+    brand: 'Audi',
     description: 'Najsłabsza odmiana silnika 3.0TDI otrzymała zastrzyk niezbędnej mocy. Domyślnie w tych silnikach można wykonać bezpieczne strojenie w granicach 340-350km / 700nm. Jednak w tym przypadku właściciel prosił nas o celowanie typowo w okolice 300km i 600Nm i tak też zrobiliśmy. Podnieśliśmy ciśnienie oleju w praktycznie całym zakresie pracy silnika, zabezpieczy to jednostkę przed zatarciem. Auto fabrycznie przy 1800obr i temperaturze oleju 95stopni utrzymywało zaledwie 1.2bar ciśnienia. Po moim programie auto w tych obrotach utrzymuje 2.7bara. Pozbyliśmy się układu Start&Stop. Auto stało się bardzo dynamiczne, lepiej reaguje na dodanie gazu. Pozbyliśmy się denerwującego Laga.',
     details: [
       'Zwiększenie mocy z 231 KM (238 KM) do 310 KM',
@@ -43,6 +45,7 @@ const realizacjeData: Record<string, {
   'bmw-m2-competition-usa': {
     title: 'BMW M2 Competition F87 - Konwersja USA',
     category: 'Konwersja USA',
+    brand: 'BMW',
     description: 'Kompleksowa konwersja BMW M2 Competition F87 z rynku amerykańskiego na standardy europejskie. Wykonano pełną konwersję oświetlenia, kodowanie systemów, wymianę tarcz wskaźników oraz aktualizację oprogramowania.',
     details: [
       'Montaż lamp EU zgodnych ze standardami europejskimi',
@@ -65,6 +68,7 @@ const realizacjeData: Record<string, {
   'bmw-m240i-chiptuning': {
     title: 'BMW M240i G42 3.0T - Chiptuning Stage 1.5',
     category: 'Chiptuning',
+    brand: 'BMW',
     description: 'Chiptuning Stage 1.5 BMW M240i G42 3.0T z silnikiem B58 z 2024 roku. Sterownik MG1CS201 został odblokowany w Finlandii przez FEMTO - na tę chwilę jedyna opcja dostępu do tych zablokowanych sterowników. Przy pomocy FemTool jesteśmy w stanie zapisywać nasze modyfikacje. Nasz autorski Stage 1.5 na paliwie 98 daje mega przyrost mocy. Zajęło nam trochę czasu wystrojenie tego samochodu, ale było warto.',
     details: [
       'Zwiększenie mocy z 374 KM do 467 KM',
@@ -123,9 +127,12 @@ export default function RealizacjaDetailPage({ params }: { params: Params }) {
           </div>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-block mb-4">
+              <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-4">
                 <span className={`${colors.textBadge} text-xs sm:text-sm font-semibold uppercase tracking-wider border-l-4 ${colors.borderBadge} pl-3 sm:pl-4`}>
                   {realizacja.category}
+                </span>
+                <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider border-l-4 border-white/30 pl-3 sm:pl-4 text-white bg-white/10 px-3 sm:px-4 py-1 sm:py-2">
+                  {realizacja.brand}
                 </span>
               </div>
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">

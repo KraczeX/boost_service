@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AnimatedSection from '@/components/AnimatedSection';
 import ImageWithFallback from '@/components/ImageWithFallback';
+import Link from 'next/link';
 import { useTheme } from '@/contexts/ThemeContext';
 import { getThemeColors } from '@/utils/themeColors';
 
@@ -23,7 +24,7 @@ export default function AdbluePage() {
           </div>
           <div className="absolute inset-0 opacity-20">
             <ImageWithFallback
-              src="https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
+              src="/adblue/PHOTO-2025-12-18-08-59-04.jpg"
               alt="Car exhaust"
               className="w-full h-full object-cover"
               loading="eager"
@@ -62,7 +63,7 @@ export default function AdbluePage() {
               <AnimatedSection direction="right" delay={100} className="relative order-2 lg:order-1">
                 <div className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl overflow-hidden border-2 border-white/10">
                   <ImageWithFallback
-                    src="https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop"
+                    src="/adblue/PHOTO-2025-12-18-08-59-04 2.jpg"
                     alt="AdBlue system"
                     className="w-full h-full object-cover"
                     loading="lazy"
@@ -125,92 +126,110 @@ export default function AdbluePage() {
               </p>
             </AnimatedSection>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {[
-                {
-                  title: 'Brak Uzupełniania',
-                  description: 'Koniec z koniecznością regularnego uzupełniania zbiornika AdBlue',
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  ),
-                  image: 'https://images.pexels.com/photos/1149137/pexels-photo-1149137.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
-                },
-                {
-                  title: 'Większa Moc',
-                  description: 'Usunięcie ograniczeń mocy związanych z systemem AdBlue',
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  ),
-                  image: 'https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
-                },
-                {
-                  title: 'Niższe Koszty',
-                  description: 'Oszczędność na kosztach eksploatacji i konserwacji systemu',
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  ),
-                  image: 'https://images.pexels.com/photos/3802508/pexels-photo-3802508.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
-                },
-                {
-                  title: 'Bezpieczeństwo',
-                  description: 'Profesjonalna modyfikacja z zachowaniem pełnego bezpieczeństwa',
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    </svg>
-                  ),
-                  image: 'https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
-                },
-                {
-                  title: 'Niezawodność',
-                  description: 'Eliminacja problemów związanych z awariami systemu AdBlue',
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  ),
-                  image: 'https://images.pexels.com/photos/164634/pexels-photo-164634.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
-                },
-                {
-                  title: 'Gwarancja',
-                  description: 'Pełna gwarancja na wykonane modyfikacje i wsparcie techniczne',
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    </svg>
-                  ),
-                  image: 'https://images.pexels.com/photos/909907/pexels-photo-909907.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
-                }
-              ].map((benefit, index) => (
-                <AnimatedSection key={index} delay={index * 100} direction="up">
-                  <div className="relative group h-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden hover:bg-white/10 hover:border-white/30 transition-all duration-500">
-                    <div className="relative h-48 overflow-hidden">
-                      <ImageWithFallback
-                        src={benefit.image}
-                        alt={benefit.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                        loading="lazy"
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
-                      <div className={`absolute top-4 right-4 w-12 h-12 ${colors.bgLight} border ${colors.borderLight} rounded-lg flex items-center justify-center ${colors.text} group-hover:scale-110 transition-transform`}>
-                        {benefit.icon}
+            {/* Images Section */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-16">
+              <AnimatedSection direction="right" delay={100}>
+                <div className="relative h-[300px] sm:h-[400px] rounded-2xl overflow-hidden border-2 border-white/10">
+                  <ImageWithFallback
+                    src="/adblue/PHOTO-2025-12-18-08-59-04 3.jpg"
+                    alt="AdBlue system benefits"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                </div>
+              </AnimatedSection>
+              <AnimatedSection direction="left" delay={200}>
+                <div className="relative h-[300px] sm:h-[400px] rounded-2xl overflow-hidden border-2 border-white/10">
+                  <ImageWithFallback
+                    src="/adblue/PHOTO-2025-12-18-08-59-04 4.jpg"
+                    alt="AdBlue system benefits"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                </div>
+              </AnimatedSection>
+            </div>
+
+            {/* Benefits List */}
+            <div className="max-w-5xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                {[
+                  {
+                    title: 'Brak Uzupełniania',
+                    description: 'Koniec z koniecznością regularnego uzupełniania zbiornika AdBlue',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: 'Większa Moc',
+                    description: 'Usunięcie ograniczeń mocy związanych z systemem AdBlue',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: 'Niższe Koszty',
+                    description: 'Oszczędność na kosztach eksploatacji i konserwacji systemu',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: 'Bezpieczeństwo',
+                    description: 'Profesjonalna modyfikacja z zachowaniem pełnego bezpieczeństwa',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: 'Niezawodność',
+                    description: 'Eliminacja problemów związanych z awariami systemu AdBlue',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: 'Gwarancja',
+                    description: 'Pełna gwarancja na wykonane modyfikacje i wsparcie techniczne',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                      </svg>
+                    )
+                  }
+                ].map((benefit, index) => (
+                  <AnimatedSection key={index} delay={index * 100} direction="up">
+                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 sm:p-8 hover:bg-white/10 hover:border-white/30 transition-all duration-300 group">
+                      <div className="flex items-start gap-4 sm:gap-5">
+                        <div className={`flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 ${colors.bgLight} border ${colors.borderLight} rounded-xl flex items-center justify-center ${colors.text} group-hover:scale-110 transition-transform`}>
+                          {benefit.icon}
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">{benefit.title}</h3>
+                          <p className="text-gray-400 text-sm sm:text-base leading-relaxed">{benefit.description}</p>
+                        </div>
                       </div>
                     </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-white mb-3">{benefit.title}</h3>
-                      <p className="text-gray-400 text-sm leading-relaxed">{benefit.description}</p>
-                    </div>
-                  </div>
-                </AnimatedSection>
-              ))}
+                  </AnimatedSection>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -351,6 +370,76 @@ export default function AdbluePage() {
                 Skontaktuj się
               </a>  
             </AnimatedSection>
+          </div>
+        </section>
+
+        {/* Realizations Section */}
+        <section className="py-12 sm:py-16 md:py-24 bg-black">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <AnimatedSection direction="fade" className="text-center mb-8 sm:mb-12 md:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">
+                Nasze <span className={colors.gradientText}>Realizacje</span>
+              </h2>
+              <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto px-4">
+                Zobacz przykłady naszych projektów usuwania ADBLUE
+              </p>
+            </AnimatedSection>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {(() => {
+                const adblueRealizacje = [
+                  // Filter realizacje by category 'Usuwanie ADBLUE'
+                  // Currently no realizacje with this category, but section is ready for future additions
+                ];
+                
+                if (adblueRealizacje.length > 0) {
+                  return adblueRealizacje.map((realizacja, index) => (
+                    <AnimatedSection key={realizacja.id} delay={index * 100} direction="up">
+                      <Link
+                        href={`/realizacje/${realizacja.id}`}
+                        className="group block"
+                        prefetch={false}
+                      >
+                        <div className={`relative h-64 overflow-hidden mb-3 sm:mb-4 border-2 ${colors.frameBorderLight} hover:${colors.border} transition-all duration-300`}>
+                          <ImageWithFallback
+                            src={realizacja.image}
+                            alt={realizacja.title}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            loading="lazy"
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                          <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4">
+                            <span className={`inline-block px-2 py-1 sm:px-3 sm:py-1 ${colors.badge} backdrop-blur-sm text-white text-xs font-semibold mb-2`}>
+                              {realizacja.category}
+                            </span>
+                            <h3 className="text-white font-bold text-base sm:text-lg">{realizacja.title}</h3>
+                          </div>
+                        </div>
+                        <p className="text-gray-400 text-xs sm:text-sm leading-relaxed group-hover:text-gray-300 transition-colors">
+                          {realizacja.shortDescription}
+                        </p>
+                        <div className={`mt-3 sm:mt-4 flex items-center ${colors.text} group-hover:${colors.textStats} transition-colors`}>
+                          <span className="text-xs sm:text-sm font-semibold mr-2">Zobacz szczegóły</span>
+                          <svg className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </Link>
+                    </AnimatedSection>
+                  ));
+                } else {
+                  return (
+                    <div className="col-span-full text-center py-12">
+                      <p className="text-gray-400 text-base sm:text-lg">
+                        Wkrótce pojawią się tutaj realizacje związane z usuwaniem ADBLUE
+                      </p>
+                    </div>
+                  );
+                }
+              })()}
+            </div>
           </div>
         </section>
       </main>

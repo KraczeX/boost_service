@@ -61,7 +61,7 @@ export default function UsuwanieDpfEgrPage() {
               <AnimatedSection direction="right" delay={100} className="relative order-2 lg:order-1">
                 <div className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl overflow-hidden border-2 border-white/10">
                   <ImageWithFallback
-                    src="https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop"
+                    src="/realizacje/audi/599038796_1543945251072178_5121084792254989465_n.jpg"
                     alt="DPF EGR system"
                     className="w-full h-full object-cover"
                     loading="lazy"
@@ -200,71 +200,101 @@ export default function UsuwanieDpfEgrPage() {
               </h2>
             </AnimatedSection>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
-              {[
-                {
-                  title: 'Brak Regeneracji',
-                  description: 'Eliminacja kosztownych i uciążliwych procesów regeneracji DPF',
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  ),
-                  image: 'https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
-                },
-                {
-                  title: 'Większa Moc',
-                  description: 'Zwiększenie mocy i momentu obrotowego poprzez usunięcie ograniczeń',
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  ),
-                  image: 'https://images.pexels.com/photos/1149137/pexels-photo-1149137.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
-                },
-                {
-                  title: 'Niższe Koszty',
-                  description: 'Znaczne obniżenie kosztów eksploatacji i serwisu',
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  ),
-                  image: 'https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
-                },
-                {
-                  title: 'Lepsza Wydajność',
-                  description: 'Poprawa spalania i wydajności silnika',
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                    </svg>
-                  ),
-                  image: 'https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
-                },
-                {
-                  title: 'Bezpieczeństwo',
-                  description: 'Profesjonalna modyfikacja z zachowaniem bezpieczeństwa pojazdu',
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    </svg>
-                  ),
-                  image: 'https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
-                }
-              ].map((benefit, index) => (
-                <AnimatedSection key={index} delay={index * 100} direction="up">
-                  <div className="flex items-start gap-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-white/30 transition-all duration-300">
-                    <div className={`flex-shrink-0 w-12 h-12 ${colors.bgLight} border ${colors.borderLight} rounded-lg flex items-center justify-center ${colors.text}`}>
-                      {benefit.icon}
+            {/* Images Section */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-16">
+              <AnimatedSection direction="right" delay={100}>
+                <div className="relative h-[300px] sm:h-[400px] rounded-2xl overflow-hidden border-2 border-white/10">
+                  <ImageWithFallback
+                    src="/realizacje/audi/597400476_1543945244405512_4053870336900835956_n.jpg"
+                    alt="DPF EGR removal benefits"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                </div>
+              </AnimatedSection>
+              <AnimatedSection direction="left" delay={200}>
+                <div className="relative h-[300px] sm:h-[400px] rounded-2xl overflow-hidden border-2 border-white/10">
+                  <ImageWithFallback
+                    src="/realizacje/audi/598147195_1543945264405510_8907733685289703726_n.jpg"
+                    alt="DPF EGR removal benefits"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                </div>
+              </AnimatedSection>
+            </div>
+
+            {/* Benefits List */}
+            <div className="max-w-5xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                {[
+                  {
+                    title: 'Brak Regeneracji',
+                    description: 'Eliminacja kosztownych i uciążliwych procesów regeneracji DPF',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: 'Większa Moc',
+                    description: 'Zwiększenie mocy i momentu obrotowego poprzez usunięcie ograniczeń',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: 'Niższe Koszty',
+                    description: 'Znaczne obniżenie kosztów eksploatacji i serwisu',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: 'Lepsza Wydajność',
+                    description: 'Poprawa spalania i wydajności silnika',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: 'Bezpieczeństwo',
+                    description: 'Profesjonalna modyfikacja z zachowaniem bezpieczeństwa pojazdu',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                      </svg>
+                    )
+                  }
+                ].map((benefit, index) => (
+                  <AnimatedSection key={index} delay={index * 100} direction="up">
+                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 sm:p-8 hover:bg-white/10 hover:border-white/30 transition-all duration-300 group">
+                      <div className="flex items-start gap-4 sm:gap-5">
+                        <div className={`flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 ${colors.bgLight} border ${colors.borderLight} rounded-xl flex items-center justify-center ${colors.text} group-hover:scale-110 transition-transform`}>
+                          {benefit.icon}
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">{benefit.title}</h3>
+                          <p className="text-gray-400 text-sm sm:text-base leading-relaxed">{benefit.description}</p>
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-white mb-2">{benefit.title}</h3>
-                      <p className="text-gray-400 text-sm leading-relaxed">{benefit.description}</p>
-                    </div>
-                  </div>
-                </AnimatedSection>
-              ))}
+                  </AnimatedSection>
+                ))}
+              </div>
             </div>
           </div>
         </section>

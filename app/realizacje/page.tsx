@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import AnimatedSection from '@/components/AnimatedSection';
 import ImageWithFallback from '@/components/ImageWithFallback';
 import Link from 'next/link';
+import { useState, useMemo } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { getThemeColors } from '@/utils/themeColors';
 
@@ -15,6 +16,7 @@ const realizacje = [
     shortDescription: 'Zwiększenie mocy z 374 KM do 467 KM i momentu obrotowego z 500 Nm do 623 Nm',
     image: '/realizacje/bmw2/547738055_1456975303102507_1850151271145226443_n.jpg',
     category: 'Chiptuning',
+    brand: 'BMW',
     date: '2024-01-30'
   },
   {
@@ -23,6 +25,7 @@ const realizacje = [
     shortDescription: 'Kompleksowa konwersja z rynku amerykańskiego na standardy europejskie - lampy EU, kodowanie, polski język',
     image: '/realizacje/bmw/592370304_1533717815428255_7148405695979271444_n.jpg',
     category: 'Konwersja USA',
+    brand: 'BMW',
     date: '2024-01-25'
   },
   {
@@ -31,6 +34,7 @@ const realizacje = [
     shortDescription: 'Zwiększenie mocy z 231 KM do 310 KM i momentu obrotowego z 501 Nm do 619 Nm',
     image: '/realizacje/audi/597400476_1543945244405512_4053870336900835956_n.jpg',
     category: 'Chiptuning',
+    brand: 'Audi',
     date: '2024-01-20'
   }
 ];
@@ -38,6 +42,7 @@ const realizacje = [
 export default function RealizacjePage() {
   const { themeColor } = useTheme();
   const colors = getThemeColors(themeColor);
+  const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
 
   return (
     <>
@@ -64,8 +69,38 @@ export default function RealizacjePage() {
         {/* Realizations Grid */}
         <section className="py-12 sm:py-16 md:py-24 bg-black">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Brand Filters */}
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12">
+              <button
+                onClick={() => setSelectedBrand(null)}
+                className={`px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base font-semibold rounded-lg transition-all duration-300 ${
+                  selectedBrand === null
+                    ? `${colors.bgButton} text-white ${colors.bgButtonHover}`
+                    : 'bg-white/10 text-gray-300 hover:bg-white/20 border border-white/20'
+                }`}
+              >
+                Wszystkie
+              </button>
+              {['BMW', 'Audi', 'Mercedes', 'Porsche', 'Volkswagen'].map((brand) => (
+                <button
+                  key={brand}
+                  onClick={() => setSelectedBrand(brand)}
+                  className={`px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base font-semibold rounded-lg transition-all duration-300 ${
+                    selectedBrand === brand
+                      ? `${colors.bgButton} text-white ${colors.bgButtonHover}`
+                      : 'bg-white/10 text-gray-300 hover:bg-white/20 border border-white/20'
+                  }`}
+                >
+                  {brand}
+                </button>
+              ))}
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {realizacje.map((realizacja, index) => (
+              {useMemo(() => {
+                return realizacje
+                  .filter(realizacja => selectedBrand === null || realizacja.brand === selectedBrand)
+                  .map((realizacja, index) => (
                 <AnimatedSection key={realizacja.id} delay={index * 100} direction="up">
                   <Link
                     href={`/realizacje/${realizacja.id}`}
@@ -83,9 +118,14 @@ export default function RealizacjePage() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                       <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4">
-                        <span className={`inline-block px-2 py-1 sm:px-3 sm:py-1 ${colors.badge} backdrop-blur-sm text-white text-xs font-semibold mb-2`}>
-                          {realizacja.category}
-                        </span>
+                        <div className="flex flex-wrap gap-2 mb-2">
+                          <span className={`inline-block px-2 py-1 sm:px-3 sm:py-1 ${colors.badge} backdrop-blur-sm text-white text-xs font-semibold`}>
+                            {realizacja.category}
+                          </span>
+                          <span className="inline-block px-2 py-1 sm:px-3 sm:py-1 bg-white/20 backdrop-blur-sm text-white text-xs font-semibold">
+                            {realizacja.brand}
+                          </span>
+                        </div>
                         <h3 className="text-white font-bold text-base sm:text-lg">{realizacja.title}</h3>
                       </div>
                     </div>
@@ -100,7 +140,8 @@ export default function RealizacjePage() {
                     </div>
                   </Link>
                 </AnimatedSection>
-              ))}
+                  ));
+              }, [selectedBrand, colors])}
             </div>
           </div>
         </section>

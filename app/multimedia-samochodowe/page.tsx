@@ -23,7 +23,7 @@ export default function MultimediaSamochodowePage() {
           </div>
           <div className="absolute inset-0 opacity-20">
             <ImageWithFallback
-              src="https://images.pexels.com/photos/3802508/pexels-photo-3802508.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
+              src="/multimedia/PHOTO-2025-12-18-08-56-59.jpg"
               alt="Car multimedia"
               className="w-full h-full object-cover"
               loading="eager"
@@ -48,7 +48,7 @@ export default function MultimediaSamochodowePage() {
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed px-4">
                 Nowoczesne systemy multimedialne do Twojego pojazdu. Montaż, konfiguracja i integracja 
-                systemów audio, nawigacji i rozrywki w każdym pojeździe.
+                systemów nawigacji i rozrywki w każdym pojeździe.
               </p>
             </div>
           </div>
@@ -61,7 +61,7 @@ export default function MultimediaSamochodowePage() {
               <AnimatedSection direction="right" delay={100} className="relative order-2 lg:order-1">
                 <div className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl overflow-hidden border-2 border-white/10">
                   <ImageWithFallback
-                    src="https://images.pexels.com/photos/3802508/pexels-photo-3802508.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop"
+                    src="/multimedia/PHOTO-2025-12-18-08-56-59 2.jpg"
                     alt="Car multimedia system"
                     className="w-full h-full object-cover"
                     loading="lazy"
@@ -86,13 +86,12 @@ export default function MultimediaSamochodowePage() {
                 
                 <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
                   Nowoczesne systemy multimedialne to centrum rozrywki i informacji w Twoim pojeździe. 
-                  Oferujemy kompleksową instalację, konfigurację i integrację systemów audio, nawigacji, 
+                  Oferujemy kompleksową instalację, konfigurację i integrację systemów nawigacji, 
                   Apple CarPlay, Android Auto i wielu innych rozwiązań.
                 </p>
 
                 <div className="space-y-3 sm:space-y-4 pt-2 sm:pt-4">
                   {[
-                    'Montaż systemów audio i video',
                     'Integracja Apple CarPlay i Android Auto',
                     'Instalacja systemów nawigacji',
                     'Konfiguracja i programowanie'
@@ -127,93 +126,102 @@ export default function MultimediaSamochodowePage() {
               </p>
             </AnimatedSection>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
-              {[
-                {
-                  title: 'Apple CarPlay',
-                  description: 'Pełna integracja z urządzeniami Apple',
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                    </svg>
-                  ),
-                  image: 'https://images.pexels.com/photos/3802508/pexels-photo-3802508.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
-                },
-                {
-                  title: 'Android Auto',
-                  description: 'Kompatybilność z systemem Android',
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  ),
-                  image: 'https://images.pexels.com/photos/1149137/pexels-photo-1149137.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
-                },
-                {
-                  title: 'Nawigacja',
-                  description: 'Zaawansowane systemy nawigacji satelitarnej',
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  ),
-                  image: 'https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
-                },
-                {
-                  title: 'Audio Premium',
-                  description: 'Wysokiej jakości systemy audio',
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-                    </svg>
-                  ),
-                  image: 'https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
-                },
-                {
-                  title: 'Integracja',
-                  description: 'Bezproblemowa integracja z istniejącymi systemami',
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                    </svg>
-                  ),
-                  image: 'https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
-                },
-                {
-                  title: 'Wsparcie',
-                  description: 'Pełne wsparcie techniczne i serwis',
-                  icon: (
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-                    </svg>
-                  ),
-                  image: 'https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
-                }
-              ].map((product, index) => (
-                <AnimatedSection key={index} delay={index * 100} direction="up">
-                  <div className="relative group bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden hover:bg-white/10 hover:border-white/30 transition-all duration-500">
-                    <div className="relative h-48 overflow-hidden">
-                      <ImageWithFallback
-                        src={product.image}
-                        alt={product.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                        loading="lazy"
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                      <div className={`absolute top-4 right-4 w-12 h-12 ${colors.bgLight} border ${colors.borderLight} rounded-lg flex items-center justify-center ${colors.text} group-hover:scale-110 transition-transform`}>
-                        {product.icon}
+            {/* Images Section */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-16">
+              <AnimatedSection direction="right" delay={100}>
+                <div className="relative h-[300px] sm:h-[400px] rounded-2xl overflow-hidden border-2 border-white/10">
+                  <ImageWithFallback
+                    src="/multimedia/PHOTO-2025-12-18-08-56-59 3.jpg"
+                    alt="Car multimedia system"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                </div>
+              </AnimatedSection>
+              <AnimatedSection direction="left" delay={200}>
+                <div className="relative h-[300px] sm:h-[400px] rounded-2xl overflow-hidden border-2 border-white/10">
+                  <ImageWithFallback
+                    src="/multimedia/PHOTO-2025-12-18-08-56-59 4.jpg"
+                    alt="Car multimedia system"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                </div>
+              </AnimatedSection>
+            </div>
+
+            {/* Products List */}
+            <div className="max-w-5xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                {[
+                  {
+                    title: 'Apple CarPlay',
+                    description: 'Pełna integracja z urządzeniami Apple',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: 'Android Auto',
+                    description: 'Kompatybilność z systemem Android',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: 'Nawigacja',
+                    description: 'Zaawansowane systemy nawigacji satelitarnej',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: 'Integracja',
+                    description: 'Bezproblemowa integracja z istniejącymi systemami',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: 'Wsparcie',
+                    description: 'Pełne wsparcie techniczne i serwis',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                      </svg>
+                    )
+                  }
+                ].map((product, index) => (
+                  <AnimatedSection key={index} delay={index * 100} direction="up">
+                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 sm:p-8 hover:bg-white/10 hover:border-white/30 transition-all duration-300 group">
+                      <div className="flex items-start gap-4 sm:gap-5">
+                        <div className={`flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 ${colors.bgLight} border ${colors.borderLight} rounded-xl flex items-center justify-center ${colors.text} group-hover:scale-110 transition-transform`}>
+                          {product.icon}
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">{product.title}</h3>
+                          <p className="text-gray-400 text-sm sm:text-base leading-relaxed">{product.description}</p>
+                        </div>
                       </div>
                     </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-white mb-2">{product.title}</h3>
-                      <p className="text-gray-400 text-sm leading-relaxed">{product.description}</p>
-                    </div>
-                  </div>
-                </AnimatedSection>
-              ))}
+                  </AnimatedSection>
+                ))}
+              </div>
             </div>
           </div>
         </section>
