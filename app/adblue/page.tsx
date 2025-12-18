@@ -387,7 +387,13 @@ export default function AdbluePage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {(() => {
-                const adblueRealizacje = [
+                const adblueRealizacje: Array<{
+                  id: string;
+                  title: string;
+                  shortDescription: string;
+                  image: string;
+                  category: string;
+                }> = [
                   // Filter realizacje by category 'Usuwanie ADBLUE'
                   // Currently no realizacje with this category, but section is ready for future additions
                 ];
