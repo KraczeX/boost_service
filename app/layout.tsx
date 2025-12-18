@@ -24,6 +24,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "BOOST Service - Chiptuning, Usuwanie ADBLUE, Konwersja USA",
   description: "Profesjonalny chiptuning, usuwanie ADBLUE oraz konwersja pojazdów USA. Zwiększ moc, popraw osiągi i dostosuj auto do swoich potrzeb.",
+  icons: {
+    icon: '/logo.png',
+    apple: '/logo.png',
+  },
 };
 
 export default function RootLayout({

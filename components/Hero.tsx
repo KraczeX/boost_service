@@ -6,18 +6,13 @@ import Image from 'next/image';
 import { useTheme } from '@/contexts/ThemeContext';
 import { getThemeColors } from '@/utils/themeColors';
 
-// Zdjęcia samochodów z Pexels
+// Zdjęcia z folderu okładki
 const supercarImages = [
-  'https://images.pexels.com/photos/3802508/pexels-photo-3802508.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
-  'https://images.pexels.com/photos/1149137/pexels-photo-1149137.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
-  'https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
-  'https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
-  'https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
-  'https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
-  'https://images.pexels.com/photos/164634/pexels-photo-164634.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
-  'https://images.pexels.com/photos/909907/pexels-photo-909907.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
-  'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
-  'https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
+  '/okładki/PHOTO-2025-12-18-20-07-38.jpg',
+  '/okładki/PHOTO-2025-12-18-20-08-20.jpg',
+  '/okładki/PHOTO-2025-12-18-20-08-41.jpg',
+  '/okładki/PHOTO-2025-12-18-20-09-01.jpg',
+  '/okładki/PHOTO-2025-12-18-20-09-17.jpg',
 ] as const;
 
 export default function Hero() {

@@ -42,6 +42,7 @@ const realizacje = [
 export default function RealizacjePage() {
   const { themeColor } = useTheme();
   const colors = getThemeColors(themeColor);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
 
   return (
@@ -69,37 +70,80 @@ export default function RealizacjePage() {
         {/* Realizations Grid */}
         <section className="py-12 sm:py-16 md:py-24 bg-black">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Brand Filters */}
-            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12">
-              <button
-                onClick={() => setSelectedBrand(null)}
-                className={`px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base font-semibold rounded-lg transition-all duration-300 ${
-                  selectedBrand === null
-                    ? `${colors.bgButton} text-white ${colors.bgButtonHover}`
-                    : 'bg-white/10 text-gray-300 hover:bg-white/20 border border-white/20'
-                }`}
-              >
-                Wszystkie
-              </button>
-              {['BMW', 'Audi', 'Mercedes', 'Porsche', 'Volkswagen'].map((brand) => (
+            {/* Category Filters (Services) */}
+            <div className="mb-6 sm:mb-8">
+              <h3 className="text-sm sm:text-base font-semibold text-gray-400 mb-3 sm:mb-4 text-center">Filtruj po usłudze:</h3>
+              <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
                 <button
-                  key={brand}
-                  onClick={() => setSelectedBrand(brand)}
+                  onClick={() => {
+                    setSelectedCategory(null);
+                    setSelectedBrand(null);
+                  }}
                   className={`px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base font-semibold rounded-lg transition-all duration-300 ${
-                    selectedBrand === brand
+                    selectedCategory === null
                       ? `${colors.bgButton} text-white ${colors.bgButtonHover}`
                       : 'bg-white/10 text-gray-300 hover:bg-white/20 border border-white/20'
                   }`}
                 >
-                  {brand}
+                  Wszystkie
                 </button>
-              ))}
+                {['Chiptuning', 'Usuwanie ADBLUE', 'Konwersja USA'].map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => {
+                      setSelectedCategory(category);
+                      setSelectedBrand(null);
+                    }}
+                    className={`px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base font-semibold rounded-lg transition-all duration-300 ${
+                      selectedCategory === category
+                        ? `${colors.bgButton} text-white ${colors.bgButtonHover}`
+                        : 'bg-white/10 text-gray-300 hover:bg-white/20 border border-white/20'
+                    }`}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Brand Filters */}
+            <div className="mb-8 sm:mb-12">
+              <h3 className="text-sm sm:text-base font-semibold text-gray-400 mb-3 sm:mb-4 text-center">Filtruj po marce:</h3>
+              <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+                <button
+                  onClick={() => setSelectedBrand(null)}
+                  className={`px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base font-semibold rounded-lg transition-all duration-300 ${
+                    selectedBrand === null
+                      ? `${colors.bgButton} text-white ${colors.bgButtonHover}`
+                      : 'bg-white/10 text-gray-300 hover:bg-white/20 border border-white/20'
+                  }`}
+                >
+                  Wszystkie
+                </button>
+                {['BMW', 'Audi', 'Mercedes', 'Porsche', 'Volkswagen'].map((brand) => (
+                  <button
+                    key={brand}
+                    onClick={() => setSelectedBrand(brand)}
+                    className={`px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base font-semibold rounded-lg transition-all duration-300 ${
+                      selectedBrand === brand
+                        ? `${colors.bgButton} text-white ${colors.bgButtonHover}`
+                        : 'bg-white/10 text-gray-300 hover:bg-white/20 border border-white/20'
+                    }`}
+                  >
+                    {brand}
+                  </button>
+                ))}
+              </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {useMemo(() => {
                 return realizacje
-                  .filter(realizacja => selectedBrand === null || realizacja.brand === selectedBrand)
+                  .filter(realizacja => {
+                    const categoryMatch = selectedCategory === null || realizacja.category === selectedCategory;
+                    const brandMatch = selectedBrand === null || realizacja.brand === selectedBrand;
+                    return categoryMatch && brandMatch;
+                  })
                   .map((realizacja, index) => (
                 <AnimatedSection key={realizacja.id} delay={index * 100} direction="up">
                   <Link
@@ -141,7 +185,7 @@ export default function RealizacjePage() {
                   </Link>
                 </AnimatedSection>
                   ));
-              }, [selectedBrand, colors])}
+              }, [selectedCategory, selectedBrand, colors])}
             </div>
           </div>
         </section>

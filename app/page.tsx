@@ -7,6 +7,7 @@ import AnimatedSection from '@/components/AnimatedSection';
 import dynamic from 'next/dynamic';
 import ServiceCard from '@/components/ServiceCard';
 import ImageWithFallback from '@/components/ImageWithFallback';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useTheme } from '@/contexts/ThemeContext';
 import { getThemeColors } from '@/utils/themeColors';
@@ -27,11 +28,13 @@ export default function Home() {
       description: "Zwiększ moc i moment obrotowy silnika poprzez optymalizację oprogramowania ECU. Bezpieczne i profesjonalne rozwiązania dla wszystkich marek.",
       href: "/chiptuning",
       icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 21h6" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v18" />
-        </svg>
+        <Image
+          src="/logo.png"
+          alt="BOOST Service Logo"
+          width={32}
+          height={32}
+          className="w-8 h-8 object-contain"
+        />
       ),
       gradient: `bg-gradient-to-br ${colors.gradientReverse}`
     },
@@ -40,10 +43,13 @@ export default function Home() {
       description: "Kompleksowe usuwanie systemu AdBlue z zachowaniem pełnej funkcjonalności pojazdu. Profesjonalna diagnostyka i modyfikacja oprogramowania.",
       href: "/adblue",
       icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
-        </svg>
+        <Image
+          src="/logo.png"
+          alt="BOOST Service Logo"
+          width={32}
+          height={32}
+          className="w-8 h-8 object-contain"
+        />
       ),
       gradient: `bg-gradient-to-br ${colors.gradient}`
     },
@@ -52,11 +58,13 @@ export default function Home() {
       description: "Pełna konwersja pojazdów z rynku amerykańskiego na standardy europejskie. Oświetlenie, prędkościomierze, homologacja i legalizacja.",
       href: "/usa-conversion",
       icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 2v2M12 20v2M2 12h2M20 12h2" />
-        </svg>
+        <Image
+          src="/logo.png"
+          alt="BOOST Service Logo"
+          width={32}
+          height={32}
+          className="w-8 h-8 object-contain"
+        />
       ),
       gradient: `bg-gradient-to-br ${colors.gradientAlt}`
     }
@@ -221,7 +229,7 @@ export default function Home() {
               <AnimatedSection direction="right" delay={100} className="relative order-2 lg:order-1">
                 <div className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl overflow-hidden border-2 border-white/10">
                   <ImageWithFallback
-                    src="https://images.pexels.com/photos/164634/pexels-photo-164634.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop"
+                    src="/okładki/PHOTO-2025-12-18-20-07-38.jpg"
                     alt="Nasz zespół"
                     className="w-full h-full object-cover"
                     loading="lazy"
