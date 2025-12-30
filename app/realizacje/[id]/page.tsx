@@ -20,6 +20,28 @@ const realizacjeData: Record<string, {
   images: string[];
   date: string;
 }> = {
+  'audi-a6-c8-abs-repair': {
+    title: 'Audi A6 C8 - Naprawa ABS (kod błędu C123EF0)',
+    category: 'Naprawa elektroniki',
+    brand: 'Audi',
+    description: 'Naprawa układu ABS w Audi A6 C8 z kodem błędu C123EF0 - Hydraulic Brake Booster Limit Value Reached. Problem dotyczył jednostki ABS marki Bosch 9.0, która jest powszechnie stosowana w modelach Audi z lat 2014-2020. Usterka prowadziła do utraty funkcji hamowania awaryjnego oraz wyświetlania komunikatu "Brake System Fault – Stop Carefully". Wykonano kompleksową diagnostykę i naprawę systemu, przywracając pełną funkcjonalność układu hamulcowego.',
+    details: [
+      'Diagnostyka kodu błędu C123EF0 - Hydraulic Brake Booster Limit Value Reached',
+      'Identyfikacja usterki jednostki ABS Bosch 9.0',
+      'Naprawa systemu próżniowego hamulców',
+      'Wymiana/regeneracja modułu ABS',
+      'Przywrócenie funkcji awaryjnego hamowania',
+      'Eliminacja komunikatu "Brake System Fault – Stop Carefully"',
+      'Przywrócenie prawidłowego działania pedału hamulca',
+      'Przywrócenie funkcji systemu kontroli trakcji',
+      'Przywrócenie standardowych dróg hamowania'
+    ],
+    images: [
+      '/realizacje/audia6/58714bf4-744e-41cb-8469-826a16f8e4ce.JPG',
+      '/realizacje/audia6/7d1cffe4-ae69-44f5-b427-efa74c0c1016.JPG'
+    ],
+    date: '2024-02-05'
+  },
   'audi-q7-chiptuning': {
     title: 'Audi Q7 4M FL 45TDI DPXB - Chiptuning',
     category: 'Chiptuning',

@@ -11,6 +11,15 @@ import { getThemeColors } from '@/utils/themeColors';
 
 const realizacje = [
   {
+    id: 'audi-a6-c8-abs-repair',
+    title: 'Audi A6 C8 - Naprawa ABS (kod błędu C123EF0)',
+    shortDescription: 'Naprawa układu ABS - kod błędu C123EF0 Hydraulic Brake Booster Limit Value Reached w jednostce Bosch 9.0',
+    image: '/realizacje/audia6/58714bf4-744e-41cb-8469-826a16f8e4ce.JPG',
+    category: 'Naprawa elektroniki',
+    brand: 'Audi',
+    date: '2024-02-05'
+  },
+  {
     id: 'bmw-m240i-chiptuning',
     title: 'BMW M240i G42 3.0T - Chiptuning Stage 1.5',
     shortDescription: 'Zwiększenie mocy z 374 KM do 467 KM i momentu obrotowego z 500 Nm do 623 Nm',
@@ -87,7 +96,7 @@ export default function RealizacjePage() {
                 >
                   Wszystkie
                 </button>
-                {['Chiptuning', 'Usuwanie ADBLUE', 'Konwersja USA'].map((category) => (
+                {['Chiptuning', 'Usuwanie ADBLUE', 'Konwersja USA', 'Naprawa elektroniki'].map((category) => (
                   <button
                     key={category}
                     onClick={() => {
