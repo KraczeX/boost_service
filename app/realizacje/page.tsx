@@ -17,7 +17,7 @@ const realizacje = [
     image: '/realizacje/audia6/58714bf4-744e-41cb-8469-826a16f8e4ce.JPG',
     category: 'Naprawa elektroniki',
     brand: 'Audi',
-    date: '2024-02-05'
+    date: '2025-12-30'
   },
   {
     id: 'bmw-m240i-chiptuning',

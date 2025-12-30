@@ -40,7 +40,7 @@ const realizacjeData: Record<string, {
       '/realizacje/audia6/58714bf4-744e-41cb-8469-826a16f8e4ce.JPG',
       '/realizacje/audia6/7d1cffe4-ae69-44f5-b427-efa74c0c1016.JPG'
     ],
-    date: '2024-02-05'
+    date: '2025-12-30'
   },
   'audi-q7-chiptuning': {
     title: 'Audi Q7 4M FL 45TDI DPXB - Chiptuning',
