@@ -41,23 +41,14 @@ export async function POST(request: NextRequest) {
 
     const githubToken = process.env.GITHUB_TOKEN;
     const repoInfo = getRepoInfo();
-    const isNetlify = process.env.NETLIFY === 'true';
+    // Check if we're on Netlify - try multiple ways
+    const isNetlify = process.env.NETLIFY === 'true' || 
+                      process.env.NETLIFY === '1' ||
+                      !!process.env.NETLIFY_DEV ||
+                      !!process.env.NETLIFY;
 
-    // On Netlify, use GitHub API if token is available
-    if (isNetlify) {
-      if (!githubToken) {
-        return NextResponse.json(
-          { error: 'GITHUB_TOKEN nie jest ustawiony w zmiennych środowiskowych Netlify. Przejdź do Settings → Environment variables i dodaj GITHUB_TOKEN.' },
-          { status: 500 }
-        );
-      }
-      
-      if (!repoInfo) {
-        return NextResponse.json(
-          { error: `Nie można określić repozytorium GitHub. REPOSITORY_URL: ${process.env.REPOSITORY_URL || 'nie ustawiony'}. Sprawdź zmienne środowiskowe w Netlify.` },
-          { status: 500 }
-        );
-      }
+    // Use GitHub API if token and repo info are available (works on Netlify and can work locally too)
+    if (githubToken && repoInfo) {
       
       try {
         // Try to get data from request body (sent from frontend), otherwise use file
@@ -103,7 +94,14 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Local dev: use git commands
+    // Local dev or Netlify without GitHub API: use git commands (will fail on Netlify)
+    if (isNetlify) {
+      return NextResponse.json(
+        { error: `Na Netlify wymagane jest użycie GitHub API. Sprawdź czy GITHUB_TOKEN i REPOSITORY_URL są ustawione w zmiennych środowiskowych. Token: ${githubToken ? 'ustawiony' : 'BRAK'}, Repo: ${repoInfo ? 'ustawione' : 'BRAK'}` },
+        { status: 500 }
+      );
+    }
+    
     try {
       // Git add all changes
       await execAsync('git add -A');
