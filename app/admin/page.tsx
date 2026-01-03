@@ -218,8 +218,8 @@ export default function AdminPage() {
           }
         }
         
-        // Also refresh from server (works locally, on Netlify will show old data)
-        await checkAuth();
+        // Don't refresh from server - we already updated local state
+        // checkAuth() would overwrite our changes on Netlify (where file isn't saved)
         alert(wasEditing ? 'Realizacja została zaktualizowana!' : 'Realizacja została dodana!');
       } else {
         const data = await response.json();
@@ -243,14 +243,25 @@ export default function AdminPage() {
     setDeployMessage('');
 
     try {
-      // Use stored full data or fetch it
+      // Use stored full data or construct from current realizacje list
       let dataToDeploy = fullRealizacjeData;
       
-      if (!dataToDeploy) {
-        const realizacjeResponse = await fetch('/api/admin/realizacje');
-        if (realizacjeResponse.ok) {
-          const result = await realizacjeResponse.json();
-          dataToDeploy = result.fullData || { list: result.realizacje };
+      if (!dataToDeploy || !dataToDeploy.list) {
+        // Try to fetch from server, or use current realizacje state
+        try {
+          const realizacjeResponse = await fetch('/api/admin/realizacje');
+          if (realizacjeResponse.ok) {
+            const result = await realizacjeResponse.json();
+            dataToDeploy = result.fullData || { list: result.realizacje };
+          }
+        } catch (e) {
+          // Fallback to current state
+          dataToDeploy = { list: realizacje };
+        }
+        
+        // If still no data, use current realizacje state
+        if (!dataToDeploy || !dataToDeploy.list) {
+          dataToDeploy = { list: realizacje };
         }
       }
 
