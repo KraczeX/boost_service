@@ -44,7 +44,21 @@ export async function POST(request: NextRequest) {
     const isNetlify = process.env.NETLIFY === 'true';
 
     // On Netlify, use GitHub API if token is available
-    if (isNetlify && githubToken && repoInfo) {
+    if (isNetlify) {
+      if (!githubToken) {
+        return NextResponse.json(
+          { error: 'GITHUB_TOKEN nie jest ustawiony w zmiennych środowiskowych Netlify. Przejdź do Settings → Environment variables i dodaj GITHUB_TOKEN.' },
+          { status: 500 }
+        );
+      }
+      
+      if (!repoInfo) {
+        return NextResponse.json(
+          { error: `Nie można określić repozytorium GitHub. REPOSITORY_URL: ${process.env.REPOSITORY_URL || 'nie ustawiony'}. Sprawdź zmienne środowiskowe w Netlify.` },
+          { status: 500 }
+        );
+      }
+      
       try {
         // Try to get data from request body (sent from frontend), otherwise use file
         let data;
@@ -54,6 +68,13 @@ export async function POST(request: NextRequest) {
         } catch {
           // If no body, use file data (might be outdated on Netlify)
           data = getRealizacjeData();
+        }
+        
+        if (!data || !data.list) {
+          return NextResponse.json(
+            { error: 'Brak danych do commitowania. Dodaj realizacje przed deployem.' },
+            { status: 400 }
+          );
         }
         
         const content = JSON.stringify(data, null, 2);
@@ -74,8 +95,9 @@ export async function POST(request: NextRequest) {
         });
       } catch (error: any) {
         console.error('GitHub API error:', error);
+        const errorMessage = error?.message || 'Nieznany błąd';
         return NextResponse.json(
-          { error: `Błąd podczas commitowania przez GitHub API: ${error.message}. Upewnij się, że GITHUB_TOKEN jest ustawiony w zmiennych środowiskowych Netlify.` },
+          { error: `Błąd podczas commitowania przez GitHub API: ${errorMessage}. Sprawdź czy GITHUB_TOKEN ma uprawnienia do zapisu w repozytorium.` },
           { status: 500 }
         );
       }

@@ -180,6 +180,9 @@ export default function AdminPage() {
       });
 
       if (response.ok) {
+        const result = await response.json();
+        const realizacja = result.realizacja;
+        
         setFormData({
           title: '',
           shortDescription: '',
@@ -193,6 +196,29 @@ export default function AdminPage() {
         setExistingImages([]);
         setEditingId(null);
         setShowAddForm(false);
+        
+        // Update local state immediately (important on Netlify where file save doesn't work)
+        if (wasEditing) {
+          // Update existing realizacja
+          const updated = realizacje.map(r => r.id === realizacja.id ? realizacja : r);
+          setRealizacje(updated);
+          if (fullRealizacjeData) {
+            const updatedFullData = {
+              list: fullRealizacjeData.list.map((r: any) => r.id === realizacja.id ? realizacja : r)
+            };
+            setFullRealizacjeData(updatedFullData);
+          }
+        } else {
+          // Add new realizacja to the beginning
+          setRealizacje([realizacja, ...realizacje]);
+          if (fullRealizacjeData) {
+            setFullRealizacjeData({
+              list: [realizacja, ...fullRealizacjeData.list]
+            });
+          }
+        }
+        
+        // Also refresh from server (works locally, on Netlify will show old data)
         await checkAuth();
         alert(wasEditing ? 'Realizacja została zaktualizowana!' : 'Realizacja została dodana!');
       } else {
