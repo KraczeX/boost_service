@@ -88,9 +88,17 @@ export async function POST(request: NextRequest) {
         });
       } catch (error: any) {
         console.error('GitHub API error:', error);
-        const errorMessage = error?.message || 'Nieznany błąd';
+        let errorMessage = error?.message || 'Nieznany błąd';
+        
+        // Try to extract more detailed error info
+        if (errorMessage.includes('GitHub API error')) {
+          // Error already formatted by githubApi.ts
+        } else if (error?.response) {
+          errorMessage = `GitHub API: ${error.response.statusText || errorMessage}`;
+        }
+        
         return NextResponse.json(
-          { error: `Błąd podczas commitowania przez GitHub API: ${errorMessage}. Sprawdź czy GITHUB_TOKEN ma uprawnienia do zapisu w repozytorium.` },
+          { error: `Błąd podczas commitowania przez GitHub API: ${errorMessage}. Sprawdź czy GITHUB_TOKEN ma uprawnienia do zapisu w repozytorium ${repoInfo.owner}/${repoInfo.repo}.` },
           { status: 500 }
         );
       }
