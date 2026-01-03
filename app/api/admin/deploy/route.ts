@@ -49,6 +49,14 @@ export async function POST(request: NextRequest) {
                       !!process.env.NETLIFY_DEV ||
                       !!process.env.NETLIFY;
 
+    console.log('Deploy check:', { 
+      hasToken: !!githubToken, 
+      repoInfo, 
+      isNetlify,
+      githubRepo: process.env.GITHUB_REPOSITORY,
+      repoUrl: process.env.REPOSITORY_URL 
+    });
+
     // Use GitHub API if token and repo info are available (works on Netlify and can work locally too)
     if (githubToken && repoInfo) {
       
