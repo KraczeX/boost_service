@@ -9,24 +9,26 @@ const execAsync = promisify(exec);
 
 // Parse GitHub repo from URL or env
 function getRepoInfo(): { owner: string; repo: string } | null {
-  // Try to get from environment variable (Netlify provides REPOSITORY_URL)
-  const repoUrl = process.env.REPOSITORY_URL || process.env.GITHUB_REPOSITORY;
-  
-  if (repoUrl) {
-    // Parse: https://github.com/owner/repo or owner/repo
-    const match = repoUrl.match(/github\.com[/:]([^/]+)\/([^/]+?)(?:\.git)?$/);
+  // Try GITHUB_REPOSITORY first (format: owner/repo) - recommended for Netlify
+  const githubRepo = process.env.GITHUB_REPOSITORY;
+  if (githubRepo) {
+    const match = githubRepo.match(/^([^/]+)\/([^/]+)$/);
     if (match) {
       return { owner: match[1], repo: match[2] };
     }
   }
   
-  // Try to get from git remote (for local dev)
-  try {
-    // This won't work on Netlify, but will help in local dev
-    return null;
-  } catch {
-    return null;
+  // Fallback: try REPOSITORY_URL (may be available but read-only on Netlify)
+  const repoUrl = process.env.REPOSITORY_URL;
+  if (repoUrl) {
+    // Parse full URL: https://github.com/owner/repo
+    const urlMatch = repoUrl.match(/github\.com[/:]([^/]+)\/([^/]+?)(?:\.git)?$/);
+    if (urlMatch) {
+      return { owner: urlMatch[1], repo: urlMatch[2] };
+    }
   }
+  
+  return null;
 }
 
 export async function POST(request: NextRequest) {
@@ -96,8 +98,9 @@ export async function POST(request: NextRequest) {
 
     // Local dev or Netlify without GitHub API: use git commands (will fail on Netlify)
     if (isNetlify) {
+      const githubRepo = process.env.GITHUB_REPOSITORY || 'nie ustawiony';
       return NextResponse.json(
-        { error: `Na Netlify wymagane jest użycie GitHub API. Sprawdź czy GITHUB_TOKEN i REPOSITORY_URL są ustawione w zmiennych środowiskowych. Token: ${githubToken ? 'ustawiony' : 'BRAK'}, Repo: ${repoInfo ? 'ustawione' : 'BRAK'}` },
+        { error: `Na Netlify wymagane jest użycie GitHub API. Sprawdź zmienne środowiskowe:\n- GITHUB_TOKEN: ${githubToken ? 'ustawiony' : 'BRAK'}\n- GITHUB_REPOSITORY: ${githubRepo}\n\nDodaj zmienną GITHUB_REPOSITORY=KraczeX/boost_service w Netlify (Site settings → Environment variables)` },
         { status: 500 }
       );
     }
