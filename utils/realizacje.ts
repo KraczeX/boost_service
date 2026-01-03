@@ -51,7 +51,7 @@ export function saveRealizacjeData(data: RealizacjeData): void {
 
 export function addRealizacja(realizacja: Realizacja): void {
   const data = getRealizacjeData();
-  data.list.push(realizacja);
+  data.list.unshift(realizacja); // Dodaj na początku listy
   saveRealizacjeData(data);
 }
 

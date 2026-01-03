@@ -131,17 +131,23 @@ export default function AdminPage() {
 
       if (response.ok) {
         await checkAuth();
+        alert('Realizacja została usunięta!');
       } else {
-        alert('Błąd podczas usuwania realizacji');
+        const data = await response.json();
+        console.error('Delete error:', data);
+        alert(data.error || 'Błąd podczas usuwania realizacji');
       }
     } catch (error) {
-      alert('Błąd podczas usuwania realizacji');
+      console.error('Delete error:', error);
+      alert('Błąd podczas usuwania realizacji: ' + (error instanceof Error ? error.message : 'Nieznany błąd'));
     }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+
+    const wasEditing = editingId !== null;
 
     try {
       const formDataToSend = new FormData();
@@ -153,7 +159,7 @@ export default function AdminPage() {
       formDataToSend.append('description', formData.description);
       formDataToSend.append('details', formData.details);
       
-      if (editingId) {
+      if (wasEditing) {
         formDataToSend.append('existingImages', JSON.stringify(existingImages));
       }
       
@@ -161,10 +167,10 @@ export default function AdminPage() {
         formDataToSend.append('images', file);
       });
 
-      const url = editingId 
+      const url = wasEditing 
         ? `/api/admin/realizacje/${editingId}`
         : '/api/admin/realizacje';
-      const method = editingId ? 'PUT' : 'POST';
+      const method = wasEditing ? 'PUT' : 'POST';
 
       const response = await fetch(url, {
         method,
@@ -186,13 +192,15 @@ export default function AdminPage() {
         setEditingId(null);
         setShowAddForm(false);
         await checkAuth();
-        alert(editingId ? 'Realizacja została zaktualizowana!' : 'Realizacja została dodana!');
+        alert(wasEditing ? 'Realizacja została zaktualizowana!' : 'Realizacja została dodana!');
       } else {
         const data = await response.json();
-        alert(data.error || (editingId ? 'Błąd podczas aktualizacji realizacji' : 'Błąd podczas dodawania realizacji'));
+        console.error('Submit error:', data);
+        alert(data.error || (wasEditing ? 'Błąd podczas aktualizacji realizacji' : 'Błąd podczas dodawania realizacji'));
       }
     } catch (error) {
-      alert(editingId ? 'Błąd podczas aktualizacji realizacji' : 'Błąd podczas dodawania realizacji');
+      console.error('Submit error:', error);
+      alert((wasEditing ? 'Błąd podczas aktualizacji realizacji' : 'Błąd podczas dodawania realizacji') + ': ' + (error instanceof Error ? error.message : 'Nieznany błąd'));
     } finally {
       setLoading(false);
     }
