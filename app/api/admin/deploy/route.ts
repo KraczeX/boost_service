@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { isAuthenticated } from '@/lib/auth';
 import { exec } from 'child_process';
 import { promisify } from 'util';
-import { commitToGitHub } from '@/utils/githubApi';
+import { commitToGitHub, commitBinaryToGitHub } from '@/utils/githubApi';
 import { getRealizacjeData } from '@/utils/realizacje';
 
 const execAsync = promisify(exec);
@@ -63,9 +63,11 @@ export async function POST(request: NextRequest) {
       try {
         // Try to get data from request body (sent from frontend), otherwise use file
         let data;
+        let imageBase64Data: Record<string, string> = {};
         try {
           const body = await request.json();
           data = body.data || getRealizacjeData();
+          imageBase64Data = body.imageBase64Data || {};
         } catch {
           // If no body, use file data (might be outdated on Netlify)
           data = getRealizacjeData();
@@ -76,6 +78,31 @@ export async function POST(request: NextRequest) {
             { error: 'Brak danych do commitowania. Dodaj realizacje przed deployem.' },
             { status: 400 }
           );
+        }
+        
+        // Commit images first (if any)
+        if (Object.keys(imageBase64Data).length > 0) {
+          const imageCommitMessage = `Add images - ${new Date().toISOString()}`;
+          for (const [imagePath, base64Content] of Object.entries(imageBase64Data)) {
+            // Remove leading / from path for GitHub API
+            const githubPath = imagePath.startsWith('/') ? imagePath.slice(1) : imagePath;
+            // GitHub API expects path relative to repo root, so 'public' prefix
+            const fullPath = githubPath.startsWith('public/') ? githubPath : `public${githubPath}`;
+            
+            try {
+              await commitBinaryToGitHub(
+                repoInfo.owner,
+                repoInfo.repo,
+                fullPath,
+                base64Content,
+                imageCommitMessage,
+                githubToken
+              );
+            } catch (error: any) {
+              console.error(`Error committing image ${imagePath}:`, error);
+              // Continue with other images even if one fails
+            }
+          }
         }
         
         const content = JSON.stringify(data, null, 2);

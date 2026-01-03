@@ -34,6 +34,7 @@ export default function AdminPage() {
   const [deploying, setDeploying] = useState(false);
   const [deployMessage, setDeployMessage] = useState('');
   const [existingImages, setExistingImages] = useState<string[]>([]);
+  const [pendingImageBase64Data, setPendingImageBase64Data] = useState<Record<string, string>>({});
 
   // Form state
   const [formData, setFormData] = useState({
@@ -132,7 +133,13 @@ export default function AdminPage() {
       });
 
       if (response.ok) {
-        await checkAuth();
+        // Update local state immediately (important on Netlify where file save doesn't work)
+        setRealizacje(realizacje.filter(r => r.id !== id));
+        if (fullRealizacjeData) {
+          setFullRealizacjeData({
+            list: fullRealizacjeData.list.filter((r: any) => r.id !== id)
+          });
+        }
         alert('Realizacja została usunięta!');
       } else {
         const data = await response.json();
@@ -182,6 +189,14 @@ export default function AdminPage() {
       if (response.ok) {
         const result = await response.json();
         const realizacja = result.realizacja;
+        
+        // Store image base64 data if provided (for Netlify)
+        if (result.imageBase64Data) {
+          setPendingImageBase64Data(prev => ({
+            ...prev,
+            ...result.imageBase64Data
+          }));
+        }
         
         setFormData({
           title: '',
@@ -268,13 +283,18 @@ export default function AdminPage() {
       const response = await fetch('/api/admin/deploy', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ data: dataToDeploy }),
+        body: JSON.stringify({ 
+          data: dataToDeploy,
+          imageBase64Data: Object.keys(pendingImageBase64Data).length > 0 ? pendingImageBase64Data : undefined
+        }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
         setDeployMessage(data.message || 'Zmiany zostały wypushowane pomyślnie!');
+        // Clear pending images after successful deploy
+        setPendingImageBase64Data({});
         // Refresh list after deploy
         await checkAuth();
       } else {
