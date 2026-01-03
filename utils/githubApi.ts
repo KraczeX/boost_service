@@ -97,3 +97,51 @@ export async function commitToGitHub(
   await updateGitHubFile(owner, repo, path, content, message, token, sha);
 }
 
+// Commit binary file (image) to GitHub
+export async function commitBinaryToGitHub(
+  owner: string,
+  repo: string,
+  path: string,
+  base64Content: string,
+  message: string,
+  token: string
+): Promise<void> {
+  // For binary files, content is already base64
+  const body: any = {
+    message,
+    content: base64Content,
+  };
+
+  // Try to get existing file SHA
+  try {
+    const existingFile = await getGitHubFileContent(owner, repo, path, token);
+    if (existingFile?.sha) {
+      body.sha = existingFile.sha;
+    }
+  } catch (error) {
+    // File doesn't exist, that's okay
+  }
+
+  try {
+    const response = await fetch(
+      `https://api.github.com/repos/${owner}/${repo}/contents/${path}`,
+      {
+        method: 'PUT',
+        headers: {
+          Authorization: `token ${token}`,
+          Accept: 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      }
+    );
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(`GitHub API error: ${response.statusText} - ${JSON.stringify(errorData)}`);
+    }
+  } catch (error) {
+    console.error('Error committing binary file:', error);
+    throw error;
+  }
+}

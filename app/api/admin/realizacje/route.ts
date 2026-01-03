@@ -5,21 +5,36 @@ import { writeFile, mkdir } from 'fs/promises';
 import { join } from 'path';
 import { existsSync } from 'fs';
 
-async function saveImage(file: File, filename: string): Promise<string> {
+async function saveImage(file: File, filename: string): Promise<{ path: string; base64?: string }> {
   const bytes = await file.arrayBuffer();
   const buffer = Buffer.from(bytes);
+  const isNetlify = process.env.NETLIFY === 'true';
 
-  // Determine the directory based on filename or create a new one
-  const uploadDir = join(process.cwd(), 'public', 'realizacje', 'uploads');
-  
-  if (!existsSync(uploadDir)) {
-    await mkdir(uploadDir, { recursive: true });
+  // On Netlify, we can't write to filesystem - return base64 for later commit
+  if (isNetlify) {
+    const base64 = buffer.toString('base64');
+    return { path: `/realizacje/uploads/${filename}`, base64 };
   }
 
-  const filepath = join(uploadDir, filename);
-  await writeFile(filepath, buffer);
+  // Local: save to filesystem
+  const uploadDir = join(process.cwd(), 'public', 'realizacje', 'uploads');
+  
+  try {
+    if (!existsSync(uploadDir)) {
+      await mkdir(uploadDir, { recursive: true });
+    }
 
-  return `/realizacje/uploads/${filename}`;
+    const filepath = join(uploadDir, filename);
+    await writeFile(filepath, buffer);
+    return { path: `/realizacje/uploads/${filename}` };
+  } catch (error: any) {
+    // If filesystem is read-only, return base64
+    if (error.code === 'EROFS' || error.code === 'EACCES') {
+      const base64 = buffer.toString('base64');
+      return { path: `/realizacje/uploads/${filename}`, base64 };
+    }
+    throw error;
+  }
 }
 
 export async function GET(request: NextRequest) {
@@ -72,6 +87,7 @@ export async function POST(request: NextRequest) {
 
     // Handle images
     const images: string[] = [];
+    const imageBase64Data: Record<string, string> = {}; // Store base64 for Netlify
     const imageFiles = formData.getAll('images') as File[];
     
     for (let i = 0; i < imageFiles.length; i++) {
@@ -79,8 +95,13 @@ export async function POST(request: NextRequest) {
       if (file && file.size > 0) {
         const extension = file.name.split('.').pop() || 'jpg';
         const filename = `${id}-${i + 1}.${extension}`;
-        const imagePath = await saveImage(file, filename);
-        images.push(imagePath);
+        const imageResult = await saveImage(file, filename);
+        images.push(imageResult.path);
+        
+        // Store base64 if provided (Netlify case)
+        if (imageResult.base64) {
+          imageBase64Data[imageResult.path] = imageResult.base64;
+        }
       }
     }
 
@@ -120,6 +141,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ 
       success: true, 
       realizacja,
+      imageBase64Data: Object.keys(imageBase64Data).length > 0 ? imageBase64Data : undefined,
       message: 'Realizacja została dodana. Kliknij "Push do GitHub i Deploy" aby zapisać zmiany na stałe.'
     });
   } catch (error: any) {
