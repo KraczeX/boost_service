@@ -83,13 +83,16 @@ export async function POST(request: NextRequest) {
         // Commit images first (if any)
         if (Object.keys(imageBase64Data).length > 0) {
           const imageCommitMessage = `Add images - ${new Date().toISOString()}`;
+          const imageCommitErrors: string[] = [];
+          
           for (const [imagePath, base64Content] of Object.entries(imageBase64Data)) {
             // Remove leading / from path for GitHub API
             const githubPath = imagePath.startsWith('/') ? imagePath.slice(1) : imagePath;
             // GitHub API expects path relative to repo root, so 'public' prefix
-            const fullPath = githubPath.startsWith('public/') ? githubPath : `public${githubPath}`;
+            const fullPath = githubPath.startsWith('public/') ? githubPath : `public/${githubPath}`;
             
             try {
+              console.log(`Committing image: ${imagePath} -> ${fullPath}`);
               await commitBinaryToGitHub(
                 repoInfo.owner,
                 repoInfo.repo,
@@ -98,11 +101,20 @@ export async function POST(request: NextRequest) {
                 imageCommitMessage,
                 githubToken
               );
+              console.log(`Successfully committed image: ${fullPath}`);
             } catch (error: any) {
-              console.error(`Error committing image ${imagePath}:`, error);
+              const errorMsg = `Error committing image ${imagePath} (${fullPath}): ${error.message}`;
+              console.error(errorMsg);
+              imageCommitErrors.push(errorMsg);
               // Continue with other images even if one fails
             }
           }
+          
+          if (imageCommitErrors.length > 0) {
+            console.warn(`Some images failed to commit:`, imageCommitErrors);
+          }
+        } else {
+          console.log('No images to commit (imageBase64Data is empty)');
         }
         
         const content = JSON.stringify(data, null, 2);

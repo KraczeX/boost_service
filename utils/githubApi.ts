@@ -112,12 +112,25 @@ export async function commitBinaryToGitHub(
     content: base64Content,
   };
 
-  // Try to get existing file SHA
+  // Try to get existing file SHA (for binary files, we only need the SHA, not the content)
   try {
-    const existingFile = await getGitHubFileContent(owner, repo, path, token);
-    if (existingFile?.sha) {
-      body.sha = existingFile.sha;
+    const response = await fetch(
+      `https://api.github.com/repos/${owner}/${repo}/contents/${path}`,
+      {
+        headers: {
+          Authorization: `token ${token}`,
+          Accept: 'application/vnd.github.v3+json',
+        },
+      }
+    );
+    
+    if (response.ok) {
+      const data = await response.json();
+      if (data.sha) {
+        body.sha = data.sha;
+      }
     }
+    // If 404, file doesn't exist - that's okay, we'll create it
   } catch (error) {
     // File doesn't exist, that's okay
   }
