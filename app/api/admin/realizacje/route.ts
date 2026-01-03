@@ -103,7 +103,7 @@ export async function POST(request: NextRequest) {
       images,
     };
 
-    addRealizacja(realizacja);
+    await addRealizacja(realizacja);
 
     return NextResponse.json({ success: true, realizacja });
   } catch (error) {

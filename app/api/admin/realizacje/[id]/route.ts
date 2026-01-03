@@ -133,7 +133,7 @@ export async function PUT(
       images,
     };
 
-    const updated = updateRealizacja(id, realizacja);
+    const updated = await updateRealizacja(id, realizacja);
 
     if (!updated) {
       return NextResponse.json(
@@ -166,7 +166,7 @@ export async function DELETE(
     }
 
     const { id } = await params;
-    const deleted = deleteRealizacja(id);
+    const deleted = await deleteRealizacja(id);
 
     if (!deleted) {
       return NextResponse.json(

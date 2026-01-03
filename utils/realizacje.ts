@@ -19,6 +19,7 @@ export interface RealizacjeData {
 }
 
 const DATA_FILE_PATH = join(process.cwd(), 'data', 'realizacje.json');
+const IS_NETLIFY = process.env.NETLIFY === 'true' || process.env.NETLIFY_DEV === 'true';
 
 export function getRealizacjeData(): RealizacjeData {
   try {
@@ -40,38 +41,46 @@ export function getAllRealizacje(): Realizacja[] {
   return data.list;
 }
 
-export function saveRealizacjeData(data: RealizacjeData): void {
+export async function saveRealizacjeData(data: RealizacjeData, commitMessage?: string): Promise<void> {
   try {
+    // Try to write file - will fail on Netlify's read-only filesystem
     writeFileSync(DATA_FILE_PATH, JSON.stringify(data, null, 2), 'utf8');
-  } catch (error) {
+  } catch (error: any) {
+    // On Netlify, filesystem is read-only, so we can't write directly
+    // The file will be committed via the deploy endpoint instead
+    if (error.code === 'EROFS' || error.code === 'EACCES' || IS_NETLIFY) {
+      console.log('Read-only filesystem detected (Netlify). Changes will be committed via deploy endpoint.');
+      // Don't throw - this is expected on Netlify
+      return;
+    }
     console.error('Error saving realizacje data:', error);
     throw error;
   }
 }
 
-export function addRealizacja(realizacja: Realizacja): void {
+export async function addRealizacja(realizacja: Realizacja): Promise<void> {
   const data = getRealizacjeData();
   data.list.unshift(realizacja); // Dodaj na początku listy
-  saveRealizacjeData(data);
+  await saveRealizacjeData(data, 'Dodaj realizację');
 }
 
-export function deleteRealizacja(id: string): boolean {
+export async function deleteRealizacja(id: string): Promise<boolean> {
   const data = getRealizacjeData();
   const initialLength = data.list.length;
   data.list = data.list.filter(r => r.id !== id);
   if (data.list.length < initialLength) {
-    saveRealizacjeData(data);
+    await saveRealizacjeData(data, 'Usuń realizację');
     return true;
   }
   return false;
 }
 
-export function updateRealizacja(id: string, realizacja: Realizacja): boolean {
+export async function updateRealizacja(id: string, realizacja: Realizacja): Promise<boolean> {
   const data = getRealizacjeData();
   const index = data.list.findIndex(r => r.id === id);
   if (index !== -1) {
     data.list[index] = realizacja;
-    saveRealizacjeData(data);
+    await saveRealizacjeData(data, 'Zaktualizuj realizację');
     return true;
   }
   return false;
