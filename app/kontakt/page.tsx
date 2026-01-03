@@ -44,7 +44,7 @@ export default function KontaktPage() {
                       Informacje <span className={colors.gradientText}>Kontaktowe</span>
                     </h2>
                     <p className="text-base sm:text-lg text-gray-300 leading-relaxed mb-8">
-                      Jesteśmy dostępni od poniedziałku do piątku w godzinach 9:00 - 18:00. 
+                      Jesteśmy dostępni od poniedziałku do piątku w godzinach 8:00 - 16:00. 
                       Zapraszamy do kontaktu telefonicznego, mailowego lub osobistego wizyty w naszym warsztacie.
                     </p>
                   </div>
@@ -103,8 +103,8 @@ export default function KontaktPage() {
                       <div className="flex-1">
                         <h3 className="text-lg sm:text-xl font-bold text-white mb-2">Godziny Otwarcia</h3>
                         <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-                          Poniedziałek - Piątek: 9:00 - 18:00<br />
-                          Sobota: 10:00 - 14:00<br />
+                          Poniedziałek - Piątek: 8:00 - 16:00<br />
+                          Sobota: Zamknięte<br />
                           Niedziela: Zamknięte
                         </p>
                       </div>

@@ -1,0 +1,125 @@
+{
+  "list": [
+    {
+      "id": "audi-a6-c8-abs-repair",
+      "title": "Audi A6 C8 - Naprawa ABS (kod błędu C123EF0)",
+      "shortDescription": "Naprawa układu ABS - kod błędu C123EF0 Hydraulic Brake Booster Limit Value Reached w jednostce Bosch 9.0",
+      "image": "/realizacje/audia6/58714bf4-744e-41cb-8469-826a16f8e4ce.JPG",
+      "category": "Naprawa elektroniki",
+      "brand": "Audi",
+      "date": "2025-12-30",
+      "description": "Naprawa układu ABS w Audi A6 C8 z kodem błędu C123EF0 - Hydraulic Brake Booster Limit Value Reached. Problem dotyczył jednostki ABS marki Bosch 9.0, która jest powszechnie stosowana w modelach Audi z lat 2014-2020. Usterka prowadziła do utraty funkcji hamowania awaryjnego oraz wyświetlania komunikatu \"Brake System Fault – Stop Carefully\". Wykonano kompleksową diagnostykę i naprawę systemu, przywracając pełną funkcjonalność układu hamulcowego.",
+      "details": [
+        "Diagnostyka kodu błędu C123EF0 - Hydraulic Brake Booster Limit Value Reached",
+        "Identyfikacja usterki jednostki ABS Bosch 9.0",
+        "Naprawa systemu próżniowego hamulców",
+        "Wymiana/regeneracja modułu ABS",
+        "Przywrócenie funkcji awaryjnego hamowania",
+        "Eliminacja komunikatu \"Brake System Fault – Stop Carefully\"",
+        "Przywrócenie prawidłowego działania pedału hamulca",
+        "Przywrócenie funkcji systemu kontroli trakcji",
+        "Przywrócenie standardowych dróg hamowania"
+      ],
+      "images": [
+        "/realizacje/audia6/58714bf4-744e-41cb-8469-826a16f8e4ce.JPG",
+        "/realizacje/audia6/7d1cffe4-ae69-44f5-b427-efa74c0c1016.JPG"
+      ]
+    },
+    {
+      "id": "bmw-m240i-chiptuning",
+      "title": "BMW M240i G42 3.0T - Chiptuning Stage 1.5",
+      "shortDescription": "Zwiększenie mocy z 374 KM do 467 KM i momentu obrotowego z 500 Nm do 623 Nm",
+      "image": "/realizacje/bmw2/547738055_1456975303102507_1850151271145226443_n.jpg",
+      "category": "Chiptuning",
+      "brand": "BMW",
+      "date": "2024-01-30",
+      "description": "Chiptuning Stage 1.5 BMW M240i G42 3.0T z silnikiem B58 z 2024 roku. Sterownik MG1CS201 został odblokowany w Finlandii przez FEMTO - na tę chwilę jedyna opcja dostępu do tych zablokowanych sterowników. Przy pomocy FemTool jesteśmy w stanie zapisywać nasze modyfikacje. Nasz autorski Stage 1.5 na paliwie 98 daje mega przyrost mocy. Zajęło nam trochę czasu wystrojenie tego samochodu, ale było warto.",
+      "details": [
+        "Zwiększenie mocy z 374 KM do 467 KM",
+        "Zwiększenie momentu obrotowego z 500 Nm do 623 Nm",
+        "Odblokowanie sterownika MG1CS201 przez FEMTO (Finlandia)",
+        "Autorski Stage 1.5 na paliwie 98",
+        "Wyłączony filtr GPF",
+        "Wyłączona klapa wydechu",
+        "Wyłączony Start&Stop",
+        "Kalibracja sportowych wskaźników NBT",
+        "Komplet logów parametrów po modyfikacji do weryfikacji"
+      ],
+      "images": [
+        "/realizacje/bmw2/547738055_1456975303102507_1850151271145226443_n.jpg",
+        "/realizacje/bmw2/547985299_1456975349769169_6610657390075273648_n.jpg",
+        "/realizacje/bmw2/548362259_1456975363102501_2039597816879874137_n.jpg",
+        "/realizacje/bmw2/549469263_1456975296435841_2139845267331345954_n.jpg"
+      ]
+    },
+    {
+      "id": "bmw-m2-competition-usa",
+      "title": "BMW M2 Competition F87 - Konwersja USA",
+      "shortDescription": "Kompleksowa konwersja z rynku amerykańskiego na standardy europejskie - lampy EU, kodowanie, polski język",
+      "image": "/realizacje/bmw/592370304_1533717815428255_7148405695979271444_n.jpg",
+      "category": "Konwersja USA",
+      "brand": "BMW",
+      "date": "2024-01-25",
+      "description": "Kompleksowa konwersja BMW M2 Competition F87 z rynku amerykańskiego na standardy europejskie. Wykonano pełną konwersję oświetlenia, kodowanie systemów, wymianę tarcz wskaźników oraz aktualizację oprogramowania.",
+      "details": [
+        "Montaż lamp EU zgodnych ze standardami europejskimi",
+        "Kodowanie lamp i uruchomienie światła przeciwmgielnego",
+        "Zmiana języka jednostki NBT Evo na polski",
+        "Instalacja najnowszych map nawigacji",
+        "Wymiana tarcz wskaźników na KM/h",
+        "Odblokowanie świateł matrycowych Adaptive Led",
+        "Wyłączenie przednich side markerów"
+      ],
+      "images": [
+        "/realizacje/bmw/592370304_1533717815428255_7148405695979271444_n.jpg",
+        "/realizacje/bmw/591831982_1533717782094925_609722780348058647_n.jpg",
+        "/realizacje/bmw/591887093_1533717845428252_2178732791081934857_n.jpg",
+        "/realizacje/bmw/593113868_1533717895428247_2725825038290188181_n.jpg",
+        "/realizacje/bmw/594064758_1533717825428254_3447027299729079124_n.jpg"
+      ]
+    },
+    {
+      "id": "audi-q7-chiptuning",
+      "title": "Audi Q7 4M FL 45TDI DPXB - Chiptuning",
+      "shortDescription": "Zwiększenie mocy z 231 KM do 310 KM i momentu obrotowego z 501 Nm do 619 Nm",
+      "image": "/realizacje/audi/597400476_1543945244405512_4053870336900835956_n.jpg",
+      "category": "Chiptuning",
+      "brand": "Audi",
+      "date": "2024-01-20",
+      "description": "Najsłabsza odmiana silnika 3.0TDI otrzymała zastrzyk niezbędnej mocy. Domyślnie w tych silnikach można wykonać bezpieczne strojenie w granicach 340-350km / 700nm. Jednak w tym przypadku właściciel prosił nas o celowanie typowo w okolice 300km i 600Nm i tak też zrobiliśmy. Podnieśliśmy ciśnienie oleju w praktycznie całym zakresie pracy silnika, zabezpieczy to jednostkę przed zatarciem. Auto fabrycznie przy 1800obr i temperaturze oleju 95stopni utrzymywało zaledwie 1.2bar ciśnienia. Po moim programie auto w tych obrotach utrzymuje 2.7bara. Pozbyliśmy się układu Start&Stop. Auto stało się bardzo dynamiczne, lepiej reaguje na dodanie gazu. Pozbyliśmy się denerwującego Laga.",
+      "details": [
+        "Zwiększenie mocy z 231 KM (238 KM) do 310 KM",
+        "Zwiększenie momentu obrotowego z 501 Nm do 619 Nm",
+        "Podniesienie ciśnienia oleju z 1.2bar do 2.7bar przy 1800obr i temperaturze 95°C",
+        "Zabezpieczenie jednostki przed zatarciem poprzez optymalizację ciśnienia oleju",
+        "Usunięcie układu Start&Stop",
+        "Eliminacja denerwującego Laga",
+        "Znaczna poprawa dynamiki i reakcji na dodanie gazu",
+        "Bezpieczne strojenie dostosowane do wymagań klienta (300km / 600Nm zamiast maksymalnych 340-350km / 700nm)"
+      ],
+      "images": [
+        "/realizacje/audi/597400476_1543945244405512_4053870336900835956_n.jpg",
+        "/realizacje/audi/598147195_1543945264405510_8907733685289703726_n.jpg",
+        "/realizacje/audi/599038796_1543945251072178_5121084792254989465_n.jpg"
+      ]
+    },
+    {
+      "id": "porsche-cayenne-9y-3-0tfsi",
+      "title": "Porsche Cayenne 9Y 3.0TFSI ",
+      "shortDescription": "Szeregowe ogarnięcie elektroniki",
+      "image": "/realizacje/uploads/porsche-cayenne-9y-3-0tfsi-1.JPG",
+      "category": "Naprawa elektroniki",
+      "brand": "Porsche",
+      "date": "2026-01-03",
+      "description": " goaiurgiwqeurghwieurhgiweruhgiwerhug goaiurgiwqeurghwieurhgiweruhgiwerhug goaiurgiwqeurghwieurhgiweruhgiwerhug goaiurgiwqeurghwieurhgiweruhgiwerhuggoaiurgiwqeurghwieurhgiweruhgiwerhuggoaiurgiwqeurghwieurhgiweruhgiwerhuggoaiurgiwqeurghwieurhgiweruhgiwerhug goaiurgiwqeurghwieurhgiweruhgiwerhug goaiurgiwqeurghwieurhgiweruhgiwerhug goaiurgiwqeurghwieurhgiweruhgiwerhug goaiurgiwqeurghwieurhgiweruhgiwerhug goaiurgiwqeurghwieurhgiweruhgiwerhug goaiurgiwqeurghwieurhgiweruhgiwerhug goaiurgiwqeurghwieurhgiweruhgiwerhug goaiurgiwqeurghwieurhgiweruhgiwerhug goaiurgiwqeurghwieurhgiweruhgiwerhug goaiurgiwqeurghwieurhgiweruhgiwerhug goaiurgiwqeurghwieurhgiweruhgiwerhug goaiurgiwqeurghwieurhgiweruhgiwerhug ",
+      "details": [
+        "podniesienie ciśnienia\r",
+        "ustawienie obrotów\r",
+        "cold start - naprawa zimnego startu"
+      ],
+      "images": [
+        "/realizacje/uploads/porsche-cayenne-9y-3-0tfsi-1.JPG"
+      ]
+    }
+  ]
+}
