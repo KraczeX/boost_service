@@ -48,11 +48,16 @@ export async function saveRealizacjeData(data: RealizacjeData, commitMessage?: s
   } catch (error: any) {
     // On Netlify, filesystem is read-only, so we can't write directly
     // The file will be committed via the deploy endpoint instead
-    if (error.code === 'EROFS' || error.code === 'EACCES' || IS_NETLIFY) {
+    const isReadOnlyError = error.code === 'EROFS' || error.code === 'EACCES' || error.syscall === 'open' || IS_NETLIFY;
+    
+    if (isReadOnlyError) {
       console.log('Read-only filesystem detected (Netlify). Changes will be committed via deploy endpoint.');
       // Don't throw - this is expected on Netlify
+      // The changes will be saved when user clicks "Deploy" button
       return;
     }
+    
+    // For other errors, log and throw
     console.error('Error saving realizacje data:', error);
     throw error;
   }

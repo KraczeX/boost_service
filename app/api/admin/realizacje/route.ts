@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { isAuthenticated } from '@/lib/auth';
-import { getAllRealizacje, addRealizacja, type Realizacja } from '@/utils/realizacje';
+import { getAllRealizacje, addRealizacja, getRealizacjeData, type Realizacja } from '@/utils/realizacje';
 import { writeFile, mkdir } from 'fs/promises';
 import { join } from 'path';
 import { existsSync } from 'fs';
@@ -32,8 +32,9 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const realizacje = getAllRealizacje();
-    return NextResponse.json({ realizacje });
+    // Return full data structure for admin panel
+    const data = getRealizacjeData();
+    return NextResponse.json({ realizacje: data.list, fullData: data });
   } catch (error) {
     console.error('Error fetching realizacje:', error);
     return NextResponse.json(
@@ -103,15 +104,31 @@ export async function POST(request: NextRequest) {
       images,
     };
 
-    await addRealizacja(realizacja);
+    // Try to save - will fail on Netlify (read-only filesystem)
+    try {
+      await addRealizacja(realizacja);
+    } catch (error: any) {
+      // On Netlify, file save will fail
+      // Changes will be committed via deploy endpoint using GitHub API
+      const isReadOnlyError = error.code === 'EROFS' || error.code === 'EACCES';
+      if (!isReadOnlyError) {
+        throw error;
+      }
+      console.log('File save failed (expected on Netlify), changes will be committed via deploy');
+    }
 
-    return NextResponse.json({ success: true, realizacja });
-  } catch (error) {
+    return NextResponse.json({ 
+      success: true, 
+      realizacja,
+      message: 'Realizacja została dodana. Kliknij "Push do GitHub i Deploy" aby zapisać zmiany na stałe.'
+    });
+  } catch (error: any) {
     console.error('Error adding realizacja:', error);
+    const errorMessage = error?.message || 'Nieznany błąd';
+    
     return NextResponse.json(
-      { error: 'Błąd podczas dodawania realizacji' },
+      { error: `Błąd podczas dodawania realizacji: ${errorMessage}` },
       { status: 500 }
     );
   }
 }
-

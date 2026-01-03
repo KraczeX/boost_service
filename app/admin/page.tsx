@@ -27,6 +27,7 @@ export default function AdminPage() {
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
   const [realizacje, setRealizacje] = useState<Realizacja[]>([]);
+  const [fullRealizacjeData, setFullRealizacjeData] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [showAddForm, setShowAddForm] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -56,6 +57,7 @@ export default function AdminPage() {
       if (response.ok) {
         const data = await response.json();
         setRealizacje(data.realizacje);
+        setFullRealizacjeData(data.fullData || { list: data.realizacje });
         setIsAuthenticated(true);
       } else {
         setIsAuthenticated(false);
@@ -215,19 +217,35 @@ export default function AdminPage() {
     setDeployMessage('');
 
     try {
+      // Use stored full data or fetch it
+      let dataToDeploy = fullRealizacjeData;
+      
+      if (!dataToDeploy) {
+        const realizacjeResponse = await fetch('/api/admin/realizacje');
+        if (realizacjeResponse.ok) {
+          const result = await realizacjeResponse.json();
+          dataToDeploy = result.fullData || { list: result.realizacje };
+        }
+      }
+
       const response = await fetch('/api/admin/deploy', {
         method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ data: dataToDeploy }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
         setDeployMessage(data.message || 'Zmiany zostały wypushowane pomyślnie!');
+        // Refresh list after deploy
+        await checkAuth();
       } else {
         setDeployMessage(data.error || 'Błąd podczas deployowania');
       }
     } catch (error) {
-      setDeployMessage('Błąd podczas deployowania');
+      console.error('Deploy error:', error);
+      setDeployMessage('Błąd podczas deployowania: ' + (error instanceof Error ? error.message : 'Nieznany błąd'));
     } finally {
       setDeploying(false);
     }
