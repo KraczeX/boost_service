@@ -69,7 +69,16 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const formData = await request.formData();
+    let formData: FormData;
+    try {
+      formData = await request.formData();
+    } catch (error: any) {
+      console.error('Error parsing formData:', error);
+      return NextResponse.json(
+        { error: `Błąd podczas przetwarzania formularza: ${error?.message || 'Nieznany błąd'}` },
+        { status: 400 }
+      );
+    }
     
     const title = (formData.get('title') as string)?.trim() || '';
     const shortDescription = (formData.get('shortDescription') as string)?.trim() || '';
@@ -128,15 +137,23 @@ export async function POST(request: NextRequest) {
     }
     
     for (let i = 0; i < validImageFiles.length; i++) {
-      const file = validImageFiles[i];
-      const extension = file.name.split('.').pop() || 'jpg';
-      const filename = `${id}-${i + 1}.${extension}`;
-      const imageResult = await saveImage(file, filename);
-      images.push(imageResult.path);
-      
-      // Store base64 if provided (Netlify case)
-      if (imageResult.base64) {
-        imageBase64Data[imageResult.path] = imageResult.base64;
+      try {
+        const file = validImageFiles[i];
+        const extension = file.name.split('.').pop() || 'jpg';
+        const filename = `${id}-${i + 1}.${extension}`;
+        const imageResult = await saveImage(file, filename);
+        images.push(imageResult.path);
+        
+        // Store base64 if provided (Netlify case)
+        if (imageResult.base64) {
+          imageBase64Data[imageResult.path] = imageResult.base64;
+        }
+      } catch (imageError: any) {
+        console.error(`Error processing image ${i + 1}:`, imageError);
+        return NextResponse.json(
+          { error: `Błąd podczas przetwarzania zdjęcia ${i + 1}: ${imageError?.message || 'Nieznany błąd'}` },
+          { status: 500 }
+        );
       }
     }
 
@@ -214,11 +231,46 @@ export async function POST(request: NextRequest) {
     });
   } catch (error: any) {
     console.error('Error adding realizacja:', error);
-    const errorMessage = error?.message || 'Nieznany błąd';
+    
+    // Ensure we always return JSON, even if there's an unexpected error
+    let errorMessage = 'Nieznany błąd';
+    let errorDetails = '';
+    
+    if (error) {
+      if (typeof error === 'string') {
+        errorMessage = error;
+      } else if (error instanceof Error) {
+        errorMessage = error.message || 'Nieznany błąd';
+        errorDetails = error.stack || '';
+      } else if (error?.message) {
+        errorMessage = String(error.message);
+      } else {
+        try {
+          errorMessage = JSON.stringify(error);
+        } catch {
+          errorMessage = String(error);
+        }
+      }
+    }
+    
+    // Log full error details
+    console.error('Full error details:', {
+      message: errorMessage,
+      details: errorDetails,
+      error: error
+    });
     
     return NextResponse.json(
-      { error: `Błąd podczas dodawania realizacji: ${errorMessage}` },
-      { status: 500 }
+      { 
+        error: `Błąd podczas dodawania realizacji: ${errorMessage}`,
+        details: errorDetails ? errorDetails.substring(0, 500) : undefined // Limit details length
+      },
+      { 
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+        }
+      }
     );
   }
 }
