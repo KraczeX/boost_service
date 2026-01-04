@@ -130,6 +130,13 @@ export default function AdminPage() {
     setExistingImages(existingImages.filter((_, idx) => idx !== indexToRemove));
   };
 
+  const handleRemoveNewImage = (indexToRemove: number) => {
+    setFormData({
+      ...formData,
+      images: formData.images.filter((_, idx) => idx !== indexToRemove)
+    });
+  };
+
   const handleDelete = async (id: string) => {
     if (!confirm('Czy na pewno chcesz usunąć tę realizację?')) {
       return;
@@ -191,21 +198,39 @@ export default function AdminPage() {
 
     try {
       const formDataToSend = new FormData();
-      formDataToSend.append('title', formData.title.trim());
-      formDataToSend.append('shortDescription', formData.shortDescription.trim());
-      formDataToSend.append('category', formData.category);
-      formDataToSend.append('brand', formData.brand);
-      formDataToSend.append('date', formData.date);
-      formDataToSend.append('description', formData.description.trim());
-      formDataToSend.append('details', formData.details.trim());
+      
+      // Validate and trim all text fields before appending
+      const title = formData.title.trim();
+      const shortDescription = formData.shortDescription.trim();
+      const description = formData.description.trim();
+      const details = formData.details.trim();
+      
+      if (!title || !shortDescription || !description || !details) {
+        alert('Wszystkie pola tekstowe są wymagane');
+        setLoading(false);
+        return;
+      }
+      
+      formDataToSend.append('title', title);
+      formDataToSend.append('shortDescription', shortDescription);
+      formDataToSend.append('category', formData.category || '');
+      formDataToSend.append('brand', formData.brand || '');
+      formDataToSend.append('date', formData.date || '');
+      formDataToSend.append('description', description);
+      formDataToSend.append('details', details);
       
       if (wasEditing) {
         formDataToSend.append('existingImages', JSON.stringify(existingImages));
       }
       
-      formData.images.forEach((file) => {
-        formDataToSend.append('images', file);
-      });
+      // Append images one by one with validation
+      if (formData.images && formData.images.length > 0) {
+        formData.images.forEach((file) => {
+          if (file && file instanceof File && file.size > 0) {
+            formDataToSend.append('images', file);
+          }
+        });
+      }
 
       const url = wasEditing 
         ? `/api/admin/realizacje/${editingId}`
@@ -554,9 +579,33 @@ export default function AdminPage() {
                         required={!editingId}
                       />
                       {formData.images.length > 0 && (
-                        <p className="text-gray-400 text-sm mt-1">
-                          Wybrano {formData.images.length} nowych zdjęć {formData.images.length > 5 ? '(max 5)' : ''}
-                        </p>
+                        <div className="mt-2">
+                          <p className="text-gray-400 text-sm mb-2">
+                            Wybrane zdjęcia ({formData.images.length}/5) - kliknij X, aby usunąć:
+                          </p>
+                          <div className="flex flex-wrap gap-2">
+                            {formData.images.map((file, idx) => (
+                              <div key={idx} className="relative group">
+                                <img
+                                  src={URL.createObjectURL(file)}
+                                  alt={`Preview ${idx + 1}`}
+                                  className="w-20 h-20 object-cover rounded border border-white/20"
+                                />
+                                <button
+                                  type="button"
+                                  onClick={() => handleRemoveNewImage(idx)}
+                                  className="absolute -top-2 -right-2 w-6 h-6 bg-red-600 text-white rounded-full flex items-center justify-center hover:bg-red-700 transition-colors text-xs font-bold"
+                                  title="Usuń zdjęcie"
+                                >
+                                  ×
+                                </button>
+                                <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-1 truncate">
+                                  {file.name}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
                       )}
                       {editingId && (
                         <p className="text-gray-400 text-sm mt-1">

@@ -77,7 +77,25 @@ export async function POST(request: NextRequest) {
     const brand = (formData.get('brand') as string)?.trim() || '';
     const date = (formData.get('date') as string)?.trim() || '';
     const description = (formData.get('description') as string)?.trim() || '';
-    const details = (formData.get('details') as string)?.trim().split('\n').filter(d => d.trim()) || [];
+    const detailsStr = (formData.get('details') as string)?.trim() || '';
+    const details = detailsStr ? detailsStr.split('\n').filter(d => d.trim()) : [];
+    
+    // Validate required fields
+    if (!title || !shortDescription || !category || !brand || !date || !description || details.length === 0) {
+      return NextResponse.json(
+        { error: 'Wszystkie pola są wymagane' },
+        { status: 400 }
+      );
+    }
+    
+    // Validate date format (YYYY-MM-DD)
+    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!dateRegex.test(date)) {
+      return NextResponse.json(
+        { error: 'Nieprawidłowy format daty. Użyj formatu YYYY-MM-DD' },
+        { status: 400 }
+      );
+    }
     
     // Generate ID from title (handle Polish characters)
     const id = title

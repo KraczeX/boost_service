@@ -10,8 +10,11 @@ export async function getGitHubFileContent(
   token: string
 ): Promise<GitHubFileContent | null> {
   try {
+    // URL encode the path for GitHub API (handles special characters)
+    const encodedPath = encodeURIComponent(path).replace(/%2F/g, '/');
+    
     const response = await fetch(
-      `https://api.github.com/repos/${owner}/${repo}/contents/${path}`,
+      `https://api.github.com/repos/${owner}/${repo}/contents/${encodedPath}`,
       {
         headers: {
           Authorization: `token ${token}`,
@@ -58,8 +61,11 @@ export async function updateGitHubFile(
   }
 
   try {
+    // URL encode the path for GitHub API (handles special characters)
+    const encodedPath = encodeURIComponent(path).replace(/%2F/g, '/');
+    
     const response = await fetch(
-      `https://api.github.com/repos/${owner}/${repo}/contents/${path}`,
+      `https://api.github.com/repos/${owner}/${repo}/contents/${encodedPath}`,
       {
         method: 'PUT',
         headers: {
@@ -114,8 +120,11 @@ export async function commitBinaryToGitHub(
 
   // Try to get existing file SHA (for binary files, we only need the SHA, not the content)
   try {
+    // URL encode the path for GitHub API (handles special characters)
+    const encodedPath = encodeURIComponent(path).replace(/%2F/g, '/');
+    
     const response = await fetch(
-      `https://api.github.com/repos/${owner}/${repo}/contents/${path}`,
+      `https://api.github.com/repos/${owner}/${repo}/contents/${encodedPath}`,
       {
         headers: {
           Authorization: `token ${token}`,
@@ -136,8 +145,11 @@ export async function commitBinaryToGitHub(
   }
 
   try {
+    // URL encode the path for GitHub API (handles special characters)
+    const encodedPath = encodeURIComponent(path).replace(/%2F/g, '/');
+    
     const response = await fetch(
-      `https://api.github.com/repos/${owner}/${repo}/contents/${path}`,
+      `https://api.github.com/repos/${owner}/${repo}/contents/${encodedPath}`,
       {
         method: 'PUT',
         headers: {

@@ -91,6 +91,14 @@ export async function POST(request: NextRequest) {
             // GitHub API expects path relative to repo root, so 'public' prefix
             const fullPath = githubPath.startsWith('public/') ? githubPath : `public/${githubPath}`;
             
+            // Validate base64 content
+            if (!base64Content || typeof base64Content !== 'string') {
+              const errorMsg = `Invalid base64 content for image ${imagePath}`;
+              console.error(errorMsg);
+              imageCommitErrors.push(errorMsg);
+              continue;
+            }
+            
             try {
               console.log(`Committing image: ${imagePath} -> ${fullPath}`);
               await commitBinaryToGitHub(
@@ -110,6 +118,7 @@ export async function POST(request: NextRequest) {
             }
           }
           
+          // Log errors but continue with JSON commit
           if (imageCommitErrors.length > 0) {
             console.warn(`Some images failed to commit:`, imageCommitErrors);
           }
