@@ -329,7 +329,25 @@ export default function AdminPage() {
       }
 
       if (response.ok) {
-        const result = await response.json();
+        // Get response text first to check if it's valid JSON
+        const responseText = await response.text();
+        let result: any;
+        try {
+          result = JSON.parse(responseText);
+        } catch (parseError) {
+          setErrorMessage(`Błąd parsowania odpowiedzi JSON: ${parseError instanceof Error ? parseError.message : 'Nieznany błąd'}. Odpowiedź: ${responseText.substring(0, 200)}`);
+          alert('Błąd parsowania odpowiedzi serwera. Sprawdź szczegóły błędu na stronie.');
+          setLoading(false);
+          return;
+        }
+        
+        if (!result || !result.realizacja) {
+          setErrorMessage(`Nieprawidłowa odpowiedź serwera. Otrzymano: ${JSON.stringify(result).substring(0, 200)}`);
+          alert('Nieprawidłowa odpowiedź serwera. Sprawdź szczegóły błędu na stronie.');
+          setLoading(false);
+          return;
+        }
+        
         const realizacja = result.realizacja;
         
         // Store image base64 data if provided (for Netlify)
@@ -379,7 +397,17 @@ export default function AdminPage() {
         // checkAuth() would overwrite our changes on Netlify (where file isn't saved)
         alert(wasEditing ? 'Realizacja została zaktualizowana!' : 'Realizacja została dodana!');
       } else {
-        const data = await response.json();
+        // Get response text first to check if it's valid JSON
+        const responseText = await response.text();
+        let data: any;
+        try {
+          data = JSON.parse(responseText);
+        } catch (parseError) {
+          setErrorMessage(`Błąd parsowania odpowiedzi błędu JSON: ${parseError instanceof Error ? parseError.message : 'Nieznany błąd'}. Odpowiedź: ${responseText.substring(0, 200)}`);
+          alert(`Błąd serwera (${response.status}): ${response.statusText}`);
+          setLoading(false);
+          return;
+        }
         console.error('Submit error:', data);
         alert(data.error || (wasEditing ? 'Błąd podczas aktualizacji realizacji' : 'Błąd podczas dodawania realizacji'));
       }

@@ -173,11 +173,44 @@ export async function POST(request: NextRequest) {
       console.log('File save failed (expected on Netlify), changes will be committed via deploy');
     }
 
-    return NextResponse.json({ 
-      success: true, 
-      realizacja,
-      imageBase64Data: Object.keys(imageBase64Data).length > 0 ? imageBase64Data : undefined,
+    // Ensure all values are safe for JSON serialization
+    const safeRealizacja = {
+      id: String(realizacja.id || ''),
+      title: String(realizacja.title || ''),
+      shortDescription: String(realizacja.shortDescription || ''),
+      image: String(realizacja.image || ''),
+      category: String(realizacja.category || ''),
+      brand: String(realizacja.brand || ''),
+      date: String(realizacja.date || ''),
+      description: String(realizacja.description || ''),
+      details: Array.isArray(realizacja.details) ? realizacja.details.map(d => String(d || '')) : [],
+      images: Array.isArray(realizacja.images) ? realizacja.images.map(img => String(img || '')) : [],
+    };
+
+    // Prepare response - ensure imageBase64Data is safe
+    const responseData: any = {
+      success: true,
+      realizacja: safeRealizacja,
       message: 'Realizacja została dodana. Kliknij "Push do GitHub i Deploy" aby zapisać zmiany na stałe.'
+    };
+
+    // Only include imageBase64Data if it exists and has valid entries
+    if (Object.keys(imageBase64Data).length > 0) {
+      const safeImageBase64Data: Record<string, string> = {};
+      for (const [key, value] of Object.entries(imageBase64Data)) {
+        if (typeof value === 'string' && value.length > 0) {
+          safeImageBase64Data[String(key)] = String(value);
+        }
+      }
+      if (Object.keys(safeImageBase64Data).length > 0) {
+        responseData.imageBase64Data = safeImageBase64Data;
+      }
+    }
+
+    return NextResponse.json(responseData, {
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+      },
     });
   } catch (error: any) {
     console.error('Error adding realizacja:', error);
