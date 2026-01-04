@@ -174,7 +174,17 @@ export default function AdminPage() {
       e.stopPropagation(); // Stop event propagation on iOS
     }
     
+    // Force stop any default form behavior
+    if (e && 'target' in e && e.target) {
+      const target = e.target as HTMLElement;
+      if (target.closest('form')) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }
+    
     setLoading(true);
+    setErrorMessage(null); // Clear previous error
 
     const wasEditing = editingId !== null;
 
@@ -202,23 +212,42 @@ export default function AdminPage() {
         return;
       }
 
-      const formDataToSend = new FormData();
-      
       // Validate and trim all text fields before appending - safe for iOS
-      const title = (formData.title || '').toString().trim();
-      const shortDescription = (formData.shortDescription || '').toString().trim();
-      const description = (formData.description || '').toString().trim();
-      const details = (formData.details || '').toString().trim();
-      const category = (formData.category || '').toString().trim();
-      const brand = (formData.brand || '').toString().trim();
+      let title = String(formData.title || '').trim();
+      let shortDescription = String(formData.shortDescription || '').trim();
+      let description = String(formData.description || '').trim();
+      let details = String(formData.details || '').trim();
+      let category = String(formData.category || '').trim();
+      let brand = String(formData.brand || '').trim();
       
       // Ensure date is set - use today if empty (mobile can sometimes have empty date)
-      let date = (formData.date || '').toString().trim();
+      let date = String(formData.date || '').trim();
       if (!date || date === '') {
         const today = new Date();
-        date = today.getFullYear() + '-' + 
-               String(today.getMonth() + 1).padStart(2, '0') + '-' + 
-               String(today.getDate()).padStart(2, '0');
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        date = `${year}-${month}-${day}`;
+      }
+      
+      // Validate date format explicitly
+      const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+      if (!dateRegex.test(date)) {
+        // Try to fix the date format
+        const dateParts = date.split(/[-\/]/);
+        if (dateParts.length === 3) {
+          const year = dateParts[0].padStart(4, '0');
+          const month = dateParts[1].padStart(2, '0');
+          const day = dateParts[2].padStart(2, '0');
+          date = `${year}-${month}-${day}`;
+        } else {
+          // Use today if still invalid
+          const today = new Date();
+          const year = today.getFullYear();
+          const month = String(today.getMonth() + 1).padStart(2, '0');
+          const day = String(today.getDate()).padStart(2, '0');
+          date = `${year}-${month}-${day}`;
+        }
       }
       
       // Basic validation
@@ -227,18 +256,38 @@ export default function AdminPage() {
         setLoading(false);
         return;
       }
+
+      // Create FormData - wrap in try-catch for iOS compatibility
+      let formDataToSend: FormData;
+      try {
+        formDataToSend = new FormData();
+      } catch (error) {
+        setErrorMessage('Błąd tworzenia FormData: ' + (error instanceof Error ? error.message : 'Nieznany błąd'));
+        alert('Błąd tworzenia formularza. Spróbuj ponownie.');
+        setLoading(false);
+        return;
+      }
       
-      formDataToSend.append('title', title);
-      formDataToSend.append('shortDescription', shortDescription);
-      formDataToSend.append('category', category);
-      formDataToSend.append('brand', brand);
-      formDataToSend.append('date', date);
-      formDataToSend.append('description', description);
-      formDataToSend.append('details', details);
+      // Append all fields with error handling
+      try {
+        formDataToSend.append('title', title);
+        formDataToSend.append('shortDescription', shortDescription);
+        formDataToSend.append('category', category);
+        formDataToSend.append('brand', brand);
+        formDataToSend.append('date', date);
+        formDataToSend.append('description', description);
+        formDataToSend.append('details', details);
+      } catch (error) {
+        setErrorMessage('Błąd dodawania pól do FormData: ' + (error instanceof Error ? error.message : 'Nieznany błąd'));
+        alert('Błąd przygotowania formularza. Spróbuj ponownie.');
+        setLoading(false);
+        return;
+      }
       
       if (wasEditing) {
         try {
-          formDataToSend.append('existingImages', JSON.stringify(existingImages));
+          const existingImagesStr = JSON.stringify(existingImages);
+          formDataToSend.append('existingImages', existingImagesStr);
         } catch (e) {
           console.error('Error stringifying existingImages:', e);
           formDataToSend.append('existingImages', '[]');
@@ -247,11 +296,18 @@ export default function AdminPage() {
       
       // Append images one by one with validation
       if (formData.images && formData.images.length > 0) {
-        formData.images.forEach((file) => {
-          if (file && file instanceof File && file.size > 0) {
-            formDataToSend.append('images', file);
-          }
-        });
+        try {
+          formData.images.forEach((file, index) => {
+            if (file && file instanceof File && file.size > 0) {
+              formDataToSend.append('images', file);
+            }
+          });
+        } catch (error) {
+          setErrorMessage('Błąd dodawania zdjęć: ' + (error instanceof Error ? error.message : 'Nieznany błąd'));
+          alert('Błąd dodawania zdjęć. Spróbuj ponownie.');
+          setLoading(false);
+          return;
+        }
       }
 
       const url = wasEditing 
@@ -259,10 +315,18 @@ export default function AdminPage() {
         : '/api/admin/realizacje';
       const method = wasEditing ? 'PUT' : 'POST';
 
-      const response = await fetch(url, {
-        method,
-        body: formDataToSend,
-      });
+      let response: Response;
+      try {
+        response = await fetch(url, {
+          method,
+          body: formDataToSend,
+        });
+      } catch (fetchError) {
+        setErrorMessage('Błąd wysyłania żądania: ' + (fetchError instanceof Error ? fetchError.message : 'Nieznany błąd'));
+        alert('Błąd wysyłania formularza: ' + (fetchError instanceof Error ? fetchError.message : 'Nieznany błąd'));
+        setLoading(false);
+        return;
+      }
 
       if (response.ok) {
         const result = await response.json();
@@ -544,6 +608,10 @@ export default function AdminPage() {
                         onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                         className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-white/40"
                         autoComplete="off"
+                        autoCorrect="off"
+                        autoCapitalize="off"
+                        spellCheck="false"
+                        inputMode="text"
                       />
                     </div>
                     <div>
@@ -554,6 +622,10 @@ export default function AdminPage() {
                         onChange={(e) => setFormData({ ...formData, shortDescription: e.target.value })}
                         className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-white/40"
                         autoComplete="off"
+                        autoCorrect="off"
+                        autoCapitalize="off"
+                        spellCheck="false"
+                        inputMode="text"
                       />
                     </div>
                     <div>
@@ -597,6 +669,11 @@ export default function AdminPage() {
                         placeholder="2024-01-15"
                         className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-white/40"
                         autoComplete="off"
+                        autoCorrect="off"
+                        autoCapitalize="off"
+                        spellCheck="false"
+                        inputMode="text"
+                        pattern=""
                       />
                     </div>
                     <div>
@@ -687,6 +764,9 @@ export default function AdminPage() {
                       rows={4}
                       className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-white/40"
                       autoComplete="off"
+                      autoCorrect="off"
+                      autoCapitalize="off"
+                      spellCheck="false"
                     />
                   </div>
                   <div>
@@ -698,6 +778,9 @@ export default function AdminPage() {
                       className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-white/40"
                       placeholder="Szczegół 1&#10;Szczegół 2&#10;Szczegół 3"
                       autoComplete="off"
+                      autoCorrect="off"
+                      autoCapitalize="off"
+                      spellCheck="false"
                     />
                   </div>
                   <button
