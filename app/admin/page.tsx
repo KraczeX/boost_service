@@ -320,10 +320,18 @@ export default function AdminPage() {
         response = await fetch(url, {
           method,
           body: formDataToSend,
+          // Add timeout handling
+          signal: AbortSignal.timeout(60000), // 60 second timeout
         });
-      } catch (fetchError) {
-        setErrorMessage('Błąd wysyłania żądania: ' + (fetchError instanceof Error ? fetchError.message : 'Nieznany błąd'));
-        alert('Błąd wysyłania formularza: ' + (fetchError instanceof Error ? fetchError.message : 'Nieznany błąd'));
+      } catch (fetchError: any) {
+        let errorMsg = 'Błąd wysyłania żądania: ';
+        if (fetchError?.name === 'AbortError' || fetchError?.name === 'TimeoutError') {
+          errorMsg = 'Przekroczono limit czasu. Spróbuj ponownie lub zmniejsz liczbę zdjęć.';
+        } else {
+          errorMsg += fetchError instanceof Error ? fetchError.message : 'Nieznany błąd';
+        }
+        setErrorMessage(errorMsg);
+        alert(errorMsg);
         setLoading(false);
         return;
       }
@@ -400,10 +408,21 @@ export default function AdminPage() {
         // Get response text first to check if it's valid JSON
         const responseText = await response.text();
         let data: any;
+        
+        // Check if response is HTML error page (Netlify Internal Error)
+        if (responseText.includes('Internal Error') || responseText.includes('<!DOCTYPE') || responseText.includes('<html')) {
+          const errorIdMatch = responseText.match(/ID:\s*([A-Z0-9]+)/);
+          const errorId = errorIdMatch ? errorIdMatch[1] : 'nieznany';
+          setErrorMessage(`Błąd serwera Netlify (${response.status}). ID błędu: ${errorId}. To może być spowodowane zbyt dużym rozmiarem danych lub limitem czasu. Spróbuj zmniejszyć liczbę lub rozmiar zdjęć.`);
+          alert(`Błąd serwera (${response.status}). ID: ${errorId}. Spróbuj zmniejszyć liczbę zdjęć lub ich rozmiar.`);
+          setLoading(false);
+          return;
+        }
+        
         try {
           data = JSON.parse(responseText);
         } catch (parseError) {
-          setErrorMessage(`Błąd parsowania odpowiedzi błędu JSON: ${parseError instanceof Error ? parseError.message : 'Nieznany błąd'}. Odpowiedź: ${responseText.substring(0, 200)}`);
+          setErrorMessage(`Błąd parsowania odpowiedzi błędu JSON: ${parseError instanceof Error ? parseError.message : 'Nieznany błąd'}. Odpowiedź: ${responseText.substring(0, 500)}`);
           alert(`Błąd serwera (${response.status}): ${response.statusText}`);
           setLoading(false);
           return;
