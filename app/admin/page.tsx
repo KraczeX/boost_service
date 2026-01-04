@@ -204,25 +204,14 @@ export default function AdminPage() {
       const shortDescription = formData.shortDescription.trim();
       const description = formData.description.trim();
       const details = formData.details.trim();
-      const date = formData.date || new Date().toISOString().split('T')[0];
       
-      // Validate date format (YYYY-MM-DD) - more lenient for mobile
-      const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-      if (!date || !dateRegex.test(date)) {
-        alert('Nieprawidłowy format daty. Wybierz datę z kalendarza.');
-        setLoading(false);
-        return;
+      // Ensure date is set - use today if empty (mobile can sometimes have empty date)
+      let date = formData.date?.trim() || '';
+      if (!date) {
+        date = new Date().toISOString().split('T')[0];
       }
       
-      // Additional validation - ensure date is valid
-      const dateObj = new Date(date);
-      if (isNaN(dateObj.getTime())) {
-        alert('Nieprawidłowa data. Wybierz poprawną datę.');
-        setLoading(false);
-        return;
-      }
-      
-      if (!title || !shortDescription || !description || !details || !formData.category || !formData.brand) {
+      if (!title || !shortDescription || !description || !details || !formData.category || !formData.brand || !date) {
         alert('Wszystkie pola są wymagane');
         setLoading(false);
         return;
