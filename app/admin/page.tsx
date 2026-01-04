@@ -500,7 +500,7 @@ export default function AdminPage() {
                 <h2 className={`text-2xl font-bold text-white mb-6 ${colors.gradientText}`}>
                   {editingId ? 'Edytuj Realizację' : 'Dodaj Nową Realizację'}
                 </h2>
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-4" noValidate>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-gray-300 mb-2">Tytuł *</label>
@@ -568,16 +568,10 @@ export default function AdminPage() {
                         value={formData.date || ''}
                         onChange={(e) => {
                           const dateValue = e.target.value;
-                          if (dateValue) {
-                            setFormData({ ...formData, date: dateValue });
-                          }
+                          setFormData({ ...formData, date: dateValue });
                         }}
                         className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-white/40"
-                        required
-                        min="1900-01-01"
-                        max="2100-12-31"
                         autoComplete="off"
-                        inputMode="none"
                       />
                     </div>
                     <div>
