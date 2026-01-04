@@ -598,8 +598,7 @@ export default function AdminPage() {
                       <input
                         type="file"
                         multiple
-                        accept="image/*"
-                        capture="environment"
+                        accept="image/jpeg,image/jpg,image/png,image/webp,image/gif"
                         onChange={(e) => {
                           const files = Array.from(e.target.files || []);
                           if (files.length > 5) {
@@ -609,10 +608,8 @@ export default function AdminPage() {
                           } else {
                             setFormData({ ...formData, images: files });
                           }
-                          // Reset input to allow selecting same files again
-                          e.target.value = '';
                         }}
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-white/40 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-white/20 file:text-white hover:file:bg-white/30"
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-white/40"
                         required={!editingId}
                       />
                       {formData.images.length > 0 && (
