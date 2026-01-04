@@ -168,9 +168,11 @@ export default function AdminPage() {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    e.stopPropagation(); // Stop event propagation on iOS
+  const handleSubmit = async (e?: React.FormEvent | React.MouseEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation(); // Stop event propagation on iOS
+    }
     
     setLoading(true);
 
@@ -694,7 +696,8 @@ export default function AdminPage() {
                     />
                   </div>
                   <button
-                    type="submit"
+                    type="button"
+                    onClick={handleSubmit}
                     disabled={loading}
                     className={`w-full py-3 ${colors.bgButton} text-white font-semibold rounded-lg hover:scale-105 transition-transform duration-300 ${colors.bgButtonHover} disabled:opacity-50 disabled:cursor-not-allowed`}
                   >
