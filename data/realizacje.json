@@ -1,63 +1,6 @@
 {
   "list": [
     {
-      "id": "bs-scs",
-      "title": "bs scs",
-      "shortDescription": "gacwcece",
-      "image": "/realizacje/uploads/bs-scs-1.png",
-      "category": "Konwersja USA",
-      "brand": "Porsche",
-      "date": "2026-01-04",
-      "description": "hehehe",
-      "details": [
-        "gwgwgey"
-      ],
-      "images": [
-        "/realizacje/uploads/bs-scs-1.png",
-        "/realizacje/uploads/bs-scs-2.png",
-        "/realizacje/uploads/bs-scs-3.png",
-        "/realizacje/uploads/bs-scs-4.png",
-        "/realizacje/uploads/bs-scs-5.png"
-      ]
-    },
-    {
-      "id": "tevevege",
-      "title": "tevevege",
-      "shortDescription": "gegege",
-      "image": "/realizacje/uploads/tevevege-1.png",
-      "category": "Usuwanie ADBLUE",
-      "brand": "Porsche",
-      "date": "2026-01-04",
-      "description": "zbsgshshs",
-      "details": [
-        "vagahagw"
-      ],
-      "images": [
-        "/realizacje/uploads/tevevege-1.png",
-        "/realizacje/uploads/tevevege-2.png",
-        "/realizacje/uploads/tevevege-3.png",
-        "/realizacje/uploads/tevevege-4.png",
-        "/realizacje/uploads/tevevege-5.png"
-      ]
-    },
-    {
-      "id": "gsgsbs",
-      "title": "gsgsbs",
-      "shortDescription": "zvdvsv",
-      "image": "/realizacje/uploads/gsgsbs-1.png",
-      "category": "Konwersja USA",
-      "brand": "Mercedes",
-      "date": "2026-01-04",
-      "description": "gsggs",
-      "details": [
-        "fsgsgegs"
-      ],
-      "images": [
-        "/realizacje/uploads/gsgsbs-1.png",
-        "/realizacje/uploads/gsgsbs-2.png"
-      ]
-    },
-    {
       "id": "audi-a6-c8-abs-repair",
       "title": "Audi A6 C8 - Naprawa ABS (kod błędu C123EF0)",
       "shortDescription": "Naprawa układu ABS - kod błędu C123EF0 Hydraulic Brake Booster Limit Value Reached w jednostce Bosch 9.0",
