@@ -204,18 +204,35 @@ export default function AdminPage() {
       const shortDescription = formData.shortDescription.trim();
       const description = formData.description.trim();
       const details = formData.details.trim();
+      const date = formData.date || new Date().toISOString().split('T')[0];
       
-      if (!title || !shortDescription || !description || !details) {
-        alert('Wszystkie pola tekstowe są wymagane');
+      // Validate date format (YYYY-MM-DD) - more lenient for mobile
+      const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+      if (!date || !dateRegex.test(date)) {
+        alert('Nieprawidłowy format daty. Wybierz datę z kalendarza.');
+        setLoading(false);
+        return;
+      }
+      
+      // Additional validation - ensure date is valid
+      const dateObj = new Date(date);
+      if (isNaN(dateObj.getTime())) {
+        alert('Nieprawidłowa data. Wybierz poprawną datę.');
+        setLoading(false);
+        return;
+      }
+      
+      if (!title || !shortDescription || !description || !details || !formData.category || !formData.brand) {
+        alert('Wszystkie pola są wymagane');
         setLoading(false);
         return;
       }
       
       formDataToSend.append('title', title);
       formDataToSend.append('shortDescription', shortDescription);
-      formDataToSend.append('category', formData.category || '');
-      formDataToSend.append('brand', formData.brand || '');
-      formDataToSend.append('date', formData.date || '');
+      formDataToSend.append('category', formData.category);
+      formDataToSend.append('brand', formData.brand);
+      formDataToSend.append('date', date);
       formDataToSend.append('description', description);
       formDataToSend.append('details', details);
       
@@ -504,6 +521,10 @@ export default function AdminPage() {
                         onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                         className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-white/40"
                         required
+                        autoComplete="off"
+                        autoCorrect="off"
+                        autoCapitalize="off"
+                        spellCheck="false"
                       />
                     </div>
                     <div>
@@ -514,6 +535,10 @@ export default function AdminPage() {
                         onChange={(e) => setFormData({ ...formData, shortDescription: e.target.value })}
                         className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-white/40"
                         required
+                        autoComplete="off"
+                        autoCorrect="off"
+                        autoCapitalize="off"
+                        spellCheck="false"
                       />
                     </div>
                     <div>
@@ -551,10 +576,19 @@ export default function AdminPage() {
                       <label className="block text-gray-300 mb-2">Data *</label>
                       <input
                         type="date"
-                        value={formData.date}
-                        onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                        value={formData.date || ''}
+                        onChange={(e) => {
+                          const dateValue = e.target.value;
+                          if (dateValue) {
+                            setFormData({ ...formData, date: dateValue });
+                          }
+                        }}
                         className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-white/40"
                         required
+                        min="1900-01-01"
+                        max="2100-12-31"
+                        autoComplete="off"
+                        inputMode="none"
                       />
                     </div>
                     <div>
@@ -565,6 +599,7 @@ export default function AdminPage() {
                         type="file"
                         multiple
                         accept="image/*"
+                        capture="environment"
                         onChange={(e) => {
                           const files = Array.from(e.target.files || []);
                           if (files.length > 5) {
@@ -574,8 +609,10 @@ export default function AdminPage() {
                           } else {
                             setFormData({ ...formData, images: files });
                           }
+                          // Reset input to allow selecting same files again
+                          e.target.value = '';
                         }}
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-white/40"
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-white/40 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-white/20 file:text-white hover:file:bg-white/30"
                         required={!editingId}
                       />
                       {formData.images.length > 0 && (
@@ -646,6 +683,11 @@ export default function AdminPage() {
                       rows={4}
                       className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-white/40"
                       required
+                      autoComplete="off"
+                      autoCorrect="off"
+                      autoCapitalize="off"
+                      spellCheck="true"
+                      inputMode="text"
                     />
                   </div>
                   <div>
@@ -657,6 +699,11 @@ export default function AdminPage() {
                       className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-white/40"
                       placeholder="Szczegół 1&#10;Szczegół 2&#10;Szczegół 3"
                       required
+                      autoComplete="off"
+                      autoCorrect="off"
+                      autoCapitalize="off"
+                      spellCheck="true"
+                      inputMode="text"
                     />
                   </div>
                   <button
