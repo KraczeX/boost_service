@@ -79,11 +79,21 @@ export async function POST(request: NextRequest) {
     const description = formData.get('description') as string;
     const details = (formData.get('details') as string).split('\n').filter(d => d.trim());
     
-    // Generate ID from title
+    // Generate ID from title (handle Polish characters)
     const id = title
+      .normalize('NFD') // Decompose characters (ą -> a + ˛)
+      .replace(/[\u0300-\u036f]/g, '') // Remove diacritics
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/^-+|-+$/g, '');
+    
+    // Ensure ID is not empty
+    if (!id || id.length === 0) {
+      return NextResponse.json(
+        { error: 'Tytuł musi zawierać co najmniej jedną literę lub cyfrę' },
+        { status: 400 }
+      );
+    }
 
     // Handle images
     const images: string[] = [];
