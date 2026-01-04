@@ -237,7 +237,12 @@ export default function AdminPage() {
       formDataToSend.append('details', details);
       
       if (wasEditing) {
-        formDataToSend.append('existingImages', JSON.stringify(existingImages));
+        try {
+          formDataToSend.append('existingImages', JSON.stringify(existingImages));
+        } catch (e) {
+          console.error('Error stringifying existingImages:', e);
+          formDataToSend.append('existingImages', '[]');
+        }
       }
       
       // Append images one by one with validation
@@ -298,12 +303,12 @@ export default function AdminPage() {
           }
         } else {
           // Add new realizacja to the beginning
-          setRealizacje([realizacja, ...realizacje]);
-          if (fullRealizacjeData) {
-            setFullRealizacjeData({
-              list: [realizacja, ...fullRealizacjeData.list]
-            });
-          }
+          const newRealizacje = [realizacja, ...realizacje];
+          setRealizacje(newRealizacje);
+          // Always update fullRealizacjeData to keep them in sync
+          setFullRealizacjeData({
+            list: newRealizacje
+          });
         }
         
         // Don't refresh from server - we already updated local state
@@ -529,7 +534,7 @@ export default function AdminPage() {
                 <h2 className={`text-2xl font-bold text-white mb-6 ${colors.gradientText}`}>
                   {editingId ? 'Edytuj Realizację' : 'Dodaj Nową Realizację'}
                 </h2>
-                <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+                <div className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-gray-300 mb-2">Tytuł *</label>
@@ -703,7 +708,7 @@ export default function AdminPage() {
                   >
                     {loading ? (editingId ? 'Aktualizowanie...' : 'Dodawanie...') : (editingId ? 'Zaktualizuj Realizację' : 'Dodaj Realizację')}
                   </button>
-                </form>
+                </div>
               </div>
             )}
 
