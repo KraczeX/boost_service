@@ -35,6 +35,7 @@ export default function AdminPage() {
   const [deployMessage, setDeployMessage] = useState('');
   const [existingImages, setExistingImages] = useState<string[]>([]);
   const [pendingImageBase64Data, setPendingImageBase64Data] = useState<Record<string, string>>({});
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   // Form state
   const [formData, setFormData] = useState({
@@ -313,7 +314,13 @@ export default function AdminPage() {
       }
     } catch (error) {
       console.error('Submit error:', error);
-      alert((wasEditing ? 'Błąd podczas aktualizacji realizacji' : 'Błąd podczas dodawania realizacji') + ': ' + (error instanceof Error ? error.message : 'Nieznany błąd'));
+      const errorMsg = (wasEditing ? 'Błąd podczas aktualizacji realizacji' : 'Błąd podczas dodawania realizacji') + ': ' + (error instanceof Error ? error.message : 'Nieznany błąd');
+      
+      // Show detailed error on page for debugging
+      setErrorMessage(`${errorMsg} (Szczegóły: ${error instanceof Error ? error.stack || error.toString() : JSON.stringify(error)})`);
+      setTimeout(() => setErrorMessage(''), 10000); // Clear after 10 seconds
+      
+      alert(errorMsg);
     } finally {
       setLoading(false);
     }
@@ -471,6 +478,18 @@ export default function AdminPage() {
             {deployMessage && (
               <div className={`mb-8 p-4 rounded-lg ${deployMessage.includes('Błąd') ? 'bg-red-900/20 text-red-400 border border-red-900/50' : 'bg-green-900/20 text-green-400 border border-green-900/50'}`}>
                 {deployMessage}
+              </div>
+            )}
+            {errorMessage && (
+              <div className="mb-8 p-4 rounded-lg bg-red-900/30 text-red-300 border-2 border-red-600 whitespace-pre-wrap break-words">
+                <div className="font-bold mb-2">🔴 BŁĄD (dla debugowania):</div>
+                <div className="text-sm">{errorMessage}</div>
+                <button 
+                  onClick={() => setErrorMessage('')}
+                  className="mt-2 px-3 py-1 bg-red-600 text-white rounded text-xs"
+                >
+                  Zamknij
+                </button>
               </div>
             )}
 
