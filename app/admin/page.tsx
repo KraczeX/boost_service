@@ -562,16 +562,21 @@ export default function AdminPage() {
                       </select>
                     </div>
                     <div>
-                      <label className="block text-gray-300 mb-2">Data *</label>
+                      <label className="block text-gray-300 mb-2">Data * (format: YYYY-MM-DD)</label>
                       <input
-                        type="date"
+                        type="text"
                         value={formData.date || ''}
                         onChange={(e) => {
                           const dateValue = e.target.value;
                           setFormData({ ...formData, date: dateValue });
                         }}
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-white/40"
+                        placeholder="2024-01-15"
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-white/40"
                         autoComplete="off"
+                        autoCorrect="off"
+                        autoCapitalize="off"
+                        spellCheck="false"
+                        inputMode="numeric"
                       />
                     </div>
                     <div>
