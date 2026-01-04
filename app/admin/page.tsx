@@ -184,7 +184,7 @@ export default function AdminPage() {
     }
     
     setLoading(true);
-    setErrorMessage(null); // Clear previous error
+    setErrorMessage(''); // Clear previous error
 
     const wasEditing = editingId !== null;
 
