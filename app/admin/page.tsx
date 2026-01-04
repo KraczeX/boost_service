@@ -294,17 +294,113 @@ export default function AdminPage() {
         }
       }
       
-      // Append images one by one with validation
+      // Append images one by one with validation and compression
       if (formData.images && formData.images.length > 0) {
         try {
-          formData.images.forEach((file, index) => {
-            if (file && file instanceof File && file.size > 0) {
-              formDataToSend.append('images', file);
+          let totalSize = 0;
+          const maxSizePerFile = 5 * 1024 * 1024; // 5MB per file (reduced for Netlify)
+          const maxTotalSize = 10 * 1024 * 1024; // 10MB total (reduced for Netlify)
+          
+          // Detect if device is mobile
+          const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+          
+          // More aggressive compression on mobile devices
+          const defaultMaxWidth = isMobile ? 1600 : 1920;
+          const defaultQuality = isMobile ? 0.75 : 0.85;
+          
+          // Helper function to compress image
+          const compressImage = async (file: File, maxWidth: number = defaultMaxWidth, quality: number = defaultQuality): Promise<File> => {
+            return new Promise((resolve, reject) => {
+              const reader = new FileReader();
+              reader.onload = (e) => {
+                const img = new Image();
+                img.onload = () => {
+                  const canvas = document.createElement('canvas');
+                  let width = img.width;
+                  let height = img.height;
+                  
+                  // Calculate new dimensions
+                  if (width > maxWidth) {
+                    height = (height * maxWidth) / width;
+                    width = maxWidth;
+                  }
+                  
+                  canvas.width = width;
+                  canvas.height = height;
+                  
+                  const ctx = canvas.getContext('2d');
+                  if (!ctx) {
+                    reject(new Error('Nie można utworzyć kontekstu canvas'));
+                    return;
+                  }
+                  
+                  // Draw and compress
+                  ctx.drawImage(img, 0, 0, width, height);
+                  
+                  canvas.toBlob(
+                    (blob) => {
+                      if (!blob) {
+                        reject(new Error('Nie udało się skompresować obrazu'));
+                        return;
+                      }
+                      const compressedFile = new File([blob], file.name, {
+                        type: 'image/jpeg',
+                        lastModified: Date.now(),
+                      });
+                      resolve(compressedFile);
+                    },
+                    'image/jpeg',
+                    quality
+                  );
+                };
+                img.onerror = () => reject(new Error('Błąd ładowania obrazu'));
+                img.src = e.target?.result as string;
+              };
+              reader.onerror = () => reject(new Error('Błąd odczytu pliku'));
+              reader.readAsDataURL(file);
+            });
+          };
+          
+          // Process each image
+          for (let index = 0; index < formData.images.length; index++) {
+            const file = formData.images[index];
+            if (!file || !(file instanceof File) || file.size === 0) continue;
+            
+            try {
+              let processedFile = file;
+              
+              // Always compress on mobile, or if file is larger than 1MB on desktop
+              const shouldCompress = isMobile || file.size > 1024 * 1024;
+              if (shouldCompress) {
+                setErrorMessage(`Kompresowanie zdjęcia ${index + 1}${isMobile ? ' (mobilne urządzenie)' : ''}...`);
+                processedFile = await compressImage(file, defaultMaxWidth, defaultQuality);
+              }
+              
+              // Check individual file size after compression
+              if (processedFile.size > maxSizePerFile) {
+                throw new Error(`Zdjęcie ${index + 1} jest za duże po kompresji (${(processedFile.size / 1024 / 1024).toFixed(2)}MB). Maksymalny rozmiar: 5MB`);
+              }
+              
+              totalSize += processedFile.size;
+              if (totalSize > maxTotalSize) {
+                throw new Error(`Łączny rozmiar zdjęć (${(totalSize / 1024 / 1024).toFixed(2)}MB) przekracza limit 10MB. Zmniejsz liczbę zdjęć.`);
+              }
+              
+              formDataToSend.append('images', processedFile);
+            } catch (imageError: any) {
+              const errorMsg = imageError instanceof Error ? imageError.message : 'Nieznany błąd';
+              setErrorMessage(`Błąd przetwarzania zdjęcia ${index + 1}: ${errorMsg}`);
+              alert(`Błąd przetwarzania zdjęcia ${index + 1}: ${errorMsg}`);
+              setLoading(false);
+              return;
             }
-          });
+          }
+          
+          setErrorMessage(''); // Clear compression message
         } catch (error) {
-          setErrorMessage('Błąd dodawania zdjęć: ' + (error instanceof Error ? error.message : 'Nieznany błąd'));
-          alert('Błąd dodawania zdjęć. Spróbuj ponownie.');
+          const errorMsg = error instanceof Error ? error.message : 'Nieznany błąd';
+          setErrorMessage('Błąd dodawania zdjęć: ' + errorMsg);
+          alert('Błąd dodawania zdjęć: ' + errorMsg);
           setLoading(false);
           return;
         }
