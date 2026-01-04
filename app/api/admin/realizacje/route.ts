@@ -71,13 +71,13 @@ export async function POST(request: NextRequest) {
 
     const formData = await request.formData();
     
-    const title = formData.get('title') as string;
-    const shortDescription = formData.get('shortDescription') as string;
-    const category = formData.get('category') as string;
-    const brand = formData.get('brand') as string;
-    const date = formData.get('date') as string;
-    const description = formData.get('description') as string;
-    const details = (formData.get('details') as string).split('\n').filter(d => d.trim());
+    const title = (formData.get('title') as string)?.trim() || '';
+    const shortDescription = (formData.get('shortDescription') as string)?.trim() || '';
+    const category = (formData.get('category') as string)?.trim() || '';
+    const brand = (formData.get('brand') as string)?.trim() || '';
+    const date = (formData.get('date') as string)?.trim() || '';
+    const description = (formData.get('description') as string)?.trim() || '';
+    const details = (formData.get('details') as string)?.trim().split('\n').filter(d => d.trim()) || [];
     
     // Generate ID from title (handle Polish characters)
     const id = title
@@ -100,18 +100,25 @@ export async function POST(request: NextRequest) {
     const imageBase64Data: Record<string, string> = {}; // Store base64 for Netlify
     const imageFiles = formData.getAll('images') as File[];
     
-    for (let i = 0; i < imageFiles.length; i++) {
-      const file = imageFiles[i];
-      if (file && file.size > 0) {
-        const extension = file.name.split('.').pop() || 'jpg';
-        const filename = `${id}-${i + 1}.${extension}`;
-        const imageResult = await saveImage(file, filename);
-        images.push(imageResult.path);
-        
-        // Store base64 if provided (Netlify case)
-        if (imageResult.base64) {
-          imageBase64Data[imageResult.path] = imageResult.base64;
-        }
+    // Validate images count (max 5)
+    const validImageFiles = imageFiles.filter(file => file && file.size > 0);
+    if (validImageFiles.length > 5) {
+      return NextResponse.json(
+        { error: 'Maksymalnie 5 zdjęć jest dozwolonych' },
+        { status: 400 }
+      );
+    }
+    
+    for (let i = 0; i < validImageFiles.length; i++) {
+      const file = validImageFiles[i];
+      const extension = file.name.split('.').pop() || 'jpg';
+      const filename = `${id}-${i + 1}.${extension}`;
+      const imageResult = await saveImage(file, filename);
+      images.push(imageResult.path);
+      
+      // Store base64 if provided (Netlify case)
+      if (imageResult.base64) {
+        imageBase64Data[imageResult.path] = imageResult.base64;
       }
     }
 

@@ -122,6 +122,14 @@ export default function AdminPage() {
     }
   };
 
+  const handleRemoveExistingImage = (indexToRemove: number) => {
+    if (existingImages.length <= 1 && formData.images.length === 0) {
+      alert('Musisz zachować co najmniej jedno zdjęcie');
+      return;
+    }
+    setExistingImages(existingImages.filter((_, idx) => idx !== indexToRemove));
+  };
+
   const handleDelete = async (id: string) => {
     if (!confirm('Czy na pewno chcesz usunąć tę realizację?')) {
       return;
@@ -158,15 +166,38 @@ export default function AdminPage() {
 
     const wasEditing = editingId !== null;
 
+    // Validate images count
+    const totalImagesCount = wasEditing 
+      ? existingImages.length + formData.images.length 
+      : formData.images.length;
+
+    if (totalImagesCount === 0) {
+      alert('Przynajmniej jedno zdjęcie jest wymagane');
+      setLoading(false);
+      return;
+    }
+
+    if (totalImagesCount > 5) {
+      alert('Maksymalnie 5 zdjęć jest dozwolonych');
+      setLoading(false);
+      return;
+    }
+
+    if (formData.images.length > 5) {
+      alert('Maksymalnie 5 zdjęć jest dozwolonych');
+      setLoading(false);
+      return;
+    }
+
     try {
       const formDataToSend = new FormData();
-      formDataToSend.append('title', formData.title);
-      formDataToSend.append('shortDescription', formData.shortDescription);
+      formDataToSend.append('title', formData.title.trim());
+      formDataToSend.append('shortDescription', formData.shortDescription.trim());
       formDataToSend.append('category', formData.category);
       formDataToSend.append('brand', formData.brand);
       formDataToSend.append('date', formData.date);
-      formDataToSend.append('description', formData.description);
-      formDataToSend.append('details', formData.details);
+      formDataToSend.append('description', formData.description.trim());
+      formDataToSend.append('details', formData.details.trim());
       
       if (wasEditing) {
         formDataToSend.append('existingImages', JSON.stringify(existingImages));
@@ -503,27 +534,55 @@ export default function AdminPage() {
                     </div>
                     <div>
                       <label className="block text-gray-300 mb-2">
-                        Zdjęcia {editingId ? '(opcjonalne - pozostaw puste, aby zachować istniejące)' : '*'}
+                        Zdjęcia {editingId ? '(opcjonalne - pozostaw puste, aby zachować istniejące)' : '*'} (max 5)
                       </label>
                       <input
                         type="file"
                         multiple
                         accept="image/*"
-                        onChange={(e) => setFormData({ ...formData, images: Array.from(e.target.files || []) })}
+                        onChange={(e) => {
+                          const files = Array.from(e.target.files || []);
+                          if (files.length > 5) {
+                            alert('Maksymalnie 5 zdjęć jest dozwolonych');
+                            // Keep only first 5 files
+                            setFormData({ ...formData, images: files.slice(0, 5) });
+                          } else {
+                            setFormData({ ...formData, images: files });
+                          }
+                        }}
                         className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-white/40"
                         required={!editingId}
                       />
+                      {formData.images.length > 0 && (
+                        <p className="text-gray-400 text-sm mt-1">
+                          Wybrano {formData.images.length} nowych zdjęć {formData.images.length > 5 ? '(max 5)' : ''}
+                        </p>
+                      )}
+                      {editingId && (
+                        <p className="text-gray-400 text-sm mt-1">
+                          Obecne: {existingImages.length} zdjęć | Nowe: {formData.images.length} zdjęć | Razem: {existingImages.length + formData.images.length} {(existingImages.length + formData.images.length > 5) && '(max 5)'}
+                        </p>
+                      )}
                       {editingId && existingImages.length > 0 && (
                         <div className="mt-2">
-                          <p className="text-gray-400 text-sm mb-2">Obecne zdjęcia:</p>
+                          <p className="text-gray-400 text-sm mb-2">Obecne zdjęcia (kliknij X, aby usunąć):</p>
                           <div className="flex flex-wrap gap-2">
                             {existingImages.map((img, idx) => (
-                              <img
-                                key={idx}
-                                src={img}
-                                alt={`Preview ${idx + 1}`}
-                                className="w-20 h-20 object-cover rounded border border-white/20"
-                              />
+                              <div key={idx} className="relative group">
+                                <img
+                                  src={img}
+                                  alt={`Preview ${idx + 1}`}
+                                  className="w-20 h-20 object-cover rounded border border-white/20"
+                                />
+                                <button
+                                  type="button"
+                                  onClick={() => handleRemoveExistingImage(idx)}
+                                  className="absolute -top-2 -right-2 w-6 h-6 bg-red-600 text-white rounded-full flex items-center justify-center hover:bg-red-700 transition-colors text-xs font-bold"
+                                  title="Usuń zdjęcie"
+                                >
+                                  ×
+                                </button>
+                              </div>
                             ))}
                           </div>
                         </div>
