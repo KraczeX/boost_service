@@ -169,49 +169,57 @@ export default function AdminPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    e.stopPropagation(); // Stop event propagation on iOS
+    
     setLoading(true);
 
     const wasEditing = editingId !== null;
 
-    // Validate images count
-    const totalImagesCount = wasEditing 
-      ? existingImages.length + formData.images.length 
-      : formData.images.length;
-
-    if (totalImagesCount === 0) {
-      alert('Przynajmniej jedno zdjęcie jest wymagane');
-      setLoading(false);
-      return;
-    }
-
-    if (totalImagesCount > 5) {
-      alert('Maksymalnie 5 zdjęć jest dozwolonych');
-      setLoading(false);
-      return;
-    }
-
-    if (formData.images.length > 5) {
-      alert('Maksymalnie 5 zdjęć jest dozwolonych');
-      setLoading(false);
-      return;
-    }
-
     try {
+      // Validate images count
+      const totalImagesCount = wasEditing 
+        ? existingImages.length + formData.images.length 
+        : formData.images.length;
+
+      if (totalImagesCount === 0) {
+        alert('Przynajmniej jedno zdjęcie jest wymagane');
+        setLoading(false);
+        return;
+      }
+
+      if (totalImagesCount > 5) {
+        alert('Maksymalnie 5 zdjęć jest dozwolonych');
+        setLoading(false);
+        return;
+      }
+
+      if (formData.images.length > 5) {
+        alert('Maksymalnie 5 zdjęć jest dozwolonych');
+        setLoading(false);
+        return;
+      }
+
       const formDataToSend = new FormData();
       
-      // Validate and trim all text fields before appending
-      const title = formData.title.trim();
-      const shortDescription = formData.shortDescription.trim();
-      const description = formData.description.trim();
-      const details = formData.details.trim();
+      // Validate and trim all text fields before appending - safe for iOS
+      const title = (formData.title || '').toString().trim();
+      const shortDescription = (formData.shortDescription || '').toString().trim();
+      const description = (formData.description || '').toString().trim();
+      const details = (formData.details || '').toString().trim();
+      const category = (formData.category || '').toString().trim();
+      const brand = (formData.brand || '').toString().trim();
       
       // Ensure date is set - use today if empty (mobile can sometimes have empty date)
-      let date = formData.date?.trim() || '';
-      if (!date) {
-        date = new Date().toISOString().split('T')[0];
+      let date = (formData.date || '').toString().trim();
+      if (!date || date === '') {
+        const today = new Date();
+        date = today.getFullYear() + '-' + 
+               String(today.getMonth() + 1).padStart(2, '0') + '-' + 
+               String(today.getDate()).padStart(2, '0');
       }
       
-      if (!title || !shortDescription || !description || !details || !formData.category || !formData.brand || !date) {
+      // Basic validation
+      if (!title || !shortDescription || !description || !details || !category || !brand || !date) {
         alert('Wszystkie pola są wymagane');
         setLoading(false);
         return;
@@ -219,8 +227,8 @@ export default function AdminPage() {
       
       formDataToSend.append('title', title);
       formDataToSend.append('shortDescription', shortDescription);
-      formDataToSend.append('category', formData.category);
-      formDataToSend.append('brand', formData.brand);
+      formDataToSend.append('category', category);
+      formDataToSend.append('brand', brand);
       formDataToSend.append('date', date);
       formDataToSend.append('description', description);
       formDataToSend.append('details', details);
@@ -509,11 +517,7 @@ export default function AdminPage() {
                         value={formData.title}
                         onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                         className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-white/40"
-                        required
                         autoComplete="off"
-                        autoCorrect="off"
-                        autoCapitalize="off"
-                        spellCheck="false"
                       />
                     </div>
                     <div>
@@ -523,11 +527,7 @@ export default function AdminPage() {
                         value={formData.shortDescription}
                         onChange={(e) => setFormData({ ...formData, shortDescription: e.target.value })}
                         className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-white/40"
-                        required
                         autoComplete="off"
-                        autoCorrect="off"
-                        autoCapitalize="off"
-                        spellCheck="false"
                       />
                     </div>
                     <div>
@@ -536,7 +536,6 @@ export default function AdminPage() {
                         value={formData.category}
                         onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                         className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-white/40"
-                        required
                       >
                         <option value="">Wybierz kategorię</option>
                         <option value="Chiptuning">Chiptuning</option>
@@ -551,7 +550,6 @@ export default function AdminPage() {
                         value={formData.brand}
                         onChange={(e) => setFormData({ ...formData, brand: e.target.value })}
                         className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-white/40"
-                        required
                       >
                         <option value="">Wybierz markę</option>
                         <option value="BMW">BMW</option>
@@ -573,10 +571,6 @@ export default function AdminPage() {
                         placeholder="2024-01-15"
                         className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-white/40"
                         autoComplete="off"
-                        autoCorrect="off"
-                        autoCapitalize="off"
-                        spellCheck="false"
-                        inputMode="numeric"
                       />
                     </div>
                     <div>
@@ -598,7 +592,6 @@ export default function AdminPage() {
                           }
                         }}
                         className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-white/40"
-                        required={!editingId}
                       />
                       {formData.images.length > 0 && (
                         <div className="mt-2">
@@ -667,12 +660,7 @@ export default function AdminPage() {
                       onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                       rows={4}
                       className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-white/40"
-                      required
                       autoComplete="off"
-                      autoCorrect="off"
-                      autoCapitalize="off"
-                      spellCheck="true"
-                      inputMode="text"
                     />
                   </div>
                   <div>
@@ -683,12 +671,7 @@ export default function AdminPage() {
                       rows={6}
                       className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-white/40"
                       placeholder="Szczegół 1&#10;Szczegół 2&#10;Szczegół 3"
-                      required
                       autoComplete="off"
-                      autoCorrect="off"
-                      autoCapitalize="off"
-                      spellCheck="true"
-                      inputMode="text"
                     />
                   </div>
                   <button
