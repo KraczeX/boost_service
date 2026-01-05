@@ -1,6 +1,26 @@
 {
   "list": [
     {
+      "id": "chiptuning-vw-golf-7-gti-cs-2-0tsi-cjxe-265km-342km-475nm",
+      "title": "Chiptuning VW Golf 7 GTI CS 2.0TSI CJXE 265KM / 342KM 475Nm",
+      "shortDescription": "Stage1 silnik + skrzynia DSG DQ250",
+      "image": "/realizacje/uploads/chiptuning-vw-golf-7-gti-cs-2-0tsi-cjxe-265km-342km-475nm-1.jpeg",
+      "category": "Chiptuning",
+      "brand": "Volkswagen",
+      "date": "2026-01-05",
+      "description": "Bezpiecznie wyliczona modyfikacja dla silnika CJXE",
+      "details": [
+        "Seria: 299KM 405Nm\r",
+        "Mod Stage1: 342KM 475Nm\r",
+        "Kat off \r",
+        "poprawa pracy skrzyni dq250"
+      ],
+      "images": [
+        "/realizacje/uploads/chiptuning-vw-golf-7-gti-cs-2-0tsi-cjxe-265km-342km-475nm-1.jpeg",
+        "/realizacje/uploads/chiptuning-vw-golf-7-gti-cs-2-0tsi-cjxe-265km-342km-475nm-2.jpeg"
+      ]
+    },
+    {
       "id": "konwersja-jednostki-mib3-mhi3-mpr3-audi",
       "title": "Konwersja jednostki MIB3 MHI3 MPR3 Audi",
       "shortDescription": "MIB3",
