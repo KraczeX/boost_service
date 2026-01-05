@@ -1,6 +1,32 @@
 {
   "list": [
     {
+      "id": "konwersja-usa-porsche-panamera-971",
+      "title": "Konwersja USA Porsche Panamera 971",
+      "shortDescription": "Dostosowanie Porsche Panamera 971 do Polskiego rynku",
+      "image": "/realizacje/uploads/konwersja-usa-porsche-panamera-971-1.jpeg",
+      "category": "Konwersja USA",
+      "brand": "Porsche",
+      "date": "2026-01-05",
+      "description": "Kompletna konwersja Porsche Panamera 971 z USA do PL",
+      "details": [
+        "Przerobienie lamp na miejscu na żólty kierunek \r",
+        "Dołożenie instalacji \r",
+        "Kodowanie programowanie \r",
+        "Polski jezyk jednostki PCM4.1\r",
+        "Fale EU\r",
+        "Mapa navi 2025 \r",
+        "PL jezyk w liczniku \r",
+        "kmh w liczniku"
+      ],
+      "images": [
+        "/realizacje/uploads/konwersja-usa-porsche-panamera-971-1.jpeg",
+        "/realizacje/uploads/konwersja-usa-porsche-panamera-971-2.jpeg",
+        "/realizacje/uploads/konwersja-usa-porsche-panamera-971-3.jpeg",
+        "/realizacje/uploads/konwersja-usa-porsche-panamera-971-4.jpeg"
+      ]
+    },
+    {
       "id": "chiptuning-audi-a5-f5-2-0tfsi-dkya-190km-235km-400nm",
       "title": "Chiptuning Audi A5 F5 2.0TFSI DKYA 190KM / 235KM 400Nm",
       "shortDescription": "Stage1",
