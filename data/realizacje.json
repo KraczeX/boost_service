@@ -1,6 +1,26 @@
 {
   "list": [
     {
+      "id": "podniesienie-cisnienia-oleju-porsche-cayenne-9y-3-0tfsi",
+      "title": "Podniesienie cisnienia oleju Porsche Cayenne 9Y 3.0TFSI",
+      "shortDescription": "Poprawa wady fabrycznej cisnienia oleju",
+      "image": "/realizacje/uploads/podniesienie-cisnienia-oleju-porsche-cayenne-9y-3-0tfsi-1.jpeg",
+      "category": "Chiptuning",
+      "brand": "Porsche",
+      "date": "2026-01-05",
+      "description": "Silnik EA839 posiada fabryczną wade zbyt niskiego cisnienia oleju w calym zakresie obrotow. Posiadamy opracowane przez nas rozwiazanie , na podniesienie cisnienia w oprogramowaniu sterownika silnika",
+      "details": [
+        "Podnosimy ciśnienie o 0.6-1bar w calym zakresie obrotów \r",
+        "Eliminujemy ryzyko zatarcia jednostki \r",
+        "Poprawiamy prace silnika ( ciszej pracuje)"
+      ],
+      "images": [
+        "/realizacje/uploads/podniesienie-cisnienia-oleju-porsche-cayenne-9y-3-0tfsi-1.jpeg",
+        "/realizacje/uploads/podniesienie-cisnienia-oleju-porsche-cayenne-9y-3-0tfsi-2.jpeg",
+        "/realizacje/uploads/podniesienie-cisnienia-oleju-porsche-cayenne-9y-3-0tfsi-3.jpeg"
+      ]
+    },
+    {
       "id": "audi-a6-c8-abs-repair",
       "title": "Audi A6 C8 - Naprawa ABS (kod błędu C123EF0)",
       "shortDescription": "Naprawa układu ABS - kod błędu C123EF0 Hydraulic Brake Booster Limit Value Reached w jednostce Bosch 9.0",
