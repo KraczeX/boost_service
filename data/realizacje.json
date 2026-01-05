@@ -1,45 +1,69 @@
 {
   "list": [
     {
-      "id": "chiptuning-mercedes-vito-114cdi-2-0cdi-136km-245km-472nm",
-      "title": "Chiptuning Mercedes Vito 114CDI 2.0CDI 136KM / 245KM 472Nm",
-      "shortDescription": "Najsłabsza odmiana silnika 2.0 dostala nazbedny zastrzyk mocy",
-      "image": "/realizacje/uploads/chiptuning-mercedes-vito-114cdi-2-0cdi-136km-245km-472nm-1.jpeg",
-      "category": "Chiptuning",
-      "brand": "Mercedes",
+      "id": "konwersja-usa-audi-q8-2023r",
+      "title": "Konwersja USA Audi Q8 2023r",
+      "shortDescription": "Kompletna konwersja Audi Q8 z USA na PL",
+      "image": "/realizacje/uploads/konwersja-usa-audi-q8-2023r-1.jpeg",
+      "category": "Konwersja USA",
+      "brand": "Audi",
       "date": "2026-01-05",
-      "description": "Auto w najslabszej wersji silnikowej ograniczonej softowo. To dokładnie ten sam silnik co 194KM jednak producent zablokował go na 136KM",
+      "description": "Wykonanie kompletnej konwersji Audi Q8",
       "details": [
-        "Seria 136KM 330KM \r",
-        "mod Stage1 245KM 472Nm \r",
-        "Większa moc i moment \r",
-        "Lepsza elastyczność"
+        "Przerobienie lamp u nas na miejscu \r",
+        "Dołożenie brakującej instalacji \r",
+        "Dołożenie światła przeciwgielnego w zderzak \r",
+        "Polski język jednostki MIB3 \r",
+        "Europejskie fale radiowe\r",
+        "Mapy nawigacji 2025 \r",
+        "Aktywacja czytania znaków\r",
+        "Polski lektor"
       ],
       "images": [
-        "/realizacje/uploads/chiptuning-mercedes-vito-114cdi-2-0cdi-136km-245km-472nm-1.jpeg",
-        "/realizacje/uploads/chiptuning-mercedes-vito-114cdi-2-0cdi-136km-245km-472nm-2.jpeg"
+        "/realizacje/uploads/konwersja-usa-audi-q8-2023r-1.jpeg",
+        "/realizacje/uploads/konwersja-usa-audi-q8-2023r-2.jpeg",
+        "/realizacje/uploads/konwersja-usa-audi-q8-2023r-3.jpeg",
+        "/realizacje/uploads/konwersja-usa-audi-q8-2023r-4.jpeg",
+        "/realizacje/uploads/konwersja-usa-audi-q8-2023r-5.jpeg"
       ]
     },
     {
-      "id": "konwersja-usa-mercedes-glc254-2024r",
-      "title": "Konwersja USA Mercedes GLC254 2024r",
-      "shortDescription": "Konwersja multimediów HU7 NTG7",
-      "image": "/realizacje/uploads/konwersja-usa-mercedes-glc254-2024r-1.jpeg",
-      "category": "Konwersja USA",
-      "brand": "Mercedes",
+      "id": "odblokowanie-ukladu-48v-audi-a6-c8-a7-a8-3-0tdi-3-0tfsi",
+      "title": "Odblokowanie ukladu 48V Audi A6 C8 A7 A8 3.0TDI 3.0TFSI",
+      "shortDescription": "Odblokowanie akumulatora 48V po kolizji",
+      "image": "/realizacje/uploads/odblokowanie-ukladu-48v-audi-a6-c8-a7-a8-3-0tdi-3-0tfsi-1.jpeg",
+      "category": "Naprawa elektroniki",
+      "brand": "Audi",
       "date": "2026-01-05",
-      "description": "Kompletna konwersja systemów HU7 NTG7 w najnowszych mercedesach juz dostepna u nas.",
+      "description": "Naprawa / Odblokowanie akumulatora 48V w Audi po kolizji.",
       "details": [
-        "Polski język jednostki HU7 NTG7 \r",
-        "Najnowsze mapy EU \r",
-        "Polskie jednostki licznik i klimatyzacja"
+        "Przywrocenie funkcji ładowania \r",
+        "Pełne naładowanie baterii \r",
+        "Odblokowanie crash \r",
+        "Naprawa ukladu"
       ],
       "images": [
-        "/realizacje/uploads/konwersja-usa-mercedes-glc254-2024r-1.jpeg",
-        "/realizacje/uploads/konwersja-usa-mercedes-glc254-2024r-2.jpeg",
-        "/realizacje/uploads/konwersja-usa-mercedes-glc254-2024r-3.jpeg",
-        "/realizacje/uploads/konwersja-usa-mercedes-glc254-2024r-4.jpeg",
-        "/realizacje/uploads/konwersja-usa-mercedes-glc254-2024r-5.jpeg"
+        "/realizacje/uploads/odblokowanie-ukladu-48v-audi-a6-c8-a7-a8-3-0tdi-3-0tfsi-1.jpeg"
+      ]
+    },
+    {
+      "id": "podniesienie-cisnienia-oleju-porsche-cayenne-9y-3-0tfsi",
+      "title": "Podniesienie cisnienia oleju Porsche Cayenne 9Y 3.0TFSI",
+      "shortDescription": "Poprawa wady fabrycznej cisnienia oleju",
+      "image": "/realizacje/uploads/podniesienie-cisnienia-oleju-porsche-cayenne-9y-3-0tfsi-1.jpeg",
+      "category": "Chiptuning",
+      "brand": "Porsche",
+      "date": "2026-01-05",
+      "description": "Silnik EA839 posiada fabryczną wade zbyt niskiego cisnienia oleju w calym zakresie obrotow. Posiadamy opracowane przez nas rozwiazanie , na podniesienie cisnienia w oprogramowaniu sterownika silnika",
+      "details": [
+        "Podnosimy ciśnienie o 0.6-1bar w calym zakresie obrotów \r",
+        "Eliminujemy ryzyko zatarcia jednostki \r",
+        "Poprawiamy prace silnika ( ciszej pracuje)"
+      ],
+      "images": [
+        "/realizacje/uploads/podniesienie-cisnienia-oleju-porsche-cayenne-9y-3-0tfsi-1.jpeg",
+        "/realizacje/uploads/podniesienie-cisnienia-oleju-porsche-cayenne-9y-3-0tfsi-2.jpeg",
+        "/realizacje/uploads/podniesienie-cisnienia-oleju-porsche-cayenne-9y-3-0tfsi-3.jpeg"
       ]
     },
     {
