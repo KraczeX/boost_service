@@ -1,6 +1,24 @@
 {
   "list": [
     {
+      "id": "usuniecie-adblue-audi-sq7-4-0tdi",
+      "title": "Usuniecie AdBlue Audi SQ7 4.0TDI",
+      "shortDescription": "AdBlue usuniecie",
+      "image": "/realizacje/uploads/usuniecie-adblue-audi-sq7-4-0tdi-1.jpeg",
+      "category": "Usuwanie ADBLUE",
+      "brand": "Audi",
+      "date": "2026-01-05",
+      "description": "Kompletne usuniecie ukladu AdBlue z Audi SQ7 4.0TDI ze sterownikiem MD1CP014",
+      "details": [
+        "Brak problemów z ukladem \r",
+        "Nie trzeba tankować AdBlue \r",
+        "Brak dodatkowych kosztów"
+      ],
+      "images": [
+        "/realizacje/uploads/usuniecie-adblue-audi-sq7-4-0tdi-1.jpeg"
+      ]
+    },
+    {
       "id": "chiptuning-vw-arteon-2-0tdi-dtua-200km-skrzynia-dq381-245km-483nm",
       "title": "Chiptuning VW Arteon 2.0TDI DTUA 200KM + skrzynia DQ381 245KM 483Nm",
       "shortDescription": "Stage1 silnik + skrzynia DQ381",
