@@ -1,6 +1,26 @@
 {
   "list": [
     {
+      "id": "kalibracja-radaru-acc-vw-golf-aktywny-tempomat",
+      "title": "Kalibracja radaru ACC VW Golf aktywny tempomat",
+      "shortDescription": "Kalibracja radaru ACC",
+      "image": "/realizacje/uploads/kalibracja-radaru-acc-vw-golf-aktywny-tempomat-1.jpeg",
+      "category": "Naprawa elektroniki",
+      "brand": "Volkswagen",
+      "date": "2026-01-02",
+      "description": "Kalibracja radaru ACC w VW Golf po kolizji.",
+      "details": [
+        "Kalibracja ACC \r",
+        "Aktywny tempomat \r",
+        "Ustawione na 0.00 \r",
+        "Brak błędów \r",
+        "Możliwosc kalibracji we wszystkich markach"
+      ],
+      "images": [
+        "/realizacje/uploads/kalibracja-radaru-acc-vw-golf-aktywny-tempomat-1.jpeg"
+      ]
+    },
+    {
       "id": "usuniecie-adblue-mercedes-c180-w205",
       "title": "Usunięcie AdBlue Mercedes C180 W205",
       "shortDescription": "AdBlue Off",
