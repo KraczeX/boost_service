@@ -1,30 +1,29 @@
 {
   "list": [
     {
-      "id": "konwersja-usa-pl-mercedes-glc-253-lift-2023r",
-      "title": "Konwersja USA PL Mercedes GLC 253 Lift 2023r",
+      "id": "konwersja-usa-pl-porsche-cayenne-9y-2020r",
+      "title": "Konwersja USA PL Porsche Cayenne 9Y 2020r",
       "shortDescription": "Konwersja USA PL",
-      "image": "/realizacje/uploads/konwersja-usa-pl-mercedes-glc-253-lift-2023r-1.jpeg",
+      "image": "/realizacje/uploads/konwersja-usa-pl-porsche-cayenne-9y-2020r-1.jpeg",
       "category": "Konwersja USA",
-      "brand": "Mercedes",
+      "brand": "Porsche",
       "date": "2026-01-05",
-      "description": "Dostosowanie Mercedes GLC 253 do Polskich warunków.",
+      "description": "Dostosowanie Porsche Cayenne 9Y do Polskich wymogów",
       "details": [
-        "Przerobienie lamp u nas na miejscu \r",
-        "Przerobienie instalacji \r",
-        "Kodowanie SAM Rear \r",
-        "Polski język jednostki HU6 NTG6\r",
+        "Przerobienie lamp na żółty kierunek \r",
+        "Kodowanie BCM\r",
+        "Polski język jednostki PCM5.0 MH2p\r",
         "Najnowsza nawigacja EU\r",
-        "Europejskie fale radiowe\r",
-        "Jednostki w liczniku EU \r",
-        "Usuniecie Side Marker"
+        "Loga stacji radiowych \r",
+        "Baza gracenote \r",
+        "Europejskie jednostki w liczniku"
       ],
       "images": [
-        "/realizacje/uploads/konwersja-usa-pl-mercedes-glc-253-lift-2023r-1.jpeg",
-        "/realizacje/uploads/konwersja-usa-pl-mercedes-glc-253-lift-2023r-2.jpeg",
-        "/realizacje/uploads/konwersja-usa-pl-mercedes-glc-253-lift-2023r-3.jpeg",
-        "/realizacje/uploads/konwersja-usa-pl-mercedes-glc-253-lift-2023r-4.jpeg",
-        "/realizacje/uploads/konwersja-usa-pl-mercedes-glc-253-lift-2023r-5.jpeg"
+        "/realizacje/uploads/konwersja-usa-pl-porsche-cayenne-9y-2020r-1.jpeg",
+        "/realizacje/uploads/konwersja-usa-pl-porsche-cayenne-9y-2020r-2.jpeg",
+        "/realizacje/uploads/konwersja-usa-pl-porsche-cayenne-9y-2020r-3.jpeg",
+        "/realizacje/uploads/konwersja-usa-pl-porsche-cayenne-9y-2020r-4.jpeg",
+        "/realizacje/uploads/konwersja-usa-pl-porsche-cayenne-9y-2020r-5.jpeg"
       ]
     },
     {
