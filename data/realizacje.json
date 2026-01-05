@@ -1,30 +1,33 @@
 {
   "list": [
     {
-      "id": "konwersja-usa-pl-mercedes-glc-253-lift",
-      "title": "Konwersja USA PL Mercedes GLC 253 Lift",
+      "id": "konwersja-usa-pl-audi-q3-83a",
+      "title": "Konwersja USA PL Audi Q3 83A",
       "shortDescription": "Konwersja USA PL",
-      "image": "/realizacje/uploads/konwersja-usa-pl-mercedes-glc-253-lift-1.jpeg",
+      "image": "/realizacje/uploads/konwersja-usa-pl-audi-q3-83a-1.jpeg",
       "category": "Konwersja USA",
-      "brand": "Mercedes",
-      "date": "2026-01-05",
-      "description": "Kompletna usługa dostowania pojazdu do Polskich warunków",
+      "brand": "Audi",
+      "date": "2025-01-01",
+      "description": "Kompletna konwersja USA PL w Audi Q3 83A",
       "details": [
-        "Przerobienie lamp na miejscu\r",
-        "Przerobienie instalacji \r",
-        "Kodowanie Sam Rear \r",
-        "Polski jezyk jednostki HU6 NTG6\r",
-        "Najnowsza nawigacja\r",
-        "Loga stacji radiowych\r",
-        "Europejskie fale radiowe \r",
-        "Jednostki Europejskie w liczniku"
+        "Przerobienie lamp na miejscu \r",
+        "Dołożenie instalacji \r",
+        "Kodowanie BCM 09\r",
+        "Dołożenie światła mgielnego + włącznik \r",
+        "Polski język jednostki MH2p\r",
+        "Najnowsza nawigacja EU\r",
+        "Jednostki Europejskie w liczniku \r",
+        "Loga stacji radiowych \r",
+        "Lektor PL \r",
+        "Baza Gracenote \r",
+        "Czytanie znaków drogowych"
       ],
       "images": [
-        "/realizacje/uploads/konwersja-usa-pl-mercedes-glc-253-lift-1.jpeg",
-        "/realizacje/uploads/konwersja-usa-pl-mercedes-glc-253-lift-2.jpeg",
-        "/realizacje/uploads/konwersja-usa-pl-mercedes-glc-253-lift-3.jpeg",
-        "/realizacje/uploads/konwersja-usa-pl-mercedes-glc-253-lift-4.jpeg",
-        "/realizacje/uploads/konwersja-usa-pl-mercedes-glc-253-lift-5.jpeg"
+        "/realizacje/uploads/konwersja-usa-pl-audi-q3-83a-1.jpeg",
+        "/realizacje/uploads/konwersja-usa-pl-audi-q3-83a-2.jpeg",
+        "/realizacje/uploads/konwersja-usa-pl-audi-q3-83a-3.jpeg",
+        "/realizacje/uploads/konwersja-usa-pl-audi-q3-83a-4.jpeg",
+        "/realizacje/uploads/konwersja-usa-pl-audi-q3-83a-5.jpeg"
       ]
     },
     {
