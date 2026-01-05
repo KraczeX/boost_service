@@ -1,6 +1,27 @@
 {
   "list": [
     {
+      "id": "chiptuning-audi-s3-8v-2-0tfsi-310km-dnue-351km-508nm",
+      "title": "Chiptuning Audi S3 8V 2.0TFSI 310KM DNUE 351KM / 508Nm",
+      "shortDescription": "Stage1 silnik + skrzynia DQ381",
+      "image": "/realizacje/uploads/chiptuning-audi-s3-8v-2-0tfsi-310km-dnue-351km-508nm-1.jpeg",
+      "category": "Chiptuning",
+      "brand": "Audi",
+      "date": "2024-01-05",
+      "description": "Bezpiecznie napisany Stage1 pod silnik DNUE",
+      "details": [
+        "Seria: 305KM 400Nm\r",
+        "Mod Stage1: 351KM 508Nm\r",
+        "Wyłączenie Start&Stop \r",
+        "Natychmiastowa reakcja na gaz \r",
+        "Poprawa pracy skrzyni biegów"
+      ],
+      "images": [
+        "/realizacje/uploads/chiptuning-audi-s3-8v-2-0tfsi-310km-dnue-351km-508nm-1.jpeg",
+        "/realizacje/uploads/chiptuning-audi-s3-8v-2-0tfsi-310km-dnue-351km-508nm-2.jpeg"
+      ]
+    },
+    {
       "id": "chiptuning-vw-golf-7-gti-cs-2-0tsi-cjxe-265km-342km-475nm",
       "title": "Chiptuning VW Golf 7 GTI CS 2.0TSI CJXE 265KM / 342KM 475Nm",
       "shortDescription": "Stage1 silnik + skrzynia DSG DQ250",
