@@ -1,6 +1,27 @@
 {
   "list": [
     {
+      "id": "chiptuning-vw-golf-8-gti-2-0tsi-300km-dnfc-404km-560nm",
+      "title": "Chiptuning VW Golf 8 GTI 2.0TSI 300KM DNFC 404KM 560Nm",
+      "shortDescription": "Stage1 + GPF OFF + Downpipe",
+      "image": "/realizacje/uploads/chiptuning-vw-golf-8-gti-2-0tsi-300km-dnfc-404km-560nm-1.jpeg",
+      "category": "Chiptuning",
+      "brand": "Volkswagen",
+      "date": "2026-01-05",
+      "description": "Po wyrzuceniu filtra GPF i montażu DP mamy bardzo duży przyrost mocy i momentu",
+      "details": [
+        "Seria: 320KM 430Nm\r",
+        "Mod Stage1: 404KM 560Nm\r",
+        "Auto stało sie bardzo szybkie \r",
+        "Momentalnie wciska w fotel po dodaniu gazu"
+      ],
+      "images": [
+        "/realizacje/uploads/chiptuning-vw-golf-8-gti-2-0tsi-300km-dnfc-404km-560nm-1.jpeg",
+        "/realizacje/uploads/chiptuning-vw-golf-8-gti-2-0tsi-300km-dnfc-404km-560nm-2.jpeg",
+        "/realizacje/uploads/chiptuning-vw-golf-8-gti-2-0tsi-300km-dnfc-404km-560nm-3.jpeg"
+      ]
+    },
+    {
       "id": "chiptuning-audi-a6-c8-2-0tdi-204km-dtpa",
       "title": "Chiptuning Audi A6 C8 2.0TDI 204KM DTPA",
       "shortDescription": "Stage1",
