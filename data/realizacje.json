@@ -1,6 +1,26 @@
 {
   "list": [
     {
+      "id": "podniesienie-cisnienia-oleju-audi-q8-50tdi-3-0tdi-286km",
+      "title": "Podniesienie cisnienia oleju Audi Q8 50TDI 3.0TDI 286KM",
+      "shortDescription": "Zbyt niskie cisnienie oleju",
+      "image": "/realizacje/uploads/podniesienie-cisnienia-oleju-audi-q8-50tdi-3-0tdi-286km-1.jpeg",
+      "category": "Chiptuning",
+      "brand": "Audi",
+      "date": "2026-01-05",
+      "description": "Silniki 3.0TDI w grupie VAG cierpią na zbyt niskie cisnienie oleju. Nasze autorskie rozwiązanie orpogramowania podnosi ciśnienie w calym zakresie pracy.",
+      "details": [
+        "Podniesienie cisnienia o 0.6-1bar \r",
+        "Zapobiegamy zatarciu silnika \r",
+        "Cichsza praca \r",
+        "Mniejsze tarcie"
+      ],
+      "images": [
+        "/realizacje/uploads/podniesienie-cisnienia-oleju-audi-q8-50tdi-3-0tdi-286km-1.jpeg",
+        "/realizacje/uploads/podniesienie-cisnienia-oleju-audi-q8-50tdi-3-0tdi-286km-2.jpeg"
+      ]
+    },
+    {
       "id": "kalibracja-radaru-acc-bmw-x5m-g05",
       "title": "Kalibracja radaru ACC BMW X5M G05",
       "shortDescription": "Kalibracja radaru ACC",
