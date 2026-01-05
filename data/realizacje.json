@@ -1,6 +1,28 @@
 {
   "list": [
     {
+      "id": "chiptuning-bmw-x5-f15-35i-3-0-306km",
+      "title": "Chiptuning BMW X5 F15 35i 3.0 306KM",
+      "shortDescription": "Stage1 silnika N55",
+      "image": "/realizacje/uploads/chiptuning-bmw-x5-f15-35i-3-0-306km-1.jpeg",
+      "category": "Chiptuning",
+      "brand": "BMW",
+      "date": "2026-01-05",
+      "description": "Standardowy Stage1 dla silnika N55 z BMW",
+      "details": [
+        "Seria: 294KM 419Nm\r",
+        "Mod Stage1: 393KM / 607Nm\r",
+        "Bardzo ladny bezpieczny przyrost mocy \r",
+        "Wysoka elastyczność \r",
+        "Szybka reakcja na gaz"
+      ],
+      "images": [
+        "/realizacje/uploads/chiptuning-bmw-x5-f15-35i-3-0-306km-1.jpeg",
+        "/realizacje/uploads/chiptuning-bmw-x5-f15-35i-3-0-306km-2.png",
+        "/realizacje/uploads/chiptuning-bmw-x5-f15-35i-3-0-306km-3.jpeg"
+      ]
+    },
+    {
       "id": "chiptuning-stage2-vw-golf-7-5r-djha-2-0tsi-310km-380km-540nm",
       "title": "Chiptuning Stage2 VW Golf 7.5R DJHA 2.0TSI 310KM / 380KM 540Nm",
       "shortDescription": "Stage2 silnik + skrzynia DQ381",
