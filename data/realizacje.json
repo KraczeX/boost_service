@@ -1,6 +1,25 @@
 {
   "list": [
     {
+      "id": "usuniecie-adblue-peugeot-308-1-6e-hdi",
+      "title": "Usunięcie AdBlue Peugeot 308 1.6e-HDI",
+      "shortDescription": "AdBlue off",
+      "image": "/realizacje/uploads/usuniecie-adblue-peugeot-308-1-6e-hdi-1.jpeg",
+      "category": "Usuwanie ADBLUE",
+      "brand": "Peugeot",
+      "date": "2026-01-05",
+      "description": "Całkowite pozbycie się systemu Adblue z samochodu.",
+      "details": [
+        "Brak błędów \r",
+        "Usunięcie blokady rozruchu \r",
+        "Brak kosztownych napraw \r",
+        "Praca DPF bez zmian"
+      ],
+      "images": [
+        "/realizacje/uploads/usuniecie-adblue-peugeot-308-1-6e-hdi-1.jpeg"
+      ]
+    },
+    {
       "id": "chiptuning-audi-a6-c7-3-0bitdi-326km-cvub-372km-733nm",
       "title": "Chiptuning Audi A6 C7 3.0BiTDI 326KM CVUB 372KM 733Nm",
       "shortDescription": "Stage1 silnik + skrznia 8HP",
