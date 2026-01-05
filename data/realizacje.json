@@ -1,6 +1,26 @@
 {
   "list": [
     {
+      "id": "kalibracja-radaru-acc-bmw-x5m-g05",
+      "title": "Kalibracja radaru ACC BMW X5M G05",
+      "shortDescription": "Kalibracja radaru ACC",
+      "image": "/realizacje/uploads/kalibracja-radaru-acc-bmw-x5m-g05-1.jpeg",
+      "category": "Naprawa elektroniki",
+      "brand": "BMW",
+      "date": "2026-01-05",
+      "description": "Wymiana , dopisanie i kalibracja radaru ACC",
+      "details": [
+        "Programowanie pod nr VIN \r",
+        "Wstępna regulacja \r",
+        "Kalibracja układu\r",
+        "Jazda testowa"
+      ],
+      "images": [
+        "/realizacje/uploads/kalibracja-radaru-acc-bmw-x5m-g05-1.jpeg",
+        "/realizacje/uploads/kalibracja-radaru-acc-bmw-x5m-g05-2.jpeg"
+      ]
+    },
+    {
       "id": "konwersja-usa-pl-mercedes-gle-167-v167",
       "title": "Konwersja USA PL Mercedes GLE 167 V167",
       "shortDescription": "Konwersja USA PL",
