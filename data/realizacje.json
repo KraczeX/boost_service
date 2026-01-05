@@ -1,6 +1,28 @@
 {
   "list": [
     {
+      "id": "chiptuning-audi-a4-b9-2-0tfsi-cyrb-252km-327km-468nm",
+      "title": "Chiptuning Audi A4 B9 2.0TFSI CYRB 252KM / 327KM 468Nm",
+      "shortDescription": "Chiptuning Stage1 Audi A4 B9 2.0TFSI 252KM CYRB",
+      "image": "/realizacje/uploads/chiptuning-audi-a4-b9-2-0tfsi-cyrb-252km-327km-468nm-1.jpeg",
+      "category": "Chiptuning",
+      "brand": "Audi",
+      "date": "2026-01-05",
+      "description": "Chiptuning silnika i skrzyni biegów DL382 \r\nStandardowy Stage1 dla silnika 2.0TFSI 252KM CYRB",
+      "details": [
+        "Seria 270KM 397Nm\r",
+        "Mod Stage1 327KM 468Nm\r",
+        "Lepsza dynamika \r",
+        "Natychmiastowa reakcja na gaz \r",
+        "Poprawa pracy skrzyni biegów \r",
+        "Podniesione punkty zmiany"
+      ],
+      "images": [
+        "/realizacje/uploads/chiptuning-audi-a4-b9-2-0tfsi-cyrb-252km-327km-468nm-1.jpeg",
+        "/realizacje/uploads/chiptuning-audi-a4-b9-2-0tfsi-cyrb-252km-327km-468nm-2.jpeg"
+      ]
+    },
+    {
       "id": "mozliwosc-usuniecia-adblue-w-zablokowanych-sterownikach-iveco-md1cs069-po-2022r",
       "title": "Możliwość usuniecia AdBlue w zablokowanych sterownikach Iveco MD1CS069 po 2022r",
       "shortDescription": "Usuniecie AdBlue w Iveco po 2022r",
