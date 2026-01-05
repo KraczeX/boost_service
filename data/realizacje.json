@@ -1,6 +1,28 @@
 {
   "list": [
     {
+      "id": "chiptuning-audi-a5-f5-2-0tfsi-dkya-190km-235km-400nm",
+      "title": "Chiptuning Audi A5 F5 2.0TFSI DKYA 190KM / 235KM 400Nm",
+      "shortDescription": "Stage1",
+      "image": "/realizacje/uploads/chiptuning-audi-a5-f5-2-0tfsi-dkya-190km-235km-400nm-1.jpeg",
+      "category": "Chiptuning",
+      "brand": "Audi",
+      "date": "2026-01-05",
+      "description": "Chiptuning silnik i skrzynia Stage1 w Audi A5 F5 2.0TFSI 190KM \r\nMoc po modyfikacji to 235KM / 400Nm",
+      "details": [
+        "Seria: 200KM 329Nm\r",
+        "Mod Stage1: 235KM 400Nm\r",
+        "Poprawa pracy skrzyni biegów DL382\r",
+        "Podniesione punkty zmiany \r",
+        "Lepsza reakcja na gaz \r",
+        "Brak laga"
+      ],
+      "images": [
+        "/realizacje/uploads/chiptuning-audi-a5-f5-2-0tfsi-dkya-190km-235km-400nm-1.jpeg",
+        "/realizacje/uploads/chiptuning-audi-a5-f5-2-0tfsi-dkya-190km-235km-400nm-2.jpeg"
+      ]
+    },
+    {
       "id": "chiptuning-audi-a4-b9-2-0tfsi-cyrb-252km-327km-468nm",
       "title": "Chiptuning Audi A4 B9 2.0TFSI CYRB 252KM / 327KM 468Nm",
       "shortDescription": "Chiptuning Stage1 Audi A4 B9 2.0TFSI 252KM CYRB",
