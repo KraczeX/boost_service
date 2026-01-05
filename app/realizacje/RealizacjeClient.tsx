@@ -91,7 +91,7 @@ export default function RealizacjeClient({ realizacje }: RealizacjeClientProps) 
               >
                 Wszystkie
               </button>
-              {['BMW', 'Audi', 'Mercedes', 'Porsche', 'Volkswagen'].map((brand) => (
+              {['BMW', 'Audi', 'Mercedes', 'Porsche', 'Volkswagen', 'Volvo', 'Peugeot', 'Citroen', 'Ford', 'Seat', 'Skoda'].map((brand) => (
                 <button
                   key={brand}
                   onClick={() => setSelectedBrand(brand)}

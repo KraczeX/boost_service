@@ -798,6 +798,12 @@ export default function AdminPage() {
                         <option value="Mercedes">Mercedes</option>
                         <option value="Porsche">Porsche</option>
                         <option value="Volkswagen">Volkswagen</option>
+                        <option value="Volvo">Volvo</option>
+                        <option value="Peugeot">Peugeot</option>
+                        <option value="Citroen">Citroen</option>
+                        <option value="Ford">Ford</option>
+                        <option value="Seat">Seat</option>
+                        <option value="Skoda">Skoda</option>
                       </select>
                     </div>
                     <div>
