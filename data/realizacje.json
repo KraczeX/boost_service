@@ -1,6 +1,24 @@
 {
   "list": [
     {
+      "id": "usuniecie-adblue-mercedes-c180-w205",
+      "title": "Usunięcie AdBlue Mercedes C180 W205",
+      "shortDescription": "AdBlue Off",
+      "image": "/realizacje/uploads/usuniecie-adblue-mercedes-c180-w205-1.jpeg",
+      "category": "Usuwanie ADBLUE",
+      "brand": "Mercedes",
+      "date": "2026-01-01",
+      "description": "Całkowite wyprogramowanie systemu AdBlue z Mercedes C180 W205 1.6CDI na sterowniku EDC17c66",
+      "details": [
+        "Usunięcie blokady rozruchu \r",
+        "Brak błędów w całym aucie\r",
+        "Brak konieczności dolewania mocznika"
+      ],
+      "images": [
+        "/realizacje/uploads/usuniecie-adblue-mercedes-c180-w205-1.jpeg"
+      ]
+    },
+    {
       "id": "usuniecie-adblue-peugeot-308-1-6e-hdi",
       "title": "Usunięcie AdBlue Peugeot 308 1.6e-HDI",
       "shortDescription": "AdBlue off",
