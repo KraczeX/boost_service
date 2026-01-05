@@ -1,6 +1,25 @@
 {
   "list": [
     {
+      "id": "chiptuning-vw-golf-7-5r-2-0tsi-310km-378km-512nm",
+      "title": "Chiptuning VW Golf 7.5R 2.0TSI 310KM / 378KM 512NM",
+      "shortDescription": "Stage1 silnik + skrzynia DSG",
+      "image": "/realizacje/uploads/chiptuning-vw-golf-7-5r-2-0tsi-310km-378km-512nm-1.jpeg",
+      "category": "Chiptuning",
+      "brand": "Volkswagen",
+      "date": "2026-01-05",
+      "description": "Standardowa modyfikacja Stage1 silnika i skrzyni dla Golfa 7.5R",
+      "details": [
+        "Seria: 318KM / 428Nm\r",
+        "Mod Stage1: 378KM / 512Nm\r",
+        "Aktywacja Pops&Bangs w trybie Sport"
+      ],
+      "images": [
+        "/realizacje/uploads/chiptuning-vw-golf-7-5r-2-0tsi-310km-378km-512nm-1.jpeg",
+        "/realizacje/uploads/chiptuning-vw-golf-7-5r-2-0tsi-310km-378km-512nm-2.jpeg"
+      ]
+    },
+    {
       "id": "chiptuning-vw-golf-8-gti-2-0tsi-300km-dnfc-404km-560nm",
       "title": "Chiptuning VW Golf 8 GTI 2.0TSI 300KM DNFC 404KM 560Nm",
       "shortDescription": "Stage1 + GPF OFF + Downpipe",
