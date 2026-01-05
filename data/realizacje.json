@@ -1,6 +1,26 @@
 {
   "list": [
     {
+      "id": "chiptuning-vw-golf-8-2-0tdi-115km-dtrd-183km-365nm",
+      "title": "Chiptuning VW Golf 8 2.0TDI 115KM DTRD 183Km 365Nm",
+      "shortDescription": "Stage1",
+      "image": "/realizacje/uploads/chiptuning-vw-golf-8-2-0tdi-115km-dtrd-183km-365nm-1.jpeg",
+      "category": "Chiptuning",
+      "brand": "Volkswagen",
+      "date": "2026-01-05",
+      "description": "Na warsztacie mieliśmy okazje zająć się najsłabszą odmianą 2.0TDI w Golfie 8 , jest to wykastrowana softowo wersja silnika 150KM. Auto na zablokowanym sterowniku MD1CS004 od jakiegoś czasu nie stanowi dla nas problemu ich modyfikacja",
+      "details": [
+        "Seria: 127KM 311Nm\r",
+        "Mod Stage1: 183KM 365Nm\r",
+        "Dużo lepsza reakcja na gaz \r",
+        "Większa elastycznosc w calym zakresie pracy silnika"
+      ],
+      "images": [
+        "/realizacje/uploads/chiptuning-vw-golf-8-2-0tdi-115km-dtrd-183km-365nm-1.jpeg",
+        "/realizacje/uploads/chiptuning-vw-golf-8-2-0tdi-115km-dtrd-183km-365nm-2.jpeg"
+      ]
+    },
+    {
       "id": "konwersja-usa-porsche-panamera-971",
       "title": "Konwersja USA Porsche Panamera 971",
       "shortDescription": "Dostosowanie Porsche Panamera 971 do Polskiego rynku",
