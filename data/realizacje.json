@@ -1,6 +1,29 @@
 {
   "list": [
     {
+      "id": "chiptuning-vw-arteon-2-0tdi-dtua-200km-skrzynia-dq381-245km-483nm",
+      "title": "Chiptuning VW Arteon 2.0TDI DTUA 200KM + skrzynia DQ381 245KM 483Nm",
+      "shortDescription": "Stage1 silnik + skrzynia DQ381",
+      "image": "/realizacje/uploads/chiptuning-vw-arteon-2-0tdi-dtua-200km-skrzynia-dq381-245km-483nm-1.jpeg",
+      "category": "Chiptuning",
+      "brand": "Volkswagen",
+      "date": "2026-01-05",
+      "description": "Kompletny Stage1 dla silnika 2.0TDI 200KM DTUA z sterownikiem MD1CS004",
+      "details": [
+        "Seria: 209KM 420Nm\r",
+        "Mod Stage1: 245Km 483Nm\r",
+        "Lepsza reakcja na gaz \r",
+        "Brak tzw. Laga \r",
+        "Poprawa pracy skrzyni DSG \r",
+        "Podniesione punkty zmiany biegów"
+      ],
+      "images": [
+        "/realizacje/uploads/chiptuning-vw-arteon-2-0tdi-dtua-200km-skrzynia-dq381-245km-483nm-1.jpeg",
+        "/realizacje/uploads/chiptuning-vw-arteon-2-0tdi-dtua-200km-skrzynia-dq381-245km-483nm-2.jpeg",
+        "/realizacje/uploads/chiptuning-vw-arteon-2-0tdi-dtua-200km-skrzynia-dq381-245km-483nm-3.jpeg"
+      ]
+    },
+    {
       "id": "chiptuning-vw-golf-8-2-0tdi-115km-dtrd-183km-365nm",
       "title": "Chiptuning VW Golf 8 2.0TDI 115KM DTRD 183Km 365Nm",
       "shortDescription": "Stage1",
