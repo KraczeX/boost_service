@@ -1,6 +1,33 @@
 {
   "list": [
     {
+      "id": "konwersja-usa-pl-audi-q7-4m",
+      "title": "Konwersja USA PL Audi Q7 4M",
+      "shortDescription": "Kompletna konwersja USA PL",
+      "image": "/realizacje/uploads/konwersja-usa-pl-audi-q7-4m-1.jpeg",
+      "category": "Konwersja USA",
+      "brand": "Audi",
+      "date": "2026-01-05",
+      "description": "Usługa dostosowania Audi Q7 4M do Polskich warunków",
+      "details": [
+        "Przerobienie lamp na miejscu \r",
+        "Programowanie BCM2 \r",
+        "Usuniecie Side Marker \r",
+        "Polski język jednostki MIB2 \r",
+        "Najnowsza mapa nawigacji \r",
+        "Europejskie jednostki licznika \r",
+        "Loga stacji radiowych \r",
+        "Lektor PL\r",
+        "Baza Gracenote"
+      ],
+      "images": [
+        "/realizacje/uploads/konwersja-usa-pl-audi-q7-4m-1.jpeg",
+        "/realizacje/uploads/konwersja-usa-pl-audi-q7-4m-2.jpeg",
+        "/realizacje/uploads/konwersja-usa-pl-audi-q7-4m-3.jpeg",
+        "/realizacje/uploads/konwersja-usa-pl-audi-q7-4m-4.jpeg"
+      ]
+    },
+    {
       "id": "kalibracja-radarow-side-assist-audi-q5-80a",
       "title": "Kalibracja radarów Side Assist Audi Q5 80A",
       "shortDescription": "Kompletna kalibracja układu",
