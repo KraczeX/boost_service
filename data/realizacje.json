@@ -1,6 +1,28 @@
 {
   "list": [
     {
+      "id": "chiptuning-audi-q3-f3-83a-2-0tdi-150km-dfga-185km-417nm",
+      "title": "Chiptuning Audi Q3 F3 83A 2.0TDI 150KM DFGA 185KM 417Nm",
+      "shortDescription": "Stage1 silnika",
+      "image": "/realizacje/uploads/chiptuning-audi-q3-f3-83a-2-0tdi-150km-dfga-185km-417nm-1.jpeg",
+      "category": "Chiptuning",
+      "brand": "Audi",
+      "date": "2026-01-05",
+      "description": "Standardowy bezpieczny dobrze policzony Stage1 dla silnika DFGA",
+      "details": [
+        "Seria: 151KM 343Nm\r",
+        "Mod Stage1: 185KM 417Nm \r",
+        "Lepsza reakcja na gaz \r",
+        "Dużo większa elastyczność \r",
+        "Poprawa dynamiki w całym zakresie pracy \r",
+        "wyłączenie Start Stop"
+      ],
+      "images": [
+        "/realizacje/uploads/chiptuning-audi-q3-f3-83a-2-0tdi-150km-dfga-185km-417nm-1.jpeg",
+        "/realizacje/uploads/chiptuning-audi-q3-f3-83a-2-0tdi-150km-dfga-185km-417nm-2.jpeg"
+      ]
+    },
+    {
       "id": "konwersja-usa-porsche-macan-2024r",
       "title": "Konwersja USA Porsche Macan 2024r",
       "shortDescription": "Kompletna konwersja Porsche Macan USA PL",
