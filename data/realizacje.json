@@ -1,6 +1,28 @@
 {
   "list": [
     {
+      "id": "chiptuning-audi-a6-c8-2-0tdi-204km-dtpa",
+      "title": "Chiptuning Audi A6 C8 2.0TDI 204KM DTPA",
+      "shortDescription": "Stage1",
+      "image": "/realizacje/uploads/chiptuning-audi-a6-c8-2-0tdi-204km-dtpa-1.jpeg",
+      "category": "Chiptuning",
+      "brand": "Audi",
+      "date": "2026-01-05",
+      "description": "Standardowa bezpieczna modyfikacja dla silnika DTPA w Audi A6 C8",
+      "details": [
+        "Seria: 199KM 398Nm\r",
+        "Mod Stage1: 230KM 450Nm\r",
+        "Wyłączenie Start&Stop \r",
+        "Lepsza reakcja na gaz \r",
+        "Brak tzw. Laga \r",
+        "Dużo większa elastyczność"
+      ],
+      "images": [
+        "/realizacje/uploads/chiptuning-audi-a6-c8-2-0tdi-204km-dtpa-1.jpeg",
+        "/realizacje/uploads/chiptuning-audi-a6-c8-2-0tdi-204km-dtpa-2.jpeg"
+      ]
+    },
+    {
       "id": "usuniecie-adblue-audi-sq7-4-0tdi",
       "title": "Usuniecie AdBlue Audi SQ7 4.0TDI",
       "shortDescription": "AdBlue usuniecie",
