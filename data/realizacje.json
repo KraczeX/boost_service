@@ -1,6 +1,32 @@
 {
   "list": [
     {
+      "id": "chiptuning-stage2-vw-golf-7-5r-djha-2-0tsi-310km-380km-540nm",
+      "title": "Chiptuning Stage2 VW Golf 7.5R DJHA 2.0TSI 310KM / 380KM 540Nm",
+      "shortDescription": "Stage2 silnik + skrzynia DQ381",
+      "image": "/realizacje/uploads/chiptuning-stage2-vw-golf-7-5r-djha-2-0tsi-310km-380km-540nm-1.jpeg",
+      "category": "Chiptuning",
+      "brand": "Volkswagen",
+      "date": "2026-01-05",
+      "description": "Stage2 silnik + skrzynia DQ381",
+      "details": [
+        "Seria: 329KM 411Nm\r",
+        "Mod Stage2: 380KM 546Nm\r",
+        "Montaz IC FMIC \r",
+        "Dolot Ramair \r",
+        "Downpipe \r",
+        "Lambda off \r",
+        "Pops&Bangs w trybie Sport \r",
+        "Wydajniejsze hamulce"
+      ],
+      "images": [
+        "/realizacje/uploads/chiptuning-stage2-vw-golf-7-5r-djha-2-0tsi-310km-380km-540nm-1.jpeg",
+        "/realizacje/uploads/chiptuning-stage2-vw-golf-7-5r-djha-2-0tsi-310km-380km-540nm-2.jpeg",
+        "/realizacje/uploads/chiptuning-stage2-vw-golf-7-5r-djha-2-0tsi-310km-380km-540nm-3.jpeg",
+        "/realizacje/uploads/chiptuning-stage2-vw-golf-7-5r-djha-2-0tsi-310km-380km-540nm-4.jpeg"
+      ]
+    },
+    {
       "id": "chiptuning-audi-s3-8v-2-0tfsi-310km-dnue-351km-508nm",
       "title": "Chiptuning Audi S3 8V 2.0TFSI 310KM DNUE 351KM / 508Nm",
       "shortDescription": "Stage1 silnik + skrzynia DQ381",
