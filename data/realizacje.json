@@ -1,6 +1,27 @@
 {
   "list": [
     {
+      "id": "chiptuning-vw-golf-7-gti-2-0tsi-230km-chha-281km-463nm",
+      "title": "Chiptuning VW Golf 7 GTI 2.0TSI 230KM CHHA 281KM 463Nm",
+      "shortDescription": "Stage1",
+      "image": "/realizacje/uploads/chiptuning-vw-golf-7-gti-2-0tsi-230km-chha-281km-463nm-1.jpeg",
+      "category": "Chiptuning",
+      "brand": "Volkswagen",
+      "date": "2026-01-05",
+      "description": "Standardowy napisany przez nas Stage1 dla silnika CHHA",
+      "details": [
+        "Seria: 242KM 384Nm\r",
+        "Mod Stage1: 281KM 463Nm\r",
+        "Lepsza elastyczność \r",
+        "Natychmiastowa reakcja na dodanie gazu\r",
+        "Duża dynamika"
+      ],
+      "images": [
+        "/realizacje/uploads/chiptuning-vw-golf-7-gti-2-0tsi-230km-chha-281km-463nm-1.jpeg",
+        "/realizacje/uploads/chiptuning-vw-golf-7-gti-2-0tsi-230km-chha-281km-463nm-2.png"
+      ]
+    },
+    {
       "id": "chiptuning-audi-q7-4m-3-0tfsi-crec-333km-389km-497nm",
       "title": "Chiptuning Audi Q7 4M 3.0TFSI CREC 333KM / 389KM 497Nm",
       "shortDescription": "Stage1 silnik",
