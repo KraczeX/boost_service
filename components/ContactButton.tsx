@@ -14,7 +14,7 @@ function ContactButton() {
   }, []);
 
   const phoneNumber = '+48 725 490 466';
-  const email = 'kontakt@boost-service.pl';
+  const email = 'pliki.boost-service@wp.pl';
 
   return (
     <>

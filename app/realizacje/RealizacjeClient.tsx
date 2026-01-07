@@ -58,7 +58,7 @@ export default function RealizacjeClient({ realizacje }: RealizacjeClientProps) 
               >
                 Wszystkie
               </button>
-              {['Chiptuning', 'Usuwanie ADBLUE', 'Konwersja USA', 'Naprawa elektroniki'].map((category) => (
+              {['Chiptuning', 'Usuwanie ADBLUE', 'Konwersja USA', 'Naprawa elektroniki', 'Multimedia'].map((category) => (
                 <button
                   key={category}
                   onClick={() => {
@@ -91,7 +91,7 @@ export default function RealizacjeClient({ realizacje }: RealizacjeClientProps) 
               >
                 Wszystkie
               </button>
-              {['BMW', 'Audi', 'Mercedes', 'Porsche', 'Volkswagen', 'Volvo', 'Peugeot', 'Citroen', 'Ford', 'Seat', 'Skoda'].map((brand) => (
+              {['BMW', 'Audi', 'Mercedes', 'Porsche', 'Volkswagen', 'Volvo', 'Peugeot', 'Citroen', 'Ford', 'Seat', 'Skoda', 'Iveco', 'Renault'].map((brand) => (
                 <button
                   key={brand}
                   onClick={() => setSelectedBrand(brand)}

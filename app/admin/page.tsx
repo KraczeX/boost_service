@@ -783,6 +783,7 @@ export default function AdminPage() {
                         <option value="Usuwanie ADBLUE">Usuwanie ADBLUE</option>
                         <option value="Konwersja USA">Konwersja USA</option>
                         <option value="Naprawa elektroniki">Naprawa elektroniki</option>
+                        <option value="Multimedia">Multimedia</option>
                       </select>
                     </div>
                     <div>
@@ -804,6 +805,8 @@ export default function AdminPage() {
                         <option value="Ford">Ford</option>
                         <option value="Seat">Seat</option>
                         <option value="Skoda">Skoda</option>
+                        <option value="Iveco">Iveco</option>
+                        <option value="Renault">Renault</option>
                       </select>
                     </div>
                     <div>

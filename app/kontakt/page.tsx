@@ -88,8 +88,8 @@ export default function KontaktPage() {
                       </div>
                       <div className="flex-1">
                         <h3 className="text-lg sm:text-xl font-bold text-white mb-2">Email</h3>
-                        <a href="mailto:kontakt@boost-service.pl" className={`${colors.text} hover:${colors.textStats} transition-colors text-sm sm:text-base font-medium break-all`}>
-                          kontakt@boost-service.pl
+                        <a href="mailto:pliki.boost-service@wp.pl" className={`${colors.text} hover:${colors.textStats} transition-colors text-sm sm:text-base font-medium break-all`}>
+                          pliki.boost-service@wp.pl
                         </a>
                       </div>
                     </div>

@@ -41,3 +41,4 @@ export async function commitAndPushChanges(message: string = 'Update realizacje'
   }
 }
 
+
