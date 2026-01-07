@@ -1,6 +1,25 @@
 {
   "list": [
     {
+      "id": "usuwanie-adblue-iveco-daily-3-0-150",
+      "title": "Usuwanie Adblue Iveco Daily 3.0 150",
+      "shortDescription": "Usuwanie AdBlue",
+      "image": "/realizacje/uploads/usuwanie-adblue-iveco-daily-3-0-150-1.jpeg",
+      "category": "Usuwanie ADBLUE",
+      "brand": "Iveco",
+      "date": "2026-01-07",
+      "description": "Problem z AdBlue rozwiązany na zawsze",
+      "details": [
+        "Poziom na liczniku\r",
+        "Odpięty moduł\r",
+        "Brak konieczności tankowania \r",
+        "Brak błędów w silniku"
+      ],
+      "images": [
+        "/realizacje/uploads/usuwanie-adblue-iveco-daily-3-0-150-1.jpeg"
+      ]
+    },
+    {
       "id": "podniesienie-cisnienia-oleju-audi-q8-50tdi-3-0tdi-286km",
       "title": "Podniesienie cisnienia oleju Audi Q8 50TDI 3.0TDI 286KM",
       "shortDescription": "Zbyt niskie cisnienie oleju",
