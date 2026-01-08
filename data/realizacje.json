@@ -1,6 +1,25 @@
 {
   "list": [
     {
+      "id": "podniesienie-cisnienia-oleju-audi-a5-f5-3-0tfsi-354km",
+      "title": "Podniesienie ciśnienia oleju Audi A5 F5 3.0TFSI 354KM",
+      "shortDescription": "Poprawa wady fabrycznej zbyt niskiego ciśnienia oleju",
+      "image": "/realizacje/uploads/podniesienie-cisnienia-oleju-audi-a5-f5-3-0tfsi-354km-1.jpeg",
+      "category": "Chiptuning",
+      "brand": "Audi",
+      "date": "2026-01-08",
+      "description": "Silnik 3.0TFSI przy temp oleju 100*C pracuje przy ciśnieniu 0.8bar. Dochodzą do tego niskie obroty rzędu 550obr min , przez co silniki zacierają sie przy małych przebiegach. Podnosimy ciśnienie na 1.8bar na biegu jałowym i analogicznie w całym zakresie pracy podnosimy + 1.00bar ( zdjecie )",
+      "details": [
+        "Zbyt niskie ciśnienie oleju\r",
+        "Zabezpieczamy silnik \r",
+        "Podnosimy obroty biegu jałowego"
+      ],
+      "images": [
+        "/realizacje/uploads/podniesienie-cisnienia-oleju-audi-a5-f5-3-0tfsi-354km-1.jpeg",
+        "/realizacje/uploads/podniesienie-cisnienia-oleju-audi-a5-f5-3-0tfsi-354km-2.jpeg"
+      ]
+    },
+    {
       "id": "usuwanie-adblue-iveco-daily-3-0-150",
       "title": "Usuwanie Adblue Iveco Daily 3.0 150",
       "shortDescription": "Usuwanie AdBlue",
