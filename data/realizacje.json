@@ -1,6 +1,24 @@
 {
   "list": [
     {
+      "id": "aktywacja-full-screen-carplay-w-porsche-macan",
+      "title": "Aktywacja Full Screen CarPlay w Porsche Macan",
+      "shortDescription": "Full Screen Porsche Macan MH2p",
+      "image": "/realizacje/uploads/aktywacja-full-screen-carplay-w-porsche-macan-1.jpeg",
+      "category": "Multimedia",
+      "brand": "Porsche",
+      "date": "2026-01-08",
+      "description": "Odblokowanie i aktywacja CarPlay na pełnym ekranie",
+      "details": [
+        "Pełny ekran\r",
+        "CarPlay \r",
+        "Full Screen"
+      ],
+      "images": [
+        "/realizacje/uploads/aktywacja-full-screen-carplay-w-porsche-macan-1.jpeg"
+      ]
+    },
+    {
       "id": "podniesienie-cisnienia-oleju-audi-a5-f5-3-0tfsi-354km",
       "title": "Podniesienie ciśnienia oleju Audi S5 F5 3.0TFSI 354KM",
       "shortDescription": "Poprawa wady fabrycznej zbyt niskiego ciśnienia oleju",
